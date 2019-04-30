@@ -1,0 +1,21 @@
+.section-img{
+    margin-left: 27vw;
+    margin-top:  23vh; 
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.img-conteudo{
+    width: 9vw;
+    margin-top: 7.5vh;
+ 
+}
+
+.a-img-ajustar{
+    text-align: center;
+    width: 16.5vw;    
+    text-decoration: none;
+    color: #707070;
+    font-size: 1.2em; 
+}
