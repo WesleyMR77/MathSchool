@@ -12,7 +12,7 @@ body{
     text-align: center;
     display: flex;
     position: fixed;
-    top: 0
+    top: 0;
 }
 .title-menu{ 
     padding: 0;
