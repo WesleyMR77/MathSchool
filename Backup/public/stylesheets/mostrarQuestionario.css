@@ -1,0 +1,29 @@
+.questionario-secao{
+    margin-left: 27.5vw;
+    width: 64.5vw;
+    margin-top: 12vh;
+    text-align: justify;
+}
+.titulo-pergunta{
+    text-align: center;
+    margin-top: 140px;
+    margin-bottom: 60px;
+}
+
+.opcoes-form{
+    margin-top: 7.5vh;
+    margin-bottom: 60px;
+    text-align: justify;
+}
+.center{
+    text-align: end;
+}
+.enviar-dados-botao{
+    background-color: #00396B;
+    border: solid #00396B 1px;
+    border-radius: 30px;
+    color: white;
+    width: 8vw;
+    height: 30px;
+    margin-top: 50px;
+}
