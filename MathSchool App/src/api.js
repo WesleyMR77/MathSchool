@@ -1,6 +1,6 @@
 const axios = require('axios')
 
-const baseURL = ''
+const baseURL = 'https://mathschool-49378.firebaseio.com'
 
 const list = async (key) => {
     const content = await axios.get(`${baseURL}/${key}.json`)

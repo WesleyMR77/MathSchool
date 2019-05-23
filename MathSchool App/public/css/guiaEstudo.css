@@ -1,0 +1,36 @@
+.adicionar-guia{
+    margin-left: 20vw;
+    margin-top: 5.75vw;
+    text-align: center;
+    border-bottom: solid #00396B 1px; 
+}
+
+.img-cadastrar{
+    margin-top: 10.25vh;
+    max-width: 7.5vw;
+    margin-bottom: 50px;
+}
+.guias{
+    margin-left: 20vw;
+    display: flex;
+    flex-wrap: wrap;
+}
+.img-configuration{
+    margin-left: 10vw;
+    margin-top: 70px;
+    max-width: 7.5vw;
+    text-align: center;
+}
+h2{
+    margin: 0;
+    padding: 0;
+    color: #707070;
+    margin-left: 25px;
+}
+.span-nome{
+    color: #707070;
+    margin-left: 25px;
+}
+
+
+
