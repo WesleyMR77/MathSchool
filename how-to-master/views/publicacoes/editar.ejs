@@ -1,0 +1,27 @@
+<%- include('../header') %>
+<div class="uk-container">
+
+    <h2>Adicionar Publicação</h2>
+
+    <form class="uk-form-stacked" method="POST" action="/publicacoes/editar/<%= categoria %>/<%= publicacao.id %>">
+        <div class="uk-margin">
+            <label class="uk-form-label" for="titulo">Título</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" id="titulo" value="<%= publicacao.titulo %>" type="text" name="titulo">
+            </div>
+        </div>
+
+        <div class="uk-margin">
+            <label class="uk-form-label" for="conteudo">Conteúdo</label>
+            <div class="uk-form-controls">
+                <textarea class="uk-textarea" id="conteudo" name="conteudo"><%= publicacao.conteudo %></textarea>
+            </div>
+        </div>
+        <div class="uk-margin">
+            <button class="uk-button uk-button-primary">Salvar</button>
+        </div>
+    </form>
+
+</div>
+
+<%- include('../footer') %>

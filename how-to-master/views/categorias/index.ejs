@@ -1,0 +1,32 @@
+<%- include('../header') %>
+<div class="uk-container">
+
+    <h2>Categorias</h2>
+
+    <a href="/categorias/nova" class="uk-button uk-button-primary">Adicionar Categoria</a>
+    <a href="/publicacoes/nova" class="uk-button uk-button-primary">Adicionar Publicação</a>
+
+    <table class="uk-table uk-table-striped">
+        <thead>
+            <tr>
+                <th class="uk-table-expand">Categoria</th>
+                <th class="uk-table-shrink">Alterar</th>
+                <th class="uk-table-shrink">Excluir</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% categorias.forEach( categoria => { %>
+            <tr>
+                <td>
+                    <a href="/publicacoes/categoria/<%= categoria.id %>">
+                        <%= categoria.categoria %>
+                    </a>
+                </td>
+                <td><a href="/categorias/editar/<%= categoria.id %>" uk-icon="icon: file-edit"></a> </td>
+                <td><a href="/categorias/excluir/<%= categoria.id %>" uk-icon="icon: trash"></a> <br /></td>
+            </tr>
+            <%}) %>
+        </tbody>
+    </table>
+</div>
+<%- include('../footer') %>
