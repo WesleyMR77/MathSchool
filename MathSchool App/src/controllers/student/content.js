@@ -8,16 +8,22 @@ const contentPage = (req, res) => {
 
 //Listar conteudo
 const getContent = async (req, res) => {
-    
+    const search = req.body.search;
+    const Allcontents = await api.list('contents'); 
+    Allcontents.forEach(element => {
+        if(element.name == search){
+            
+        }
+    });
 };
 
 //Prototipo: Content - Student - Content ID
 const viewContent = (req, res) => {
-    
+
 };
 
 module.exports = { //Verificar com Andre se, neste caso, sera exportacao
     contentPage,
-    listContents,
+    getContent,
     viewContent
 }
