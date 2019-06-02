@@ -13,7 +13,7 @@ app.use(express.static(__dirname + '/public'));
 
 //Requerindo Rotas
 const user = require('./src/routes/user');
-const studentMain = require('./src/routes/student/main');
+/*const studentMain = require('./src/routes/student/main');
 const studentContent = require('./src/routes/student/content');
 const studentStudyGuide = require('./src/routes/student/studyGuide');
 const studentQuestionnaire = require('./src/routes/student/questionnaire');
@@ -21,11 +21,11 @@ const teacherMain = require('./src/routes/teacher/main');
 const teacherContent = require('./src/routes/teacher/content');
 const teacherStudyGuide = require('./src/routes/teacher/studyGuide');
 const teacherQuestionnaire = require('./src/routes/teacher/questionnaire');
-const teacherQuestion = require('./src/routes/teacher/question')
+const teacherQuestion = require('./src/routes/teacher/question')*/
 
 //Configurando Rotas
 app.use('/user', user);
-app.use('/student', studentMain);
+/*app.use('/student', studentMain);
 app.use('/student/content', studentContent);
 app.use('/student/study-guide', studentStudyGuide);
 app.use('/student/questionnaire', studentQuestionnaire);
@@ -33,7 +33,7 @@ app.use('/teacher', teacherMain);
 app.use('/teacher/content', teacherContent);
 app.use('/teacher/study-guide', teacherStudyGuide);
 app.use('/teacher/questionnaire', teacherQuestionnaire);
-app.use('/teacher/question', teacherQuestion);
+app.use('/teacher/question', teacherQuestion);*/
 
 //Determinando a porta automaticamente
 const port = process.env.PORT || 3000

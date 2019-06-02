@@ -21,7 +21,8 @@ const getContent = async (req, res) => {
 
 //Prototipo: Content - Student - Content ID
 const viewContent = async (req, res) => {
-    const content = await api.get()
+    const content = await api.get('contents/' + req.params.id);
+    res.render('student/studentContentID', { content });
 };
 
 module.exports = { //Verificar com Andre se, neste caso, sera exportacao
