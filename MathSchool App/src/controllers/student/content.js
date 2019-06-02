@@ -1,6 +1,6 @@
 const api = require('../../api');
 
-//Prototipo: Contents - Student
+//Prototipo: Content - Student
 const contentPage = (req, res) => {
     const contents = await api.list('contents');
     res.render('student/studentContent', { contents });
@@ -9,17 +9,19 @@ const contentPage = (req, res) => {
 //Listar conteudo
 const getContent = async (req, res) => {
     const search = req.body.search;
-    const Allcontents = await api.list('contents'); 
+    const Allcontents = await api.list('contents');
+    let contents = []; 
     Allcontents.forEach(element => {
-        if(element.name == search){
-            
+        if(element.name == search || element.author == search){
+            contents.push(element);
         }
     });
+    res.render('student/studentContent', { contents });
 };
 
 //Prototipo: Content - Student - Content ID
-const viewContent = (req, res) => {
-
+const viewContent = async (req, res) => {
+    const content = await api.get()
 };
 
 module.exports = { //Verificar com Andre se, neste caso, sera exportacao
