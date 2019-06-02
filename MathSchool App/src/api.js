@@ -18,7 +18,7 @@ const list = async (key) => {
     } else {
         return []
     }
-}
+} 
 
 const deleteItem = async (key, id) => {
     await axios.delete(`${baseURL}/${key}/${id}.json`)
