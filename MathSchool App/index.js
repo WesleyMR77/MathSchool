@@ -43,6 +43,11 @@ app.get('/', async (request, response) => {
     response.redirect('/user/login');
 })
 
+/*SEÇÃO DE TESTES DAS TELAS*/
+app.get('/teacherContent', async (request, response) => { 
+    response.render('/teacher/teacherContent');
+})
+
 //Inicializando Servidor
 app.listen(port, (err) => {
     if (err) {
@@ -51,3 +56,4 @@ app.listen(port, (err) => {
         console.log('MathSchool App working on port:', port)
     }
 })
+
