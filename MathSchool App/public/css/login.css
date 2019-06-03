@@ -6,7 +6,7 @@ body{
 .form-login{
     background-color: #EEEEEE;
     width: 45vw;
-    height: 350px;
+    height: 430px;
     margin-left: 27.5vw; 
     margin-top: 10px;
     border: solid #707070 1px;
@@ -17,17 +17,17 @@ body{
 }
 .size-input-email{
     width: 35vw;
-    height: 30px;
+    height: 35px;
     font-size: 1.3em;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     margin-top: 60px;
 }
 
 .size-input-senha{
     width: 35vw;
-    height: 30px;
+    height: 35px;
     font-size: 1.4em;
-    margin-top: 20px;
+    margin-top: 25px;
     margin-bottom: 80px;
 }
 
@@ -43,7 +43,7 @@ body{
     list-style: none;
     color: white;
     width: 22.5vw;
-    height: 40px;
+    height: 50px;
     display: inline-block;
     border: solid #707070 1px;
     border-radius: 10px;
@@ -54,7 +54,7 @@ body{
     color: black;
     background: #EEEEEE;
     width: 22.5vw;
-    height: 40px;
+    height: 50px;
     display: inline-block;
     border: solid #707070 1px;
     border-radius: 10px;
@@ -73,9 +73,9 @@ a{
     color: #FFFFFF;
     background: #00396B;
     width: 12.5vw;
-    height: 47.5px;
+    height: 57.5px;
     border: solid #707070 1px;
-    border-radius: 50px; 
+    border-radius: 15px; 
     margin-bottom: 30px;
     font-size: 1.3em;
 }

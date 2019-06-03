@@ -11,7 +11,7 @@ body{
 .form-login{
     background-color: #EEEEEE;
     width: 45vw;
-    height: 370px;
+    height: 430px;
     margin-left: 27.5vw; 
     margin-top: 10px;
     border: solid #707070 1px;
@@ -22,7 +22,7 @@ body{
 }
 .size-input{
     width: 35vw;
-    height: 23.5px;
+    height: 27.5px;
     font-size: 1.2em;  
     margin-top: 30px;
 }
@@ -37,7 +37,7 @@ body{
     width: 5vw;
     list-style: none;
     width: 22.5vw;
-    height: 40px;
+    height: 50px;
     display: inline-block;
     border: solid #707070 1px;
     border-radius: 10px;   
@@ -46,7 +46,7 @@ body{
 .botao-cadastro{
     background: #00396B;
     width: 22.5vw;
-    height: 40px;
+    height: 50px;
     display: inline-block;
     border: solid #707070 1px;
     border-radius: 10px;
@@ -57,12 +57,12 @@ body{
     color: #FFFFFF;
     background: #00396B;
     width: 12.5vw;
-    height: 40px;
+    height: 57.5px;
     border: solid #707070 1px;
-    border-radius: 50px; 
- 
+    border-radius: 15px; 
     font-size: 1.4em;
 }
+
 .esquecer-senha{
     color: #A58D8D;
 }
