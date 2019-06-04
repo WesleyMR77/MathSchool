@@ -2,26 +2,29 @@
     margin-left: 20vw;
     margin-top: 5.75vw;
     text-align: center;
+}
+.line{
     border-bottom: solid #00396B 1px; 
+    margin-bottom: 50px;
 }
 
 .img-cadastrar{
     margin-top: 10.25vh;
-    max-width: 7.5vw;
+    max-width: 150px;
     margin-bottom: 50px;
 }
 .guias{
-    margin-left: 20vw;
     display: flex;
     flex-wrap: wrap;
+    margin-bottom: 50px;
 }
 .img-configuration{
-    margin-left: 10vw;
+    margin-left: 135px;
     margin-top: 70px;
-    max-width: 7.5vw;
+    max-width: 100px;
     text-align: center;
 }
-h2{
+h3{
     margin: 0;
     padding: 0;
     color: #707070;
@@ -31,6 +34,18 @@ h2{
     color: #707070;
     margin-left: 25px;
 }
+.center{
+    text-align: center;
+    
+    color: #00396B;
+    font-size: 1.8em;
+    margin-bottom: 0;
+}
 
+.img-delete{
+    max-width: 30px;
+    margin-left: 90px;
+    margin-bottom: -10px;
+}
 
 

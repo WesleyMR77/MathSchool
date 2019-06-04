@@ -44,8 +44,8 @@ app.get('/', async (request, response) => {
 })
 
 /*SEÇÃO DE TESTES DAS TELAS*/
-app.get('/teacherContent', async (request, response) => { 
-    response.render('/teacher/teacherContent');
+app.get('/teacherContentID', async (request, response) => { 
+    response.render('teacher/teacherContentID');
 })
 
 //Inicializando Servidor
