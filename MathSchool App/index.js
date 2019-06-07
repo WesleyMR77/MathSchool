@@ -43,11 +43,6 @@ app.get('/', async (request, response) => {
     response.redirect('/user/login');
 })
 
-/*SEÇÃO DE TESTES DAS TELAS*/
-app.get('/teacherContentID', async (request, response) => { 
-    response.render('teacher/teacherContentID');
-})
-
 //Inicializando Servidor
 app.listen(port, (err) => {
     if (err) {
@@ -57,3 +52,13 @@ app.listen(port, (err) => {
     }
 })
 
+/*SEÇÃO DE TESTES DAS TELAS*/
+app.get('/teacherContentID', async (request, response) => { 
+    response.render('teacher/teacherContentID');
+})
+app.get('/teacherContent', async (request, response) => { 
+    response.render('teacher/teacherContent');
+})
+app.get('/teacherCreateContent', async (request, response) => { 
+    response.render('teacher/teacherCreateContent');
+})
