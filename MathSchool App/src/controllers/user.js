@@ -1,18 +1,19 @@
 const api = require('../services/api');
 const firebase = require('../services/firebase');
 
-//Prototipo: 
+//Prototipo: Login
 const loginPage = (req, res) => {
     res.render('user/login');
 };
 
-//Prototipo: 
+//Prototipo: Sign In
 const signPage = (req, res) => {
     res.render('user/signIn');
 };
 
 //Cadastrar Usuario
 const signUp = async (req, res) => {
+    
     //Coletando dados das inputs
     var user = {
         name: req.body.name,
@@ -22,7 +23,7 @@ const signUp = async (req, res) => {
     }
 
     //Criando via Firebase
-    firebase.auth().createUserWithEmailAndPassword(user.email, user.password).catch(function(error){
+    await firebase.auth().createUserWithEmailAndPassword(user.email, user.password).catch(function(error){
         const errorCode = error.code;
         const errorMessage = error.message;
         if(errorCode == 'auth/weak-password'){
@@ -32,19 +33,17 @@ const signUp = async (req, res) => {
         };
         console.log("Seguinte Erro: " + error);
     });
-
-    firebase.auth().onAuthStateChanged( firebaseUser => {
-        if(firebaseUser){
-            const id = firebaseUser.uid;
-        }else{
-            console.log("Erro de Cadastro e Autenticacao")
-        }
-        
-    })
+    const id = firebase.auth().currentUser.uid;
 
     //Criando usuario na database
     await api.createSet('users', user, id);
-    console.log(user);
+    
+    //Redirecionamento para a proxima pagina
+    if(user.isTeacher){
+        res.redirect('/teacher');
+    }else{
+        res.redirect('/student');
+    }
 };
 
 //Autenticacao
@@ -56,7 +55,7 @@ const signIn = async (req, res) => {
     }
 
     //Autenticando via Firebase
-    firebase.auth().signInWithEmailAndPassword(user.email, user.password).catch(function(error){
+    await firebase.auth().signInWithEmailAndPassword(user.email, user.password).catch(function(error){
         const errorCode = error.code;
         const errorMessage = error.message;
         if(errorCode == 'auth/wrong-password'){
@@ -67,22 +66,28 @@ const signIn = async (req, res) => {
         console.log("Seguinte Erro: " + error); 
     });    
 
-    firebase.auth().onAuthStateChanged( firebaseUser => {
-        if(firebaseUser){
-            const id = firebaseUser.uid;
-        }else{
-            console.log("Erro de Autenticacao")
-        }
-    });
+    const id = firebase.auth().currentUser.uid;
 
     //Coletando dados do usuario autenticado
     user = await api.get('users', id);
-    console.log(user); 
+    
+    //Redirecionamento para a proxima pagina
+    if(user.isTeacher){
+        res.redirect('/teacher');
+    }else{
+        res.redirect('/student');
+    }
 };
+
+const getUser = async () => {
+    const user = await api.get('users', firebase.auth().currentUser.uid);
+    return user;
+}
 
 module.exports = {
     loginPage,
     signPage,
     signUp,
-    signIn
+    signIn,
+    getUser
 };
