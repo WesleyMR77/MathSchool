@@ -79,9 +79,24 @@ const signIn = async (req, res) => {
     }
 };
 
-const getUser = async () => {
+//Desautenticacao
+const logOut = async (req, res) => {
+    await firebase.auth().logOut();
+    res.redirect('/user/login');
+};
+
+//Funcao para coleta dos dados do usuario ja autenticado
+const getAuthUser = async () => {
     const user = await api.get('users', firebase.auth().currentUser.uid);
     return user;
+};
+
+const verifyAuth = async (req, res) => {
+
+}
+
+const verifyUser = async (user) => {
+    
 }
 
 module.exports = {
@@ -89,5 +104,7 @@ module.exports = {
     signPage,
     signUp,
     signIn,
-    getUser
+    logOut,
+    getAuthUser,
+    verifyAuth
 };

@@ -1,9 +1,11 @@
-const api = require('../../api');
+const api = require('../../services/api');
+const user = require('../user');
 
 //Prototipo: Content - Student
 const contentPage = (req, res) => {
+    const profile = user.getAuthUser;
     const contents = await api.list('contents');
-    res.render('student/studentContent', { contents });
+    res.render('student/studentContent', { contents, profile });
 };
 
 //Listar conteudo
@@ -16,13 +18,15 @@ const getContent = async (req, res) => {
             contents.push(element);
         }
     });
-    res.render('student/studentContent', { contents });
+    const profile = user.getAuthUser;
+    res.render('student/studentContent', { contents, profile });
 };
 
 //Prototipo: Content - Student - Content ID
 const viewContent = async (req, res) => {
     const content = await api.get('contents/' + req.params.id);
-    res.render('student/studentContentID', { content });
+    const profile = user.getAuthUser;
+    res.render('student/studentContentID', { content, profile });
 };
 
 module.exports = { //Verificar com Andre se, neste caso, sera exportacao

@@ -13,8 +13,8 @@ app.use(express.static(__dirname + '/public'));
 
 //Requerindo Rotas
 const user = require('./src/routes/user');
-/*const studentMain = require('./src/routes/student/main');
-const studentContent = require('./src/routes/student/content');
+const studentMain = require('./src/routes/student/main');
+/*const studentContent = require('./src/routes/student/content');
 const studentStudyGuide = require('./src/routes/student/studyGuide');
 const studentQuestionnaire = require('./src/routes/student/questionnaire');
 const teacherMain = require('./src/routes/teacher/main');
@@ -25,8 +25,8 @@ const teacherQuestion = require('./src/routes/teacher/question')*/
 
 //Configurando Rotas
 app.use('/user', user);
-/*app.use('/student', studentMain);
-app.use('/student/content', studentContent);
+app.use('/student', studentMain);
+/*app.use('/student/content', studentContent);
 app.use('/student/study-guide', studentStudyGuide);
 app.use('/student/questionnaire', studentQuestionnaire);
 app.use('/teacher', teacherMain);
