@@ -1,0 +1,65 @@
+
+body{
+    background-color: #EEEEEE;
+    color: #00396B;
+}
+.regular-area{
+    margin-left: 22.5vw;
+    margin-top: 20vh;
+    margin-top: 150px;
+}
+
+.cadastrar-guia{
+    margin-left: 4vw;
+    width: 30vw;
+    height: 10vh;
+    font-size: 1.5em;
+}
+
+.size-input{
+    border-top: 40px;
+    /* margin-left: 2vw; */
+    width: 40vw;
+    height: 25px;
+    border: solid #00396B 1px;
+    margin-bottom: 20px;
+}
+.configuration-line{
+    display: flex;
+}
+
+h3{
+    font-size:  0.9em;
+    margin: 0
+}
+
+textarea{
+    width: 67vw;
+    font-size: 1.2em;
+    border: solid #00396B 1px;
+    overflow: scroll;
+}
+
+.add-flex{
+    display: flex;
+}
+label{
+   
+  left:19px;
+  margin-right:5px;
+}
+
+button{
+    width: 7.5vw;
+    height: 32px;
+    border: solid #00396B 1px;
+    border-radius: 10px;
+    color: white;
+    background-color: #00396B;
+}
+.botao-cadastra{
+    margin-left: 12.5vw; 
+}
+.margem-alinhar{
+    margin-right: 35px;
+}
