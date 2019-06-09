@@ -2,7 +2,7 @@ const api = require('../../services/api');
 const user = require('../user');
 
 //Prototipo: Content - Student
-const contentPage = (req, res) => {
+const contentsPage = (req, res) => {
     const profile = user.getAuthUser;
     const contents = await api.list('contents');
     res.render('student/studentContent', { contents, profile });
@@ -11,9 +11,9 @@ const contentPage = (req, res) => {
 //Listar conteudo
 const getContent = async (req, res) => {
     const search = req.body.search;
-    const Allcontents = await api.list('contents');
+    const AllContents = await api.list('contents');
     let contents = []; 
-    Allcontents.forEach(element => {
+    AllContents.forEach(element => {
         if(element.name == search || element.author == search){
             contents.push(element);
         }
@@ -29,8 +29,8 @@ const viewContent = async (req, res) => {
     res.render('student/studentContentID', { content, profile });
 };
 
-module.exports = { //Verificar com Andre se, neste caso, sera exportacao
-    contentPage,
+module.exports = { 
+    contentsPage,
     getContent,
     viewContent
 }
