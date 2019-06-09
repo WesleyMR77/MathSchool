@@ -7,6 +7,6 @@ const router = express.Router();
 const student = require('../../controllers/student/main');
 
 //Configurando rotas
-router.get('/student', student.mainPage);
+router.get('/', student.mainPage);
 
 module.exports = router;

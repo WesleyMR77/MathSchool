@@ -37,6 +37,7 @@ const signUp = async (req, res) => {
 
     //Criando usuario na database
     await api.createSet('users', user, id);
+    window.localStorage.setItem('user', JSON.stringify(user));
     
     //Redirecionamento para a proxima pagina
     if(user.isTeacher){
@@ -70,6 +71,7 @@ const signIn = async (req, res) => {
 
     //Coletando dados do usuario autenticado
     user = await api.get('users', id);
+    window.localStorage.setItem('user', JSON.stringify(user));
     
     //Redirecionamento para a proxima pagina
     if(user.isTeacher){
@@ -82,6 +84,7 @@ const signIn = async (req, res) => {
 //Desautenticacao
 const logOut = async (req, res) => {
     await firebase.auth().logOut();
+    window.localStorage.removeItem('user');
     res.redirect('/user/login');
 };
 
@@ -91,20 +94,11 @@ const getAuthUser = async () => {
     return user;
 };
 
-const verifyAuth = async (req, res) => {
-
-}
-
-const verifyUser = async (user) => {
-    
-}
-
 module.exports = {
     loginPage,
     signPage,
     signUp,
     signIn,
     logOut,
-    getAuthUser,
-    verifyAuth
+    getAuthUser
 };
