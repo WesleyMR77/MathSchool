@@ -62,3 +62,11 @@ app.get('/teacherContent', async (request, response) => {
 app.get('/teacherCreateContent', async (request, response) => { 
     response.render('teacher/teacherCreateContent');
 })
+
+app.get('/teacherMainPage', async (request, response) => { 
+    response.render('teacher/teacherMainPage');
+})
+
+app.get('/studentMainPage', async (request, response) => { 
+    response.render('student/studentMainPage');
+})
