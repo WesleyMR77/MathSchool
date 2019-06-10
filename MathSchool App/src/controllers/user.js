@@ -78,7 +78,7 @@ const signIn = async (req, res) => {
 
 //Desautenticacao
 const logOut = async (req, res) => {
-    await firebase.auth().logOut();
+    await firebase.auth().signOut();
     store.remove('user');
     res.redirect('/user/login');
 };
