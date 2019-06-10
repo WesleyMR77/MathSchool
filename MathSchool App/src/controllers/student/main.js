@@ -1,9 +1,9 @@
-const user = require('../user');
+const store = require('store');
 
 //Prototipo: Main Page - Student
 const mainPage = (req, res) => {
-    const profile = user.getAuthUser;
-    res.render('student/studentMainPage', profile);
+    const user = store.get('user')
+    res.render('student/studentMainPage', { user });
 };
 
 module.exports = {

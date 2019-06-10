@@ -1,11 +1,11 @@
 const api = require('../../services/api');
-const user = require('../user');
+const store = require('store');
 
 //Prototipo: Content - Student
-const contentsPage = (req, res) => {
-    const profile = user.getAuthUser;
+const contentsPage = async (req, res) => {
+    const user = store.get('user');
     const contents = await api.list('contents');
-    res.render('student/studentContent', { contents, profile });
+    res.render('student/studentContent', { contents, user });
 };
 
 //Listar conteudo
@@ -18,15 +18,15 @@ const getContent = async (req, res) => {
             contents.push(element);
         }
     });
-    const profile = user.getAuthUser;
-    res.render('student/studentContent', { contents, profile });
+    const user = store.get('user');
+    res.render('student/studentContent', { contents, user });
 };
 
 //Prototipo: Content - Student - Content ID
 const viewContent = async (req, res) => {
     const content = await api.get('contents/' + req.params.id);
-    const profile = user.getAuthUser;
-    res.render('student/studentContentID', { content, profile });
+    const user = store.get('user');
+    res.render('student/studentContentID', { content, user });
 };
 
 module.exports = { 

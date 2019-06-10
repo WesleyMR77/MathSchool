@@ -1,5 +1,6 @@
 const api = require('../services/api');
 const firebase = require('../services/firebase');
+const store = require('store');
 
 //Prototipo: Login
 const loginPage = (req, res) => {
@@ -37,7 +38,7 @@ const signUp = async (req, res) => {
 
     //Criando usuario na database
     await api.createSet('users', user, id);
-    window.localStorage.setItem('user', JSON.stringify(user));
+    store.set('user', user);
     
     //Redirecionamento para a proxima pagina
     if(user.isTeacher){
@@ -49,14 +50,8 @@ const signUp = async (req, res) => {
 
 //Autenticacao
 const signIn = async (req, res) => {
-    //Coletando dados das inputs
-    var user = {
-        email: req.body.email,
-        password: req.body.password
-    }
-
     //Autenticando via Firebase
-    await firebase.auth().signInWithEmailAndPassword(user.email, user.password).catch(function(error){
+    await firebase.auth().signInWithEmailAndPassword(req.body.email, req.body.password).catch(function(error){
         const errorCode = error.code;
         const errorMessage = error.message;
         if(errorCode == 'auth/wrong-password'){
@@ -70,8 +65,8 @@ const signIn = async (req, res) => {
     const id = firebase.auth().currentUser.uid;
 
     //Coletando dados do usuario autenticado
-    user = await api.get('users', id);
-    window.localStorage.setItem('user', JSON.stringify(user));
+    const user = await api.get('users', id);
+    store.set('user', user);
     
     //Redirecionamento para a proxima pagina
     if(user.isTeacher){
@@ -84,14 +79,8 @@ const signIn = async (req, res) => {
 //Desautenticacao
 const logOut = async (req, res) => {
     await firebase.auth().logOut();
-    window.localStorage.removeItem('user');
+    store.remove('user');
     res.redirect('/user/login');
-};
-
-//Funcao para coleta dos dados do usuario ja autenticado
-const getAuthUser = async () => {
-    const user = await api.get('users', firebase.auth().currentUser.uid);
-    return user;
 };
 
 module.exports = {
@@ -99,6 +88,5 @@ module.exports = {
     signPage,
     signUp,
     signIn,
-    logOut,
-    getAuthUser
+    logOut
 };

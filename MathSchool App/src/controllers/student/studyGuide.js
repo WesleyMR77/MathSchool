@@ -1,18 +1,18 @@
 const api = require('../../services/api');
-const user = require('../user');
+const store = require('store')
 
 //Prototipo: Study Guide - Student
 const studyGuidesPage = async (req, res) => {
-    const profile = user.getAuthUser;
+    const user = store.get('user');
     const guides = await api.list('studyGuides');
-    res.render('student/studentStudyGuide', { guides, profile });
+    res.render('student/studentStudyGuide', { guides, user });
 };
 
 //Prototipo: Study Guide - Student - Study Guide ID
 const viewStudyGuide = async (req, res) => {
-    const profile = getAuthUser;
+    const user = store.get('user');
     const guide = await api.get('studyGuides', req.params.id);
-    res.render('student/studentStudyGuideID');
+    res.render('student/studentStudyGuideID', { guide, user });
 };
 
 //Listar guia de estudo
@@ -25,8 +25,8 @@ const getStudyGuide = async (req, res) => {
             guides.push(element);
         }
     });
-    const profile = user.getAuthUser;
-    res.render('student/studentStudyGuide', { guides, profile });
+    const user = store.get('user');
+    res.render('student/studentStudyGuide', { guides, user });
 };
 
 module.exports = {
