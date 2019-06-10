@@ -67,6 +67,15 @@ app.get('/teacherMainPage', async (request, response) => {
     response.render('teacher/teacherMainPage');
 })
 
+// PÁGINA ESTUDANTE
 app.get('/studentMainPage', async (request, response) => { 
     response.render('student/studentMainPage');
+})
+
+app.get('/studentContentID', async (request, response) => { 
+    response.render('student/studentContentID');
+})
+
+app.get('/studentContent', async (request, response) => { 
+    response.render('student/studentContent');
 })

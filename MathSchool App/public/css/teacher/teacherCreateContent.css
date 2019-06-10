@@ -23,6 +23,8 @@ body{
     height: 25px;
     border: solid #00396B 1px;
     margin-bottom: 20px;
+    color: #00396B;
+    font-size: 0.9em;
 }
 .configuration-line{
     display: flex;
@@ -62,4 +64,14 @@ button{
 }
 .margem-alinhar{
     margin-right: 35px;
+}
+
+.campo-selecao-ajusty{
+    border-top: 40px;
+    width: 40.2vw;
+    height: 27.5px;
+    border: solid #00396B 1px;
+    margin-bottom: 20px;
+    color: #00396B;
+    font-size: 0.8em;
 }
