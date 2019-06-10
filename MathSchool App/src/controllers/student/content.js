@@ -11,8 +11,7 @@ const contentsPage = async (req, res) => {
 //Listar conteudo
 const getContent = async (req, res) => {
     const search = req.body.search;
-    // const AllContents = await   api.list('contents');
-    const AllContents = api.list('contents');
+    const AllContents = await api.list('contents');
     let contents = [];
     AllContents.forEach(element => {
         if (element.name == search || element.author == search) {

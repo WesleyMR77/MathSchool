@@ -9,31 +9,11 @@ const questionnairePage = async (req, res) => {
 };
 
 //Prototipo: Questionnaire - Student - Question ID
-const startQuestionnaire = async (req, res) => {
+const viewQuestion = async (req, res) => {
     const user = store.get('user');
-    const questionnaire = await api.get('questionnaires', req.params.questionnaireID);
-    const question = await api.get('questions', questionnaire.questions[0]);
+    const questionnaire = await api.get('questionnaires', req.params.id);
+    const question = await api.get('questions', questionnaire.questions[req.params.number]);
     res.render('student/studentQuestionID', { user, questionnaire, question });
-};
-
-//Proxima questao do questionario
-const nextQuestion = async (req, res) => {
-    const user = store.get('user');
-    const questionnaire = await api.get('questionnaires', req.params.questionnaireID);
-    const currentQuestion = await api.get('questions', req.params.questionID);
-    var questionPos;
-    for(var i = 0; i < questionnaire.questions.length; i++){
-        if(currentQuestion == questionnaire.questions[i]){
-            questionPos = i;
-            break;
-        };
-    };
-    if(questionPos+1 == questionnaire.questions.length){
-        questionnairePage;
-    }else{
-        const newQuestion = await api.get('questions', questionnaire.questions[questionPos]);
-        res.render('student/studentQuestionID', { user, questionnaire, newQuestion });
-    }
 };
 
 //Listar questionario
@@ -50,15 +30,8 @@ const getQuestionnaire = async (req, res) => {
     res.render('student/studentStudyGuide', { questionnaires, user });
 };
 
-//Corrigir questao
-const correctQuestion = async () => {
-    
-};
-
 module.exports = {
     questionnairePage,
-    startQuestionnaire,
-    nextQuestion,
     getQuestionnaire,
-    correctQuestion
+    viewQuestion
 }

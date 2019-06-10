@@ -41,7 +41,7 @@ const port = process.env.PORT || 3000
 //Configurando pagina inicial
 app.get('/', async (request, response) => { 
     response.redirect('/user/login');
-})
+});
 
 //Inicializando Servidor
 app.listen(port, (err) => {
@@ -50,7 +50,7 @@ app.listen(port, (err) => {
     } else {
         console.log('MathSchool App working on port:', port)
     }
-})
+});
 
 /*SEÇÃO DE TESTES DAS TELAS*/
 app.get('/teacherContent', async (request, response) => { 

@@ -9,7 +9,6 @@ const student = require('../../controllers/student/questionnaire');
 //Configurando rotas
 router.get('/', student.questionnairePage);
 router.post('/', student.getQuestionnaire);
-router.get('/:questionnaireID/:questionID', student.startQuestionnaire);
-router.post('/:questionnaireID/:questionID', student.nextQuestion);
+router.get('/:id/:number', student.viewQuestion);
 
 module.exports = router;

@@ -10,5 +10,8 @@ const student = require('../../controllers/student/studyGuide');
 router.get('/', student.studyGuidesPage);
 router.post('/', student.getStudyGuide);
 router.get('/:id', student.viewStudyGuide);
+router.get('/:guideID/:id', student.viewContent);
+router.get('/:guideID/:id/:number', student.viewQuestionnaire);
+
 
 module.exports = router;

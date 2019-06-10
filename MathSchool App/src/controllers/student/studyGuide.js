@@ -1,11 +1,16 @@
 const api = require('../../services/api');
-const store = require('store')
+const store = require('store');
+
+//Informacoes gerais 
+var info = {
+    title: "Guia de Estudos"
+};
 
 //Prototipo: Study Guide - Student
 const studyGuidesPage = async (req, res) => {
     const user = store.get('user');
     const guides = await api.list('studyGuides');
-    res.render('student/studentStudyGuide', { guides, user });
+    res.render('student/studentStudyGuide', { guides, user, info });
 };
 
 //Listar guia de estudo
@@ -19,78 +24,36 @@ const getStudyGuide = async (req, res) => {
         }
     });
     const user = store.get('user');
-    res.render('student/studentStudyGuide', { guides, user });
+    res.render('student/studentStudyGuide', { guides, user, info });
 };
 
 //Prototipo: Study Guide - Student - Study Guide ID
 const viewStudyGuide = async (req, res) => {
     const user = store.get('user');
     const guide = await api.get('studyGuides', req.params.id);
-    res.render('student/studentStudyGuideID', { guide, user });
+    res.render('student/studentStudyGuideID', { guide, user, info });
 };
 
-//Visualizar conteudo/questionario do guia
-const viewMaterial = async (req, res) => {
+//Visualizar conteudo do guia
+const viewContent = async (req, res) => {
     const user = store.get('user');
     const guide = await api.get('studyGuides', req.params.guideID);
-    if(req.params.type == "questionnaire"){
-        const questionnaire = await api.get('questionnaires', req.params.id);
-        const question = await api.get('questions', questionnaire.questions[0]);
-        res.render('student/studentQuestionID', { user, guide, questionnaire, question });
-    }
-    if(req.params.type == "content"){
-        const content = await api.get('contents/' + req.params.id);
-        res.render('student/studentStudyGuideContent', { user, guide, content });
-    }
+    const content = await api.get('contents/' + req.params.id);
+    res.render('student/studentStudyGuideContent', { user, guide, content, info });
 };
 
-//Proxima questao do questionario do guia
-const nextQuestion = async (req, res) => {
+const viewQuestionnaire = async (req, res) => {
     const user = store.get('user');
     const guide = await api.get('studyGuides', req.params.guideID);
     const questionnaire = await api.get('questionnaires', req.params.id);
-    const currentQuestion = await api.get('questions', req.params.questionID);
-    var questionPos;
-    for(var i = 0; i < questionnaire.questions.length; i++){
-        if(currentQuestion == questionnaire.questions[i]){
-            questionPos = i;
-            break;
-        };
-    };
-    //Verificacao se o questionario foi finalizado
-    if(questionPos+1 == questionnaire.questions.length){
-        var material
-        //Redirecionando para o proximo material
-        for(let i = 0; i < guide.trail.length; i++){
-            if(guide.trail[i].id == req.params.id){
-                if(i+1 == guide.trail.length){
-                    res.redirect('student/study-guide');
-                }else{
-                    material = guide.trail[i+1];
-                }
-                break;
-            }
-        }
-        if(material.type == "questionnaire"){
-            material = await api.get('questionnaires', material.id);
-            const question = await api.get('questions', material.questions[0]);
-            res.render('student/studentQuestionID', { user, guide, material});
-        };
-        if(material.type == "content"){
-            material = await api.get('contents', material.id);
-            res.redirect('student/study-guide/')
-        };
-    }else{
-        const newQuestion = await api.get('questions', questionnaire.questions[questionPos+1]);
-        res.render('student/studentQuestionID', { user, guide, questionnaire, newQuestion });
-    }
+    const question = await api.get('questions', questionnaire.questions[req.params.number]);
+    res.render('student/studentQuestionID', { user, guide, questionnaire, question, info });
 };
 
 module.exports = {
     studyGuidesPage,
     viewStudyGuide,
     getStudyGuide,
-    viewMaterial,
-    nextMaterial,
-    nextQuestion
+    viewContent,
+    viewQuestionnaire
 }
