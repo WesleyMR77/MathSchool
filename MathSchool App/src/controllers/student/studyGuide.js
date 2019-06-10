@@ -44,26 +44,6 @@ const viewMaterial = async (req, res) => {
     }
 };
 
-//Proximo conteudo/questionario do guia
-const nextMaterial = async (req, res) => {
-    const user = store.get('user');
-    const guide = await api.get('studyGuides', req.params.guideID);
-    for(let i = 0; i < guide.trail.length; i++){
-        if(guide.trail[i].id == req.params.id){
-            if(i+1 == guide.trail.length){
-                res.redirect('student/study-guide');
-            }else{
-                if(guide.trail[i+1].type == "questionnaire"){
-                    res.render('')
-                };
-                if(guide.trail[i+1].type == "content")[
-
-                ]
-            }
-        }
-    }
-};
-
 //Proxima questao do questionario do guia
 const nextQuestion = async (req, res) => {
     const user = store.get('user');
@@ -77,8 +57,29 @@ const nextQuestion = async (req, res) => {
             break;
         };
     };
+    //Verificacao se o questionario foi finalizado
     if(questionPos+1 == questionnaire.questions.length){
-        //;
+        var material
+        //Redirecionando para o proximo material
+        for(let i = 0; i < guide.trail.length; i++){
+            if(guide.trail[i].id == req.params.id){
+                if(i+1 == guide.trail.length){
+                    res.redirect('student/study-guide');
+                }else{
+                    material = guide.trail[i+1];
+                }
+                break;
+            }
+        }
+        if(material.type == "questionnaire"){
+            material = await api.get('questionnaires', material.id);
+            const question = await api.get('questions', material.questions[0]);
+            res.render('student/studentQuestionID', { user, guide, material});
+        };
+        if(material.type == "content"){
+            material = await api.get('contents', material.id);
+            res.redirect('student/study-guide/')
+        };
     }else{
         const newQuestion = await api.get('questions', questionnaire.questions[questionPos+1]);
         res.render('student/studentQuestionID', { user, guide, questionnaire, newQuestion });

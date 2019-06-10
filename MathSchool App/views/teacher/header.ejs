@@ -15,8 +15,14 @@
         <input class="search-input-menu" name="Pesquisar" placeholder="Pesquisar"  type="text">
         <img class="search-img-menu" src="img/img-menu/search-white.png" alt="">
 
-        <a class="button-register" href="./login">Login</a>
-        <a class="button-register" href="./cadastro">Criar Perfil</a>
+        <div class="element-line">
+            <img class="img-student" src="img/img-menu/student.png" alt="">
+            <div class="name-and-email">
+                <span class="name-student"><%= user.name %></span>
+                <span class="email-student"><%= user.email %></span>
+            </div>
+            <img class="img-logout" src="img/img-menu/logout.png" alt="">
+        </div>
 
         <ul class="list-menu">
             <a class="div-menu-flex" href="/teacher"> 
