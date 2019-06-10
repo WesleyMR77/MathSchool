@@ -28,9 +28,9 @@ const signUp = async (req, res) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         if(errorCode == 'auth/weak-password'){
-            alert("Senha fraca.");
+            console.log("Senha fraca.");
         }else{
-            alert(errorMessage);
+            console.log(errorMessage);
         };
         console.log("Seguinte Erro: " + error);
     });
@@ -55,9 +55,9 @@ const signIn = async (req, res) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         if(errorCode == 'auth/wrong-password'){
-            alert("Senha incorreta.");
+            console.log("Senha incorreta.");
         }else{
-            alert(errorMessage);
+            console.log(errorMessage);
         };
         console.log("Seguinte Erro: " + error); 
     });    

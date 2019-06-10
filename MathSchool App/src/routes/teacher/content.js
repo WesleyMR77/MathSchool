@@ -12,5 +12,6 @@ router.post('/', teacher.getContent);
 router.get('/:id', teacher.viewContent);
 router.get('/create', teacher.createContentPage);
 router.post('/create', teacher.createContent);
+router.get('/delete/:id', teacher.deleteContent);
 
 module.exports = router;

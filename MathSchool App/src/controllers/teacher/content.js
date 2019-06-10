@@ -59,10 +59,17 @@ const createContent = async (req, res) => {
     res.redirect('/teacher/teacherContent');
 };
 
+//Deletar conteudo
+const deleteContent = async (req, res) => {
+    await api.deleteItem('contents', req.params.id);
+    res.redirect('/teacher/contents');
+};
+
 module.exports = {
     contentsPage,
     getContent,
     viewContent,
     createContentPage,
-    createContent
+    createContent,
+    deleteContent
 };
