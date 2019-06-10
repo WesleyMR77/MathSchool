@@ -1,24 +1,24 @@
 const api = require('../../services/api');
-const user = require('../user');
+const store = require('store');
 
 //Prototipo: Questionnaire - Student
 const questionnairePage = async (req, res) => {
-    const profile = user.getAuthUser;
+    const user = store.get('user');
     const questionnaires = await api.list('questionnaires');
-    res.render('student/studentQuestionnaire', { questionnaires, profile });
+    res.render('student/studentQuestionnaire', { questionnaires, user });
 };
 
 //Prototipo: Questionnaire - Student - Question ID
 const startQuestionnaire = async (req, res) => {
-    const profile = getAuthUser;
+    const user = store.get('user');
     const questionnaire = await api.get('questionnaires', req.params.questionnaireID);
     const question = await api.get('questions', questionnaire.questions[0]);
-    res.render('student/studentQuestionID', { profile, questionnaire, question });
+    res.render('student/studentQuestionID', { user, questionnaire, question });
 };
 
 //Proxima questao do questionario
 const nextQuestion = async (req, res) => {
-    const profile = getAuthUser;
+    const user = store.get('user');
     const questionnaire = await api.get('questionnaires', req.params.questionnaireID);
     const currentQuestion = await api.get('questions', req.params.questionID);
     var questionPos;
@@ -32,7 +32,7 @@ const nextQuestion = async (req, res) => {
         questionnairePage;
     }else{
         const newQuestion = await api.get('questions', questionnaire.questions[questionPos]);
-        res.render('student/studentQuestionID', { profile, questionnaire, newQuestion });
+        res.render('student/studentQuestionID', { user, questionnaire, newQuestion });
     }
 };
 
@@ -46,8 +46,8 @@ const getQuestionnaire = async (req, res) => {
             questionnaires.push(element);
         }
     });
-    const profile = user.getAuthUser;
-    res.render('student/studentStudyGuide', { questionnaires, profile });
+    const user = store.get('user');
+    res.render('student/studentStudyGuide', { questionnaires, user });
 };
 
 //Corrigir questao
