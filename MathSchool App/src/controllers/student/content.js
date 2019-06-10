@@ -5,7 +5,7 @@ const user = require('../user');
 const contentsPage = (req, res) => {
     const profile = user.getAuthUser;
     // const contents = await api.list('contents');
-    const contents = api.list('contents');
+    const contents = api.list('contents'); 
     res.render('student/studentContent', { contents, profile });
 };
 
@@ -26,8 +26,8 @@ const getContent = async (req, res) => {
 
 //Prototipo: Content - Student - Content ID
 const viewContent = async (req, res) => {
-    // const content = await api.get('contents/' + req.params.id);
-    const content = api.get('contents/' + req.params.id);
+    const content = await api.get('contents/' + req.params.id);
+    // const content = api.get('contents/' + req.params.id);
     const profile = user.getAuthUser;
     res.render('student/studentContentID', { content, profile });
 };

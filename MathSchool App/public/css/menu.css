@@ -101,3 +101,33 @@ body{
 .li-space-menu{
     margin-left: 1.5vw;
 }
+
+.img-student{
+    width: 4vw;
+    margin-left: 2vw; 
+    margin-top: 22.5px;
+    max-height: 60px;
+}
+
+.element-line{
+    display: flex;
+    max-width: 0.5vw;
+}
+.email-student{
+    color: white;
+    font-size: 0.6em;
+}
+
+.name-student{
+    color: white;
+    font-size: 0.8em;
+}
+.img-logout{
+    max-width: 2vw;
+    max-height: 30px;
+    margin-top: 37.5px;
+}
+.name-and-email{
+    margin-top: 35px;
+    margin-left: 10px;
+}

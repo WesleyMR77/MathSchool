@@ -53,29 +53,17 @@ app.listen(port, (err) => {
 })
 
 /*SEÇÃO DE TESTES DAS TELAS*/
-app.get('/teacherContentID', async (request, response) => { 
-    response.render('teacher/teacherContentID');
-})
 app.get('/teacherContent', async (request, response) => { 
     response.render('teacher/teacherContent');
 })
-app.get('/teacherCreateContent', async (request, response) => { 
-    response.render('teacher/teacherCreateContent');
-})
-
-app.get('/teacherMainPage', async (request, response) => { 
-    response.render('teacher/teacherMainPage');
-})
 
 // PÁGINA ESTUDANTE
-app.get('/studentMainPage', async (request, response) => { 
-    response.render('student/studentMainPage');
+
+
+app.get('/studentStudyGuide', async (request, response) => { 
+    response.render('student/studentStudyGuide');
 })
 
-app.get('/studentContentID', async (request, response) => { 
-    response.render('student/studentContentID');
-})
-
-app.get('/studentContent', async (request, response) => { 
-    response.render('student/studentContent');
+app.get('/studentStudyGuideContent', async (request, response) => { 
+    response.render('student/studentStudyGuideContent');
 })
