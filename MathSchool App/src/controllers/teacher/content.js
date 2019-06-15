@@ -1,6 +1,11 @@
 const api = require('../../services/api');
 const store = require('store');
 
+//Informacoes gerais 
+var info = {
+    title: "Conteudos"
+};
+
 //Prototipo: Content - Teacher
 const contentsPage = async (req, res) => {
     const user = store.get('user');
@@ -11,47 +16,45 @@ const contentsPage = async (req, res) => {
             myContents.push(element);
         }
     });
-    res.render('teacher/teacherContent', { contents, myContents, user });
+    res.render('teacher/teacherContent', { contents, myContents, user, info });
 };
 
 //Listar conteudo
 const getContent = async (req, res) => {
     const search = req.body.search;
     const AllContents = await api.list('contents');
-    let contents = []; 
+    var contents = []; 
+    var myContents = [];
     AllContents.forEach(element => {
         if(element.name == search || element.author == search){
             contents.push(element);
         }
-    });
-    var myContents = []
-    AllContents.forEach(element => {
         if(element.author == user.name){
             myContents.push(element);
         }
     });
     const user = store.get('user');
-    res.render('teacher/teacherContent', { contents, myContents, user });
+    res.render('teacher/teacherContent', { contents, myContents, user, info });
 };
 
 //Visualizar o conteudo
 const viewContent = async (req, res) => {
-    const content = await api.get('contents/' + req.params.id);
+    const content = await api.get('contents' + req.params.id);
     const user = store.get('user');
-    res.render('teacher/teacherContentID', { content, user });
+    res.render('teacher/teacherContentID', { content, user, info });
 };
 
 //Prototipo: Content - Teacher - Content ID
 const createContentPage = (req, res) => {
     const user = store.get('user');
-    res.render('teacher/teacherCreateContent');
+    res.render('teacher/teacherCreateContent', { user, info });
 }
 
 //Criar Conteudo
 const createContent = async (req, res) => {
     const user = store.get('user');
     await api.createPost('contents', {
-        title: req.body.title,
+        name: req.body.name,
         subject: req.body.subject,
         text: req.body.text,
         author: user.name

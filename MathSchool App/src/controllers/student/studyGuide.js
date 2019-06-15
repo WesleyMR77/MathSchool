@@ -17,7 +17,7 @@ const studyGuidesPage = async (req, res) => {
 const getStudyGuide = async (req, res) => {
     const search = req.body.search;
     const AllGuides = await api.list('studyGuides');
-    let guides = []; 
+    var guides = []; 
     AllGuides.forEach(element => {
         if(element.name == search || element.author == search){
             guides.push(element);
@@ -38,10 +38,11 @@ const viewStudyGuide = async (req, res) => {
 const viewContent = async (req, res) => {
     const user = store.get('user');
     const guide = await api.get('studyGuides', req.params.guideID);
-    const content = await api.get('contents/' + req.params.id);
+    const content = await api.get('contents' + req.params.id);
     res.render('student/studentStudyGuideContent', { user, guide, content, info });
 };
 
+//Visualizar questionario do guia
 const viewQuestionnaire = async (req, res) => {
     const user = store.get('user');
     const guide = await api.get('studyGuides', req.params.guideID);
