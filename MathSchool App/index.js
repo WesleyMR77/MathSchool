@@ -60,10 +60,34 @@ app.get('/teacherContent', async (request, response) => {
 // PÁGINA ESTUDANTE
 
 
-app.get('/studentStudyGuide', async (request, response) => { 
-    response.render('student/studentStudyGuide');
+app.get('/studentQuestionnaire', async (request, response) => { 
+    response.render('student/studentQuestionnaire');
+})
+
+app.get('/studentQuestionID', async (request, response) => { 
+    response.render('student/studentQuestionID');
 })
 
 app.get('/studentStudyGuideContent', async (request, response) => { 
     response.render('student/studentStudyGuideContent');
+})
+
+app.get('/studentMainPage', async (request, response) => { 
+    response.render('student/studentMainPage');
+})
+
+app.get('/studentContentID', async (request, response) => { 
+    response.render('student/studentContentID');
+})
+
+app.get('/studentContent', async (request, response) => { 
+    response.render('student/studentContent');
+})
+
+app.get('/studentStudyGuide', async (request, response) => { 
+    response.render('student/studentStudyGuide');
+})
+
+app.get('/studentStudyGuideID', async (request, response) => { 
+    response.render('student/studentStudyGuideID');
 })
