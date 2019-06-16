@@ -2,13 +2,13 @@ const store = require('store');
 
 //Informacoes gerais 
 var info = {
-    title: "Pagina Inicial"
+    title: "Pagina Inicial",
+    user: null
 };
 
 //Prototipo: Main Page - Student
 const mainPage = (req, res) => {
-    const user = store.get('user')
-    res.render('student/studentMainPage', { user, info });
+    res.render('student/studentMainPage', { info });
 };
 
 module.exports = {

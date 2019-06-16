@@ -3,14 +3,14 @@ const store = require('store');
 
 //Informacoes gerais 
 var info = {
-    title: "Guia de Estudos"
+    title: "Guia de Estudos",
+    user: null
 };
 
 //Prototipo: Study Guide - Student
 const studyGuidesPage = async (req, res) => {
-    const user = store.get('user');
     const guides = await api.list('studyGuides');
-    res.render('student/studentStudyGuide', { guides, user, info });
+    res.render('student/studentStudyGuide', { guides, info });
 };
 
 //Listar guia de estudo
@@ -23,8 +23,7 @@ const getStudyGuide = async (req, res) => {
             guides.push(element);
         }
     });
-    const user = store.get('user');
-    res.render('student/studentStudyGuide', { guides, user, info });
+    res.render('student/studentStudyGuide', { guides, info });
 };
 
 //Prototipo: Study Guide - Student - Study Guide ID

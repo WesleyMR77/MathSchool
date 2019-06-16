@@ -3,12 +3,12 @@ const store = require('store');
 
 //Informacoes gerais 
 var info = {
-    title: "Conteudos"
+    title: "Conteudos",
+    user: null
 };
 
 //Prototipo: Content - Teacher
 const contentsPage = async (req, res) => {
-    const user = store.get('user');
     const contents = await api.list('contents');
     var myContents = []
     contents.forEach(element => {
@@ -16,7 +16,7 @@ const contentsPage = async (req, res) => {
             myContents.push(element);
         }
     });
-    res.render('teacher/teacherContent', { contents, myContents, user, info });
+    res.render('teacher/teacherContent', { contents, myContents, info });
 };
 
 //Listar conteudo
@@ -33,26 +33,22 @@ const getContent = async (req, res) => {
             myContents.push(element);
         }
     });
-    const user = store.get('user');
-    res.render('teacher/teacherContent', { contents, myContents, user, info });
+    res.render('teacher/teacherContent', { contents, myContents, info });
 };
 
 //Visualizar o conteudo
 const viewContent = async (req, res) => {
     const content = await api.get('contents' + req.params.id);
-    const user = store.get('user');
-    res.render('teacher/teacherContentID', { content, user, info });
+    res.render('teacher/teacherContentID', { content, info });
 };
 
 //Prototipo: Content - Teacher - Content ID
 const createContentPage = (req, res) => {
-    const user = store.get('user');
-    res.render('teacher/teacherCreateContent', { user, info });
-}
+    res.render('teacher/teacherCreateContent', { info });
+};
 
 //Criar Conteudo
 const createContent = async (req, res) => {
-    const user = store.get('user');
     await api.createPost('contents', {
         name: req.body.name,
         subject: req.body.subject,

@@ -3,12 +3,12 @@ const store = require('store');
 
 //Informacoes gerais 
 var info = {
-    title: "Guia de Estudos"
+    title: "Guia de Estudos",
+    user: null
 };
 
 //Prototipo: Study Guide - Teacher
 const studyGuidesPage = async (req, res) => {
-    const user = store.get('user');
     const guides = await api.list('studyGuides');
     var myGuides = [];
     guides.forEach(element => {
@@ -16,7 +16,7 @@ const studyGuidesPage = async (req, res) => {
             myGuides.push(element);
         }
     });
-    res.render('teacher/teacherStudyGuide', { guides, myGuides, user, info });
+    res.render('teacher/teacherStudyGuide', { guides, myGuides, info });
 };
 
 //Listar guia de estudo
@@ -33,28 +33,24 @@ const getStudyGuide = async (req, res) => {
             myGuides.push(element);
         }
     });
-    const user = store.get('user');
-    res.render('teacher/teacherStudyGuide', { guides, myGuides, user, info });
+    res.render('teacher/teacherStudyGuide', { guides, myGuides, info });
 };
 
 //Prototipo: Study Guide - Teacher - Study Guide ID
 const viewStudyGuide = async (req, res) => {
-    const user = store.get('user');
     const guide = await api.get('studyGuides', req.params.id);
-    res.render('teacher/teacherStudyGuideID', { guide, user, info });
+    res.render('teacher/teacherStudyGuideID', { guide, info });
 };
 
 //Prototipo: Study Guide - Teacher - Create Guide
 const createGuidePage = async (req, res) => {
-    const user = store.get('user');
     const questionnaires = await api.list('questionnaires');
     const contents = await api.list('contents');
-    res.render('teacher/teacherCreateGuide', { user, questionnaires, contents, info });
+    res.render('teacher/teacherCreateGuide', { questionnaires, contents, info });
 };
 
 //Criar Guia de Estudo
 const createGuide = async (req, res) => {
-    const user = store.get('user');
     await api.createPost('studyGuides', {
         name: req.body.name,
         subject: req.body.subject,

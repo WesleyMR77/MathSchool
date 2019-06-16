@@ -1,10 +1,14 @@
 const express = require('express');
+const security = require('../../controllers/security');
 
 //Inicializando rotas
 const router = express.Router();
 
 //Requerindo controlador
 const teacher = require('../../controllers/teacher/questionnaire');
+
+//Configurando Middlewares de seguranca
+router.use(security.verifyAuth, security.getAuthUser, security.isTeacher);
 
 //Configurando rotas
 router.get('/', teacher.questionnairePage);

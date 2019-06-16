@@ -3,12 +3,12 @@ const store = require('store');
 
 //Informacoes gerais 
 var info = {
-    title: "Questionarios"
+    title: "Questionarios",
+    user: null
 };
 
 //Prototipo: Questionnaire - Teacher
 const questionnairePage = async (req, res) => {
-    const user = store.get('user');
     const questionnaires = await api.list('questionnaires');
     var myQuestionnaires = [];
     questionnaires.forEach(element => {
@@ -16,14 +16,13 @@ const questionnairePage = async (req, res) => {
             myQuestionnaires.push(element);
         }
     });
-    res.render('teacher/teacherQuestionnaire', { questionnaires, myQuestionnaires, user, info });
+    res.render('teacher/teacherQuestionnaire', { questionnaires, myQuestionnaires, info });
 };
 
 //Prototipo: Questionnaire - Teacher - Questionnaire ID
 const viewQuestionnaire = async (req, res) => {
-    const user = store.get('user');
     const questionnaire = await api.get('questionnaires', req.params.id);
-    res.render('student/studentQuestionID', { user, questionnaire, info });
+    res.render('student/studentQuestionID', { questionnaire, info });
 };
 
 //Listar questionario
@@ -40,20 +39,17 @@ const getQuestionnaire = async (req, res) => {
             myQuestionnaires.push(element);
         }
     });
-    const user = store.get('user');
-    res.render('teacher/teacherStudyGuide', { questionnaires, myQuestionnaires, user, info });
+    res.render('teacher/teacherStudyGuide', { questionnaires, myQuestionnaires, info });
 };
 
 //Prototipo: Questionnaire - Teacher - Create Questionnaire
 const createQuestionnairePage = async (req, res) => {
-    const user = store.get('user');
     const questions = await api.list('questions');
-    res.render('teacher/createQuestionnaire', { user, questions, info});
+    res.render('teacher/createQuestionnaire', { questions, info});
 };
 
 //Criar questionario
 const createQuestionnaire = async (req, res) => {
-    const user = store.get('user');
     await api.createPost('questionnaires', {
         name: req.body.name,
         subject: req.body.subject,

@@ -3,12 +3,12 @@ const store = require('store');
 
 //Informacoes gerais 
 var info = {
-    title: "Questoes"
+    title: "Questoes",
+    user: null
 };
 
 //Prototipo: Questions - Teacher
 const questionPage = async (req, res) => {
-    const user = store.get('user');
     const questions = await api.list('questions');
     var myQuestions = []
     questions.forEach(element => {
@@ -16,7 +16,7 @@ const questionPage = async (req, res) => {
             myQuestions.push(element);
         }
     });
-    res.render('teacher/teacherQuestion', { questions, myQuestions, user, info });
+    res.render('teacher/teacherQuestion', { questions, myQuestions, info });
 };
 
 //Listar questao
@@ -33,26 +33,22 @@ const getQuestion = async (req, res) => {
             myQuestions.push(element);
         }
     });
-    const user = store.get('user');
-    res.render('teacher/teacherQuestion', { questions, myQuestions, user, info });
+    res.render('teacher/teacherQuestion', { questions, myQuestions, info });
 };
 
 //Visualizar a questao
 const viewQuestion = async (req, res) => {
     const question = await api.get('questions' + req.params.id);
-    const user = store.get('user');
-    res.render('teacher/teacherQuestionID', { question, user, info });
+    res.render('teacher/teacherQuestionID', { question, info });
 };
 
 //Prototipo: Questions - Teacher - Create Question
 const createQuestionPage = (req, res) => {
-    const user = store.get('user');
-    res.render('teacher/teacherCreateQuestion', { user, info });
-}
+    res.render('teacher/teacherCreateQuestion', { info });
+};
 
 //Criar Questao
 const createQuestion = async (req, res) => {
-    const user = store.get('user');
     await api.createPost('questions', {
         name: req.body.name,
         subject: req.body.subject,
