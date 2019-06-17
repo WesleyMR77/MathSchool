@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title><%= info.title %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../css/teacher/teacherContentID.css">
+</head>
+
+<body>
+    <% include header %>
+
+    <section class="menu-texto">
+        <div class="center">
+            <h2><%= content.name %></h2>
+        </div>
+
+        <span>Autor: <%= content.author %></span>
+        <p><%= content.text %></p>
+    </section>
+
+</body>
+
+</html>

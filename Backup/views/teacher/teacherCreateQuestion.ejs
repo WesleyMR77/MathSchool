@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Criar Guia</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../../css/teacher/teacherCreateQuestion.css">
+</head>
+
+<body>
+  <% include header %>
+
+  <div class="regular-area">
+      
+
+    <div class="cadastrar-guia">
+      <section>
+        <label for="nome">Nome:</label>
+        <input class="campo-selecao" type="text">
+        <div >
+          <label for="">Assunto:</label>
+          <select class="campo-selecao-ajusty">
+            <div class="size">
+              <option>Adição</option>
+              <option>Fração</option>
+              <option>Multiplicação</option>
+              <option>Divisão</option>
+              <option>Análise Combinatória</option>
+              <option>Números Naturais</option>
+              <option>Porcentagem</option>
+              <option>Potencialização</option>
+            </div>
+          </select>
+
+          <textarea  class="text-question" name="" id="" cols="30" rows="10">Texto da Pergunta</textarea>
+
+          <div class="ajusty-option">
+        <input type="radio" name="options">A: <input class="input-ajusty"  type="text"> <br>
+        <input type="radio" name="options">B: <input class="input-ajusty"  type="text"> <br>
+        <input type="radio" name="options">C: <input class="input-ajusty"  type="text"> <br>
+        <input type="radio" name="options">D: <input class="input-ajusty"  type="text"> <br>
+        <input type="radio" name="options">E: <input class="input-ajusty"  type="text"> <br>
+    </div>
+
+          <div class="botao-cadastra">
+            <button>Confirmar</button>
+          </div>
+      </section>
+    </div>
+
+  </div>
+</body>
+
+</html>

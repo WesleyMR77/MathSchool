@@ -13,7 +13,7 @@ router.use(security.verifyAuth, security.isTeacher);
 //Configurando rotas
 router.get('/', teacher.questionnairePage);
 router.post('/', teacher.getQuestionnaire);
-router.get('/:id', teacher.viewQuestionnaire);
+router.get('/view/:id', teacher.viewQuestionnaire);
 router.get('/create', teacher.createQuestionnairePage);
 router.post('/create', teacher.createQuestionnaire);
 router.get('/delete/:id', teacher.deleteQuestionnaire);

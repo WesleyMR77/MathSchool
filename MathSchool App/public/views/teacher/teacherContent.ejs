@@ -4,13 +4,13 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Conteudo</title>
+    <title><%= info.title %></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../../css/teacher/teacherContent.css">
 </head>
 
 <body>
-    <% include header %>
+    <% include searchHeader %>
 
     <main class="adicionar-guia">
         <section class="line">
@@ -19,7 +19,7 @@
         </section>
 
         <section class="line">
-            <%
+            <% //Verificacao se ha ou nao conteudos cadastrados
             var myContentsTitle = "Meus Conteúdos";
             if( myContents.length == 0){
                 myContentsTitle = "Voce ainda nao cadastrou nenhum conteúdo"
@@ -29,8 +29,19 @@
             <div class="guias">
                 <% myContents.forEach( element => { %>
                 <div class="img-configuration">
+                    <% //Verificacao do tipo de imagem
+                    var image;
+                    switch (element.subject) {
+                        case "":
+                            
+                            break;
+                    
+                        default:
+                            break;
+                    } 
+                    %>
                         <a href="/teacher/content/delete/<%= element.id %>">  <img class="img-delete" src="../../img/img-menu/delete.png"  alt=""> </a>
-                    <a href="/teacher/content/<%= element.id %>"> <img src="../../img/img-guia-estudo/more.png" alt=""> </a>
+                    <a href="/teacher/content/view/<%= element.id %>"> <img src="../../img/img-conteudo/<%= image %>" alt=""> </a>
                     <h3><%= element.name %></h3>
                     <span class="span-nome"><%= element.author %></span>
                 </div>
@@ -44,7 +55,7 @@
             <div class="guias">
                 <% contents.forEach( element => { %>
                 <div class="img-configuration">
-                    <a href="/teacher/content/<%= element.id %>"> <img src="../../img/img-guia-estudo/more.png" alt=""> </a>
+                    <a href="/teacher/content/view/<%= element.id %>"> <img src="../../img/img-guia-estudo/more.png" alt=""> </a>
                     <h3><%= element.name %></h3>
                     <span class="span-nome"><%= element.author %></span>
                 </div>
