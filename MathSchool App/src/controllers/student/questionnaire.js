@@ -3,22 +3,21 @@ const store = require('store');
 
 //Informacoes gerais 
 var info = {
-    title: "Questionarios"
+    title: "Questionarios",
+    user: null
 };
 
 //Prototipo: Questionnaire - Student
 const questionnairePage = async (req, res) => {
-    const user = store.get('user');
     const questionnaires = await api.list('questionnaires');
-    res.render('student/studentQuestionnaire', { questionnaires, user, info });
+    res.render('student/studentQuestionnaire', { questionnaires, info });
 };
 
 //Prototipo: Questionnaire - Student - Question ID
 const viewQuestion = async (req, res) => {
-    const user = store.get('user');
     const questionnaire = await api.get('questionnaires', req.params.id);
     const question = await api.get('questions', questionnaire.questions[req.params.number]);
-    res.render('student/studentQuestionID', { user, questionnaire, question, info });
+    res.render('student/studentQuestionID', { questionnaire, question, info });
 };
 
 //Listar questionario
@@ -31,8 +30,7 @@ const getQuestionnaire = async (req, res) => {
             questionnaires.push(element);
         }
     });
-    const user = store.get('user');
-    res.render('student/studentStudyGuide', { questionnaires, user, info });
+    res.render('student/studentStudyGuide', { questionnaires, info });
 };
 
 module.exports = {
