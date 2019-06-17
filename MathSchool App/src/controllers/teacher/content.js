@@ -59,7 +59,7 @@ const createContent = async (req, res) => {
         text: req.body.text,
         author: user.name
     });
-    res.redirect('/teacher/teacherContent');
+    res.redirect('/teacher/content');
 };
 
 //Deletar conteudo

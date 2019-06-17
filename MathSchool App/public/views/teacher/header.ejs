@@ -6,47 +6,49 @@
     <link rel="stylesheet" href="../../css/menu.css">    
 </head>
 <header class="header-menu">
-    <img class="pi-menu" src="img/img-menu/pi-white.png">
+    <img class="pi-menu" src="../../img/img-menu/pi-white.png">
     <span class="word-menu">MathSchool</span>
      <h1 class="title-menu"><%= info.title %></h1>
  </header>
 
      <nav class="nav-menu">
-        <input class="search-input-menu" name="Pesquisar" placeholder="Pesquisar"  type="text">
-        <img class="search-img-menu" src="img/img-menu/search-white.png" alt="">
+         <form method="post">
+            <input class="search-input-menu" name="search" placeholder="Pesquisar"  type="text">
+            <img class="search-img-menu" src="../../img/img-menu/search-white.png" alt="">
+         </form>
 
         <div class="element-line">
-            <img class="img-student" src="img/img-menu/teacher.png" alt="">
+            <img class="img-student" src="../../img/img-menu/teacher.png" alt="">
             <div class="name-and-email">
                 <span class="name-user"><%= info.user.name %></span>
                 <span class="email-user"><%= info.user.email %></span>
             </div>
-            <a href="/user/logout"><img class="img-logout" src="img/img-menu/logout.png" alt=""> </a>
+            <a href="/user/logout"><img class="img-logout" src="../../img/img-menu/logout.png" alt=""> </a>
         </div>
 
         <ul class="list-menu">
             <a class="div-menu-flex" href="/teacher"> 
-                <img class="img-menu-lateral" src="img/img-menu/home.png" alt="">
+                <img class="img-menu-lateral" src="../../img/img-menu/home.png" alt="">
                 <li class="li-space-menu">Página Inicial</li>
             </a>
 
             <a class="div-menu-flex" href="/teacher/study-guide">          
-                <img class="img-menu-lateral" src="img/img-menu/map-location.png" alt="">
+                <img class="img-menu-lateral" src="../../img/img-menu/map-location.png" alt="">
                 <li class="li-space-menu">Guia de Estudo</li>
             </a>
 
             <a class="div-menu-flex" href="/teacher/content"> 
-                    <img class="img-menu-lateral" src="img/img-menu/notebook.png" alt="">
+                    <img class="img-menu-lateral" src="../../img/img-menu/notebook.png" alt="">
                     <li class="li-space-menu">Conteúdos</li>
                 </a>
 
             <a class="div-menu-flex" href="/teacher/questionnaire"> 
-                <img class="img-menu-lateral" src="img/img-menu/questionario.png" alt="">
+                <img class="img-menu-lateral" src="../../img/img-menu/questionario.png" alt="">
                 <li class="li-space-menu">Questionários</li>
             </a>
 
             <a class="div-menu-flex" href="/teacher/question"> 
-                    <img class="img-menu-lateral" src="img/img-menu/question.png" alt="">
+                    <img class="img-menu-lateral" src="../../img/img-menu/question.png" alt="">
                     <li class="li-space-menu">Questões</li>
             </a>
         </ul>

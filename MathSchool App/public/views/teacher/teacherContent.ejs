@@ -14,63 +14,41 @@
 
     <main class="adicionar-guia">
         <section class="line">
-            <a href="./cadastrarConteudo"> <img class="img-cadastrar" src="./img/img-guia-estudo/more.png" alt="">
+            <a href="/teacher/content/create"> <img class="img-cadastrar" src="../../img/img-guia-estudo/more.png" alt="">
             </a>
         </section>
 
         <section class="line">
-            <h2 class="center">Meus Conteúdos</h2>
+            <%
+            var myContentsTitle = "Meus Conteúdos";
+            if( myContents.length == 0){
+                myContentsTitle = "Voce ainda nao cadastrou nenhum conteúdo"
+            };
+            %>
+            <h2 class="center"><%= myContentsTitle %></h2>
             <div class="guias">
+                <% myContents.forEach( element => { %>
                 <div class="img-configuration">
-                        <a href=".">  <img class="img-delete" src="./img/img-menu/delete.png"  alt=""> </a>
-                    <a href="./mostrarConteudo"> <img src="./img/img-guia-estudo/more.png" alt=""> </a>
-                    <h3>Fração</h3>
-                    <span class="span-nome">Maycon</span>
+                        <a href="/teacher/content/delete/<%= element.id %>">  <img class="img-delete" src="../../img/img-menu/delete.png"  alt=""> </a>
+                    <a href="/teacher/content/<%= element.id %>"> <img src="../../img/img-guia-estudo/more.png" alt=""> </a>
+                    <h3><%= element.name %></h3>
+                    <span class="span-nome"><%= element.author %></span>
                 </div>
-                <div class="img-configuration">
-                        <a href="."> <img class="img-delete" src="./img/img-menu/delete.png" alt=""> </a>
-                    <a href="./mostrarConteudo"> <img src="./img/img-guia-estudo/more.png" alt=""> </a>
-                    <h3>Fração</h3>
-                    <span class="span-nome">Maycon</span>
-                </div>
+                <% }); %>
             </div>
-
 
         </section>
 
-        <section class="">
+        <section>
             <h2 class="center">Todos os Conteúdos</h2>
             <div class="guias">
+                <% contents.forEach( element => { %>
                 <div class="img-configuration">
-                    <a href="./mostrarConteudo"> <img src="./img/img-guia-estudo/more.png" alt=""> </a>
-                    <h3>Fração</h3>
-                    <span class="span-nome">Maycon</span>
+                    <a href="/teacher/content/<%= element.id %>"> <img src="../../img/img-guia-estudo/more.png" alt=""> </a>
+                    <h3><%= element.name %></h3>
+                    <span class="span-nome"><%= element.author %></span>
                 </div>
-                <div class="img-configuration">
-                    <a href="./mostrarConteudo"> <img src="./img/img-guia-estudo/more.png" alt=""> </a>
-                    <h3>Fração</h3>
-                    <span class="span-nome">Maycon</span>
-                </div>
-                <div class="img-configuration">
-                    <a href="./mostrarConteudo"> <img src="./img/img-guia-estudo/more.png" alt=""> </a>
-                    <h3>Fração</h3>
-                    <span class="span-nome">Maycon</span>
-                </div>
-                <div class="img-configuration">
-                    <a href="./mostrarConteudo"> <img src="./img/img-guia-estudo/more.png" alt=""> </a>
-                    <h3>Fração</h3>
-                    <span class="span-nome">Maycon</span>
-                </div>
-                <div class="img-configuration">
-                    <a href="./mostrarConteudo"> <img src="./img/img-guia-estudo/more.png" alt=""> </a>
-                    <h3>Fração</h3>
-                    <span class="span-nome">Maycon</span>
-                </div>
-                <div class="img-configuration">
-                    <a href="./mostrarConteudo"> <img src="./img/img-guia-estudo/more.png" alt=""> </a>
-                    <h3>Fração</h3>
-                    <span class="span-nome">Maycon</span>
-                </div>
+                <% }); %>
             </div>
 
         </section>

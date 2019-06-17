@@ -51,9 +51,6 @@ app.listen(port, (err) => {
     } else {
         console.log('MathSchool App working on port:', port)
     }
-<<<<<<< HEAD
-});
-=======
 });
 
 /*SEÇÃO DE TESTES DAS TELAS*/
@@ -141,4 +138,3 @@ app.get('/studentStudyGuide', async (request, response) => {
 app.get('/studentStudyGuideID', async (request, response) => { 
     response.render('student/studentStudyGuideID');
 })
->>>>>>> 20a9a76180049cafe09e47f37f15b8660fab9e36
