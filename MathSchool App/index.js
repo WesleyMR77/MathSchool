@@ -51,4 +51,94 @@ app.listen(port, (err) => {
     } else {
         console.log('MathSchool App working on port:', port)
     }
+<<<<<<< HEAD
 });
+=======
+});
+
+/*SEÇÃO DE TESTES DAS TELAS*/
+app.get('/teacherContent', async (request, response) => { 
+    response.render('teacher/teacherContent');
+})
+
+app.get('/teacherContentID', async (request, response) => { 
+    response.render('teacher/teacherContentID');
+})
+
+app.get('/teacherCreateContent', async (request, response) => { 
+    response.render('teacher/teacherCreateContent');
+})
+
+app.get('/teacherStudyGuide', async (request, response) => { 
+    response.render('teacher/teacherStudyGuide');
+})
+
+app.get('/teacherStudyGuideID', async (request, response) => { 
+    response.render('teacher/teacherStudyGuideID');
+})
+
+app.get('/teacherCreateStudyGuide', async (request, response) => { 
+    response.render('teacher/teacherCreateStudyGuide');
+})
+
+
+app.get('/teacherQuestion', async (request, response) => { 
+    response.render('teacher/teacherQuestion');
+})
+
+app.get('/teacherQuestionID', async (request, response) => { 
+    response.render('teacher/teacherQuestionID');
+})
+
+app.get('/teacherCreateQuestion', async (request, response) => { 
+    response.render('teacher/teacherCreateQuestion');
+})
+
+
+app.get('/teacherQuestionnaire', async (request, response) => { 
+    response.render('teacher/teacherQuestionnaire');
+})
+
+app.get('/teacherQuestionnaireID', async (request, response) => { 
+    response.render('teacher/teacherQuestionnaireID');
+})
+
+app.get('/teacherCreateQuestionnaire', async (request, response) => { 
+    response.render('teacher/teacherCreateQuestionnaire');
+})
+
+// PÁGINA ESTUDANTE
+
+
+app.get('/studentQuestionnaire', async (request, response) => { 
+    response.render('student/studentQuestionnaire');
+})
+
+app.get('/studentQuestionID', async (request, response) => { 
+    response.render('student/studentQuestionID');
+})
+
+app.get('/studentStudyGuideContent', async (request, response) => { 
+    response.render('student/studentStudyGuideContent');
+})
+
+app.get('/studentMainPage', async (request, response) => { 
+    response.render('student/studentMainPage');
+})
+
+app.get('/studentContentID', async (request, response) => { 
+    response.render('student/studentContentID');
+})
+
+app.get('/studentContent', async (request, response) => { 
+    response.render('student/studentContent');
+})
+
+app.get('/studentStudyGuide', async (request, response) => { 
+    response.render('student/studentStudyGuide');
+})
+
+app.get('/studentStudyGuideID', async (request, response) => { 
+    response.render('student/studentStudyGuideID');
+})
+>>>>>>> 20a9a76180049cafe09e47f37f15b8660fab9e36
