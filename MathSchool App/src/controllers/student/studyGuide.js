@@ -23,31 +23,32 @@ const getStudyGuide = async (req, res) => {
             guides.push(element);
         }
     });
+    info.user = store.get('user');
     res.render('student/studentStudyGuide', { guides, info });
 };
 
 //Prototipo: Study Guide - Student - Study Guide ID
 const viewStudyGuide = async (req, res) => {
-    const user = store.get('user');
     const guide = await api.get('studyGuides', req.params.id);
-    res.render('student/studentStudyGuideID', { guide, user, info });
+    info.user = store.get('user');
+    res.render('student/studentStudyGuideID', { guide, info });
 };
 
 //Visualizar conteudo do guia
 const viewContent = async (req, res) => {
-    const user = store.get('user');
     const guide = await api.get('studyGuides', req.params.guideID);
     const content = await api.get('contents' + req.params.id);
-    res.render('student/studentStudyGuideContent', { user, guide, content, info });
+    info.user = store.get('user');
+    res.render('student/studentStudyGuideContent', { guide, content, info });
 };
 
 //Visualizar questionario do guia
 const viewQuestionnaire = async (req, res) => {
-    const user = store.get('user');
     const guide = await api.get('studyGuides', req.params.guideID);
     const questionnaire = await api.get('questionnaires', req.params.id);
     const question = await api.get('questions', questionnaire.questions[req.params.number]);
-    res.render('student/studentQuestionID', { user, guide, questionnaire, question, info });
+    info.user = store.get('user');
+    res.render('student/studentQuestionID', { guide, questionnaire, question, info });
 };
 
 module.exports = {

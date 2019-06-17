@@ -10,6 +10,7 @@ var info = {
 //Prototipo: Questionnaire - Student
 const questionnairePage = async (req, res) => {
     const questionnaires = await api.list('questionnaires');
+    info.user = store.get('user');
     res.render('student/studentQuestionnaire', { questionnaires, info });
 };
 
@@ -17,6 +18,7 @@ const questionnairePage = async (req, res) => {
 const viewQuestion = async (req, res) => {
     const questionnaire = await api.get('questionnaires', req.params.id);
     const question = await api.get('questions', questionnaire.questions[req.params.number]);
+    info.user = store.get('user');
     res.render('student/studentQuestionID', { questionnaire, question, info });
 };
 
@@ -30,6 +32,7 @@ const getQuestionnaire = async (req, res) => {
             questionnaires.push(element);
         }
     });
+    info.user = store.get('user');
     res.render('student/studentStudyGuide', { questionnaires, info });
 };
 

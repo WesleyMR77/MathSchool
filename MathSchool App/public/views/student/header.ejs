@@ -3,12 +3,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- <title></%= info.title %/></title> -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="../../css/menu.css">
 </head>
 <header class="header-menu">
     <img class="pi-menu" src="img/img-menu/pi-white.png">
     <span class="word-menu">MathSchool</span>
-    <h1 class="title-menu">Página Inicial</h1>
+    <h1 class="title-menu"><%= info.title %></h1>
 </header>
 
 <nav class="nav-menu">
@@ -18,8 +18,8 @@
     <div class="element-line">
         <img class="img-student" src="img/img-menu/student.png" alt="">
         <div class="name-and-email">
-            <!-- <span class="name-student"></%= user.name %/></span>
-            <span class="email-student"></%= user.email %/></span> -->
+            <span class="name-user"><%= info.user.name %></span>
+            <span class="email-user"><%= info.user.email %></span>
         </div>
         <a href="/user/logout"> <img class="img-logout" src="img/img-menu/logout.png" alt=""> </a>
     </div>

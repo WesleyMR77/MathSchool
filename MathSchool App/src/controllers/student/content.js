@@ -9,8 +9,8 @@ var info = {
 
 //Prototipo: Content - Student
 const contentsPage = async (req, res) => {
-    
     const contents = await api.list('contents');
+    info.user = store.get('user');
     res.render('student/studentContent', { contents, info });
 };
 
@@ -24,12 +24,14 @@ const getContent = async (req, res) => {
             contents.push(element);
         }
     });
+    info.user = store.get('user');
     res.render('student/studentContent', { contents, info });
 };
 
 //Prototipo: Content - Student - Content ID
 const viewContent = async (req, res) => {
     const content = await api.get('contents' + req.params.id);
+    info.user = store.get('user');
     res.render('student/studentContentID', { content, info });
 };
 

@@ -5,7 +5,8 @@ const app = express();
 
 //Configurando Servidor
 app.use(express.json());
-app.set('view engine', 'ejs')
+app.set('view engine', 'ejs');
+app.set('views', './public/views');
 app.use(bodyParser.urlencoded());
 
 //Configurando a pasta publica
@@ -51,43 +52,3 @@ app.listen(port, (err) => {
         console.log('MathSchool App working on port:', port)
     }
 });
-
-/*SEÇÃO DE TESTES DAS TELAS*/
-app.get('/teacherContent', async (request, response) => { 
-    response.render('teacher/teacherContent');
-})
-
-// PÁGINA ESTUDANTE
-
-
-app.get('/studentQuestionnaire', async (request, response) => { 
-    response.render('student/studentQuestionnaire');
-})
-
-app.get('/studentQuestionID', async (request, response) => { 
-    response.render('student/studentQuestionID');
-})
-
-app.get('/studentStudyGuideContent', async (request, response) => { 
-    response.render('student/studentStudyGuideContent');
-})
-
-app.get('/studentMainPage', async (request, response) => { 
-    response.render('student/studentMainPage');
-})
-
-app.get('/studentContentID', async (request, response) => { 
-    response.render('student/studentContentID');
-})
-
-app.get('/studentContent', async (request, response) => { 
-    response.render('student/studentContent');
-})
-
-app.get('/studentStudyGuide', async (request, response) => { 
-    response.render('student/studentStudyGuide');
-})
-
-app.get('/studentStudyGuideID', async (request, response) => { 
-    response.render('student/studentStudyGuideID');
-})

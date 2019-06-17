@@ -16,6 +16,7 @@ const contentsPage = async (req, res) => {
             myContents.push(element);
         }
     });
+    info.user = store.get('user');
     res.render('teacher/teacherContent', { contents, myContents, info });
 };
 
@@ -33,17 +34,20 @@ const getContent = async (req, res) => {
             myContents.push(element);
         }
     });
+    info.user = store.get('user');
     res.render('teacher/teacherContent', { contents, myContents, info });
 };
 
 //Visualizar o conteudo
 const viewContent = async (req, res) => {
     const content = await api.get('contents' + req.params.id);
+    info.user = store.get('user');
     res.render('teacher/teacherContentID', { content, info });
 };
 
 //Prototipo: Content - Teacher - Content ID
 const createContentPage = (req, res) => {
+    info.user = store.get('user');
     res.render('teacher/teacherCreateContent', { info });
 };
 

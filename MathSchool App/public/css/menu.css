@@ -113,12 +113,12 @@ body{
     display: flex;
     max-width: 0.5vw;
 }
-.email-student{
+.email-user{
     color: white;
     font-size: 0.6em;
 }
 
-.name-student{
+.name-user{
     color: white;
     font-size: 0.8em;
 }

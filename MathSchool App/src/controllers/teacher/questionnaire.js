@@ -16,12 +16,14 @@ const questionnairePage = async (req, res) => {
             myQuestionnaires.push(element);
         }
     });
+    info.user = store.get('user');
     res.render('teacher/teacherQuestionnaire', { questionnaires, myQuestionnaires, info });
 };
 
 //Prototipo: Questionnaire - Teacher - Questionnaire ID
 const viewQuestionnaire = async (req, res) => {
     const questionnaire = await api.get('questionnaires', req.params.id);
+    info.user = store.get('user');
     res.render('student/studentQuestionID', { questionnaire, info });
 };
 
@@ -39,12 +41,14 @@ const getQuestionnaire = async (req, res) => {
             myQuestionnaires.push(element);
         }
     });
+    info.user = store.get('user');
     res.render('teacher/teacherStudyGuide', { questionnaires, myQuestionnaires, info });
 };
 
 //Prototipo: Questionnaire - Teacher - Create Questionnaire
 const createQuestionnairePage = async (req, res) => {
     const questions = await api.list('questions');
+    info.user = store.get('user');
     res.render('teacher/createQuestionnaire', { questions, info});
 };
 

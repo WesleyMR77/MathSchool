@@ -16,6 +16,7 @@ const studyGuidesPage = async (req, res) => {
             myGuides.push(element);
         }
     });
+    info.user = store.get('user');
     res.render('teacher/teacherStudyGuide', { guides, myGuides, info });
 };
 
@@ -33,12 +34,14 @@ const getStudyGuide = async (req, res) => {
             myGuides.push(element);
         }
     });
+    info.user = store.get('user');
     res.render('teacher/teacherStudyGuide', { guides, myGuides, info });
 };
 
 //Prototipo: Study Guide - Teacher - Study Guide ID
 const viewStudyGuide = async (req, res) => {
     const guide = await api.get('studyGuides', req.params.id);
+    info.user = store.get('user');
     res.render('teacher/teacherStudyGuideID', { guide, info });
 };
 
@@ -46,6 +49,7 @@ const viewStudyGuide = async (req, res) => {
 const createGuidePage = async (req, res) => {
     const questionnaires = await api.list('questionnaires');
     const contents = await api.list('contents');
+    info.user = store.get('user');
     res.render('teacher/teacherCreateGuide', { questionnaires, contents, info });
 };
 

@@ -28,16 +28,8 @@ const isStudent = async (req, res, next) => {
     }
 };
 
-const getAuthUser = (req, res, next) => {
-    const user = store.get('user');
-    res.locals.info.user = user;
-    next();
-};
-
 module.exports = {
     verifyAuth,
-    verifyUserType,
-    getAuthUser,
     isStudent,
     isTeacher
 }

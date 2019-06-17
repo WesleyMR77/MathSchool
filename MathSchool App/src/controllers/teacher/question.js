@@ -16,6 +16,7 @@ const questionPage = async (req, res) => {
             myQuestions.push(element);
         }
     });
+    info.user = store.get('user');
     res.render('teacher/teacherQuestion', { questions, myQuestions, info });
 };
 
@@ -33,17 +34,20 @@ const getQuestion = async (req, res) => {
             myQuestions.push(element);
         }
     });
+    info.user = store.get('user');
     res.render('teacher/teacherQuestion', { questions, myQuestions, info });
 };
 
 //Visualizar a questao
 const viewQuestion = async (req, res) => {
     const question = await api.get('questions' + req.params.id);
+    info.user = store.get('user');
     res.render('teacher/teacherQuestionID', { question, info });
 };
 
 //Prototipo: Questions - Teacher - Create Question
 const createQuestionPage = (req, res) => {
+    info.user = store.get('user');
     res.render('teacher/teacherCreateQuestion', { info });
 };
 
@@ -58,7 +62,7 @@ const createQuestion = async (req, res) => {
         optC: document.querySelector('#optionC').text,
         optD: document.querySelector('#optionD').text,
         optE: document.querySelector('#optionE').text,
-        answer: req.body.options.selected,
+        answer: req.body.options.checked,
         author: user.name
     });
     res.redirect('/teacher/teacherQuestion');

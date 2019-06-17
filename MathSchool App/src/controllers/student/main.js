@@ -8,6 +8,7 @@ var info = {
 
 //Prototipo: Main Page - Student
 const mainPage = (req, res) => {
+    info.user = store.get('user');
     res.render('student/studentMainPage', { info });
 };
 

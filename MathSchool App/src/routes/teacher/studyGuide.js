@@ -8,7 +8,7 @@ const router = express.Router();
 const teacher = require('../../controllers/teacher/studyGuide');
 
 //Configurando Middlewares de seguranca
-router.use(security.verifyAuth, security.getAuthUser, security.isTeacher);
+router.use(security.verifyAuth, security.isTeacher);
 
 //Configurando rotas
 router.get('/', teacher.studyGuidesPage);

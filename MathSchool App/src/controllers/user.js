@@ -20,7 +20,7 @@ const signUp = async (req, res) => {
         name: req.body.name,
         email: req.body.email,
         password: req.body.password,
-        isTeacher: req.body.isTeacher.value
+        isTeacher: req.body.isTeacher ? true : false
     }
 
     //Criando via Firebase
