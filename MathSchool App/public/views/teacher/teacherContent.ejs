@@ -14,11 +14,16 @@
 
     <main class="adicionar-guia">
         <section class="line">
+<<<<<<< HEAD
             <a href="./cadastrarConteudo"> <img class="img-cadastrar" src="./img/img-guia-estudo/more.png" alt="">
+=======
+            <a href="/teacher/content/create"> <img class="img-cadastrar" src="../../img/img-guia-estudo/more.png" alt="">
+>>>>>>> 24ea92f0e92a8f1ba8c2fce11c13a329d1d430f9
             </a>
         </section>
 
         <section class="line">
+<<<<<<< HEAD
             <h2 class="center">Meus Conteúdos</h2>
             <div class="guias">
                 <div class="img-configuration">
@@ -71,6 +76,38 @@
                     <h3>Fração</h3>
                     <span class="span-nome">Maycon</span>
                 </div>
+=======
+            <%
+            var myContentsTitle = "Meus Conteúdos";
+            if( myContents.length == 0){
+                myContentsTitle = "Voce ainda nao cadastrou nenhum conteúdo"
+            };
+            %>
+            <h2 class="center"><%= myContentsTitle %></h2>
+            <div class="guias">
+                <% myContents.forEach( element => { %>
+                <div class="img-configuration">
+                        <a href="/teacher/content/delete/<%= element.id %>">  <img class="img-delete" src="../../img/img-menu/delete.png"  alt=""> </a>
+                    <a href="/teacher/content/<%= element.id %>"> <img src="../../img/img-guia-estudo/more.png" alt=""> </a>
+                    <h3><%= element.name %></h3>
+                    <span class="span-nome"><%= element.author %></span>
+                </div>
+                <% }); %>
+            </div>
+
+        </section>
+
+        <section>
+            <h2 class="center">Todos os Conteúdos</h2>
+            <div class="guias">
+                <% contents.forEach( element => { %>
+                <div class="img-configuration">
+                    <a href="/teacher/content/<%= element.id %>"> <img src="../../img/img-guia-estudo/more.png" alt=""> </a>
+                    <h3><%= element.name %></h3>
+                    <span class="span-nome"><%= element.author %></span>
+                </div>
+                <% }); %>
+>>>>>>> 24ea92f0e92a8f1ba8c2fce11c13a329d1d430f9
             </div>
 
         </section>
