@@ -57,6 +57,52 @@ app.get('/teacherContent', async (request, response) => {
     response.render('teacher/teacherContent');
 })
 
+app.get('/teacherContentID', async (request, response) => { 
+    response.render('teacher/teacherContentID');
+})
+
+app.get('/teacherCreateContent', async (request, response) => { 
+    response.render('teacher/teacherCreateContent');
+})
+
+app.get('/teacherStudyGuide', async (request, response) => { 
+    response.render('teacher/teacherStudyGuide');
+})
+
+app.get('/teacherStudyGuideID', async (request, response) => { 
+    response.render('teacher/teacherStudyGuideID');
+})
+
+app.get('/teacherCreateStudyGuide', async (request, response) => { 
+    response.render('teacher/teacherCreateStudyGuide');
+})
+
+
+app.get('/teacherQuestion', async (request, response) => { 
+    response.render('teacher/teacherQuestion');
+})
+
+app.get('/teacherQuestionID', async (request, response) => { 
+    response.render('teacher/teacherQuestionID');
+})
+
+app.get('/teacherCreateQuestion', async (request, response) => { 
+    response.render('teacher/teacherCreateQuestion');
+})
+
+
+app.get('/teacherQuestionnaire', async (request, response) => { 
+    response.render('teacher/teacherQuestionnaire');
+})
+
+app.get('/teacherQuestionnaireID', async (request, response) => { 
+    response.render('teacher/teacherQuestionnaireID');
+})
+
+app.get('/teacherCreateQuestionnaire', async (request, response) => { 
+    response.render('teacher/teacherCreateQuestionnaire');
+})
+
 // PÁGINA ESTUDANTE
 
 

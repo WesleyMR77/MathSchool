@@ -25,7 +25,6 @@ input{
     background-color: #00396B;
     border:solid;
     color: white;
-
 }
 .button-corrigir{
     float: right;
@@ -42,4 +41,15 @@ input{
 .button-end{
     text-align: end;
     margin-top: 40px;
+}
+
+.button-corrigir-question{
+    width: 100px;
+    height: 35px;
+    margin-bottom: 50px;
+    border-radius: 10px;
+    background-color: #00396B;
+    border:solid;
+    color: white;
+     
 }

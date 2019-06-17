@@ -34,7 +34,7 @@ body{
 .montar-guia{
     margin-top: 5vh;
     width: 30vw;
-    height: 46.5vh;
+    height: 38.75vh;
     background-color: white;
     color: #00396B;
     border: solid #00396B 1px; 
@@ -47,6 +47,8 @@ body{
 }
 
 .size-input{
+    font-size: 1em;
+    color: #00396B;
     border-top: 40px;
     margin-left: 2.25vw;
     width: 22.5vw;
@@ -78,12 +80,13 @@ body{
 } */
 
 .campo-selecao{
-  
-    color: white;
-    width: 24vw;
-    height: 4vh;;
-    font-size: 1em;
+    color: #00396B;
+    width: 22.5vw;
+    height: 20px;
+    font-size: 0.8em;
+    margin-left: 1.5vw;
 }
+
 
 button{
     margin-top: 30px;
@@ -113,5 +116,19 @@ span{
 
 .titulo-trilha{
     margin-bottom: 0px;
-    font-size: 1em;
+    font-size: 1.1em;
+}
+
+.h2-size-title{
+    font-size: 1.8em;
+}
+
+.campo-selecao-ajusty{
+    margin-top: 15px;
+    width: 22.5vw;
+    height: 25px;
+    border: solid cadetblue 1px;
+    
+    color: #00396B;
+    font-size: 0.8em;
 }

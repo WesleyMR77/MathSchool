@@ -35,17 +35,10 @@ h3{
     margin-left: 25px;
 }
 .center{
-    text-align: center;
-    
+    text-align: center;   
     color: #00396B;
     font-size: 1.8em;
     margin-bottom: 0;
-}
-
-.img-delete{
-    max-width: 30px;
-    margin-left: 90px;
-    margin-bottom: -10px;
 }
 
 .img-form{
