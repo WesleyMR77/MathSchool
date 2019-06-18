@@ -51,4 +51,4 @@ app.listen(port, (err) => {
     } else {
         console.log('MathSchool App working on port:', port)
     }
-});
+})

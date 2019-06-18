@@ -27,20 +27,30 @@ const getContent = async (req, res) => {
     const AllContents = await api.list('contents');
     var contents = []; 
     var myContents = [];
-    AllContents.forEach(element => {
-        if(element.name == search || element.author == search){
+    if(search != ""){
+        AllContents.forEach(element => {
+            if(element.name == search || element.author == search){
+                contents.push(element);
+            }
+            if(element.author == info.user.name && element.name == search){
+                myContents.push(element);
+            }
+        });
+    }else{
+        AllContents.forEach(element => {
             contents.push(element);
-        }
-        if(element.author == info.user.name){
-            myContents.push(element);
-        }
-    });
+
+            if(element.author == info.user.name){
+                myContents.push(element);
+            }
+        });
+    };
     res.render('teacher/teacherContent', { contents, myContents, info });
 };
 
 //Visualizar o conteudo
 const viewContent = async (req, res) => {
-    const content = await api.get('contents' + req.params.id);
+    const content = await api.get('contents/' + req.params.id);
     info.user = store.get('user');
     res.render('teacher/teacherContentID', { content, info });
 };

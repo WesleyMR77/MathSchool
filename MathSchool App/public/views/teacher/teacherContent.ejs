@@ -12,16 +12,49 @@
 <body>
     <% include searchHeader %>
 
+    <%
+    //Verificacao se ha ou nao materiais cadastrados
+    function verifyMaterial(materials) {
+        if(materials.length == 0){
+            return false;
+        }else{
+            return true;
+        }
+    };
+
+    //Verificar o tipo de imagem
+    function getImage(subject) {
+        switch (subject) {
+            case "Operações Básicas":
+                return "more";
+            case "Fração":
+                return "fraction";
+            case "Álgebra":
+                return "algebra"
+            case "Análise Combinatória":
+                return "division";
+            case "Geometria":
+                return "area";
+            case "Porcentagem":
+                return "percent";
+            default:
+                return "other";
+        }
+    }
+    %>
+
     <main class="adicionar-guia">
         <section class="line">
             <a href="/teacher/content/create"> <img class="img-cadastrar" src="../../img/img-guia-estudo/more.png" alt="">
             </a>
         </section>
-
         <section class="line">
-            <% //Verificacao se ha ou nao conteudos cadastrados
-            var myContentsTitle = "Meus Conteúdos";
-            if( myContents.length == 0){
+            <%
+            var myContentsTitle;
+            var image;
+            if(verifyMaterial(myContents)){
+                myContentsTitle = "Meus Conteúdos";
+            }else{
                 myContentsTitle = "Voce ainda nao cadastrou nenhum conteúdo"
             };
             %>
@@ -29,19 +62,11 @@
             <div class="guias">
                 <% myContents.forEach( element => { %>
                 <div class="img-configuration">
-                    <% //Verificacao do tipo de imagem
-                    var image;
-                    switch (element.subject) {
-                        case "":
-                            
-                            break;
-                    
-                        default:
-                            break;
-                    } 
+                    <%
+                    image = getImage(element.subject);
                     %>
-                        <a href="/teacher/content/delete/<%= element.id %>">  <img class="img-delete" src="../../img/img-menu/delete.png"  alt=""> </a>
-                    <a href="/teacher/content/view/<%= element.id %>"> <img src="../../img/img-conteudo/<%= image %>" alt=""> </a>
+                        <a href="/teacher/content/delete/<%= element.id %>"><img class="img-delete" src="../../img/img-menu/delete.png"  alt=""> </a>
+                    <a href="/teacher/content/view/<%= element.id %>"> <img class="img-subject" src="../../img/img-conteudo/<%= image %>.png" alt=""> </a>
                     <h3><%= element.name %></h3>
                     <span class="span-nome"><%= element.author %></span>
                 </div>
@@ -55,13 +80,15 @@
             <div class="guias">
                 <% contents.forEach( element => { %>
                 <div class="img-configuration">
-                    <a href="/teacher/content/view/<%= element.id %>"> <img src="../../img/img-guia-estudo/more.png" alt=""> </a>
+                    <%
+                    image = getImage(element.subject);
+                    %>
+                    <a href="/teacher/content/view/<%= element.id %>"> <img class="img-subject" src="../../img/img-conteudo/<%= image %>.png" alt=""> </a>
                     <h3><%= element.name %></h3>
                     <span class="span-nome"><%= element.author %></span>
                 </div>
                 <% }); %>
             </div>
-
         </section>
     </main>
 </body>
