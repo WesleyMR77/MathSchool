@@ -2,7 +2,7 @@ const store = require('store');
 
 //Informacoes gerais 
 var info = {
-    title: "Pagina Inicial",
+    title: "Página Inicial",
     user: null
 };
 

@@ -3,7 +3,7 @@ const store = require('store');
 
 //Informacoes gerais 
 var info = {
-    title: "Conteudos",
+    title: "Conteúdos",
     user: null
 };
 
