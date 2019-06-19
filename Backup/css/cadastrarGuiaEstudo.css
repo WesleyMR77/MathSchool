@@ -1,0 +1,134 @@
+
+body{
+    background-color: #EEEEEE;
+    color: #00396B;
+}
+
+.regular-area{
+    margin-left: 20vw;
+    margin-top: 20vh;
+    margin-top: 150px;
+    display: flex
+}
+.buscar-guia{
+    text-align: center;
+    margin-left: 6vw;
+    width: 35vw;
+    height: 65vh;
+    color: #00396B;
+    border: solid #00396B 1px; 
+    background-color: white;
+    overflow: scroll;
+}
+
+.h2-font{
+    font-size: 0.8em;
+}
+.cadastrar-guia{
+    margin-left: 4vw;
+    width: 30vw;
+    height: 10vh;
+    font-size: 1.5em;
+}
+
+.montar-guia{
+    margin-top: 5vh;
+    width: 30vw;
+    height: 38.75vh;
+    background-color: white;
+    color: #00396B;
+    border: solid #00396B 1px; 
+    overflow: scroll;   
+    text-align: center;
+    padding-top: 10px;
+}
+.img-search{
+    width: 3vw
+}
+
+.size-input{
+    font-size: 1em;
+    color: #00396B;
+    border-top: 40px;
+    margin-left: 2.25vw;
+    width: 22.5vw;
+    border: none;
+    border-bottom: solid #00396B 1px;
+}
+
+.img-configuration{
+    margin-top: 50px;
+    margin-left: 40px;
+}
+
+.menu-busca{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 10px;
+}
+
+.img-size{
+    width: 100px;
+}
+
+/* #campo-selecao{
+    background-color: #00396B;
+    color: white;
+    width: 24.25vw;
+    height: 4.5vh;;
+    font-size: 1em;
+} */
+
+.campo-selecao{
+    color: #00396B;
+    width: 22.5vw;
+    height: 20px;
+    font-size: 0.8em;
+    margin-left: 1.5vw;
+}
+
+
+button{
+    margin-top: 30px;
+    width: 7.5vw;
+    height: 4vh;
+    border: solid #00396B 1px;
+    border-radius: 30px;
+    color: white;
+    background-color: #00396B;
+
+}
+.botao-cadastra{
+    text-align: end;
+}
+
+.img-size-cadastra{
+    width: 5vw;
+}
+
+h3{
+    font-size:  0.9em;
+    margin: 0
+}
+span{
+    font-size:  0.7em;
+}
+
+.titulo-trilha{
+    margin-bottom: 0px;
+    font-size: 1.1em;
+}
+
+.h2-size-title{
+    font-size: 1.8em;
+}
+
+.campo-selecao-ajusty{
+    margin-top: 15px;
+    width: 22.5vw;
+    height: 25px;
+    border: solid cadetblue 1px;
+    
+    color: #00396B;
+    font-size: 0.8em;
+}
