@@ -1,0 +1,14 @@
+body{
+    background-color: #EEEEEE;
+    color: #00396B;
+}
+.regular-area{
+    margin-left: 27.5vw;
+    margin-right: 7.5vw;
+    text-align: justify;
+    margin-top: 20vh;
+    margin-top: 150px;
+}
+.center{
+    text-align: center;
+}
