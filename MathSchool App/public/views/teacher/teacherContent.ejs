@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title><%= info.title %></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../../css/teacher/teacherContent.css">
+    <link rel="stylesheet" href="../../css/teacher/materialList.css">
 </head>
 
 <body>
@@ -43,7 +43,7 @@
     }
     %>
 
-    <main class="adicionar-guia">
+    <main class="adicionar-material">
         <section class="line">
             <a href="/teacher/content/create"> <img class="img-cadastrar" src="../../img/img-guia-estudo/more.png" alt="">
             </a>
@@ -59,7 +59,7 @@
             };
             %>
             <h2 class="center"><%= myContentsTitle %></h2>
-            <div class="guias">
+            <div class="lista">
                 <% myContents.forEach( element => { %>
                 <div class="img-configuration">
                     <%
@@ -77,7 +77,7 @@
 
         <section>
             <h2 class="center">Todos os Conteúdos</h2>
-            <div class="guias">
+            <div class="lista">
                 <% contents.forEach( element => { %>
                 <div class="img-configuration">
                     <%

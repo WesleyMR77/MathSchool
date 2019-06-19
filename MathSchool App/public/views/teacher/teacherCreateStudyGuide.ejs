@@ -4,28 +4,60 @@
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Criar Guia</title>
+  <title><%= info.title %></title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../../css/cadastrarGuiaEstudo.css">
+  <link rel="stylesheet" href="../../css/teacher/createStudyGuide.css">
 </head>
 
 <body>
   <% include header %>
 
+  <%
+    //Verificacao se ha ou nao materiais cadastrados
+    function verifyMaterial(materials) {
+        if(materials.length == 0){
+            return false;
+        }else{
+            return true;
+        }
+    };
+
+    //Verificar o tipo de imagem
+    function getImage(subject) {
+        switch (subject) {
+            case "Operações Básicas":
+                return "more";
+            case "Fração":
+                return "fraction";
+            case "Álgebra":
+                return "algebra"
+            case "Análise Combinatória":
+                return "division";
+            case "Geometria":
+                return "area";
+            case "Porcentagem":
+                return "percent";
+            default:
+                return "other";
+        }
+    }
+    %>
+
   <div class="regular-area">
 
     <section class="buscar-guia">
       <h2 class="h2-size-title">Materiais</h2>
-      <input class="size-input" type="text">
-      <img class="img-search" src="img/img-guia-estudo/search-blue.png" alt="">
+      <input name="search" class="size-input" type="text">
+      <img class="img-search" src="../../img/img-guia-estudo/search-blue.png" alt="">
 
       <div class="menu-busca">
-
+        <%  %>
         <div class="img-configuration">
           <a href="./"> <img class="img-size" src="./img/img-guia-estudo/more.png" alt=""> </a>
           <h3>Fração</h3>
           <span class="span-nome">Maycon</span>
         </div>
+        <%  %>
         <div class="img-configuration">
           <a href="./"> <img class="img-size" src="./img/img-guia-estudo/more.png" alt=""> </a>
           <h3>Fração</h3>

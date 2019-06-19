@@ -50,7 +50,7 @@ const getContent = async (req, res) => {
 
 //Visualizar o conteudo
 const viewContent = async (req, res) => {
-    const content = await api.get('contents/' + req.params.id);
+    const content = await api.get('contents', req.params.id);
     info.user = store.get('user');
     res.render('teacher/teacherContentID', { content, info });
 };

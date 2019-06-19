@@ -1,0 +1,55 @@
+.regular-area{
+    margin-left: 27.5vw;
+    margin-right: 7.5vw;
+    text-align: justify;
+    margin-top: 20vh;
+    margin-top: 150px;
+    color: #00396B;
+    line-height: 20px;
+}
+h2{
+    font-size: 1.9em;
+    margin-bottom: 40px;
+}
+
+input{
+    margin-top: 15px;
+}
+
+.button-cadastrar{
+    margin-right: 50px;
+    width: 100px;
+    height: 35px;
+    margin-bottom: 50px;
+    border-radius: 10px;
+    background-color: #00396B;
+    border:solid;
+    color: white;
+}
+.button-corrigir{
+    float: right;
+    width: 100px;
+    height: 35px;
+    margin-bottom: 50px;
+    border-radius: 10px;
+    background-color: #00396B;
+    border:solid;
+    color: white;
+     
+}
+
+.button-end{
+    text-align: end;
+    margin-top: 40px;
+}
+
+.button-corrigir-question{
+    width: 100px;
+    height: 35px;
+    margin-bottom: 50px;
+    border-radius: 10px;
+    background-color: #00396B;
+    border:solid;
+    color: white;
+     
+}

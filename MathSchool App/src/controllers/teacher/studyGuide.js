@@ -9,32 +9,42 @@ var info = {
 
 //Prototipo: Study Guide - Teacher
 const studyGuidesPage = async (req, res) => {
+    info.user = store.get('user');
     const guides = await api.list('studyGuides');
     var myGuides = [];
     guides.forEach(element => {
-        if(element.author == user.name){
+        if(element.author == info.user.name){
             myGuides.push(element);
         }
     });
-    info.user = store.get('user');
     res.render('teacher/teacherStudyGuide', { guides, myGuides, info });
 };
 
 //Listar guia de estudo
 const getStudyGuide = async (req, res) => {
+    info.user = store.get('user');
     const search = req.body.search;
     const AllGuides = await api.list('studyGuides');
     var guides = []; 
     var myGuides = [];
-    AllGuides.forEach(element => {
-        if(element.name == search || element.author == search){
+    if(search != ""){
+        AllGuides.forEach(element => {
+            if(element.name == search || element.author == search){
+                guides.push(element);
+            }
+            if(element.author == info.user.name && element.name == search){
+                myGuides.push(element);
+            }
+        });
+    }else{
+        AllGuides.forEach(element => {
             guides.push(element);
-        }
-        if(element.author == user.name){
-            myGuides.push(element);
-        }
-    });
-    info.user = store.get('user');
+            
+            if(element.author == info.user.name){
+                myGuides.push(element);
+            }
+        });
+    };
     res.render('teacher/teacherStudyGuide', { guides, myGuides, info });
 };
 
@@ -50,16 +60,17 @@ const createGuidePage = async (req, res) => {
     const questionnaires = await api.list('questionnaires');
     const contents = await api.list('contents');
     info.user = store.get('user');
-    res.render('teacher/teacherCreateGuide', { questionnaires, contents, info });
+    res.render('teacher/teacherCreateStudyGuide', { questionnaires, contents, info });
 };
 
 //Criar Guia de Estudo
 const createGuide = async (req, res) => {
+    info.user = store.get('user');
     await api.createPost('studyGuides', {
         name: req.body.name,
         subject: req.body.subject,
         trail: guide.trail,
-        author: user.name
+        author: info.user.name
     });
     res.redirect('/teacher/study-guide');
 };

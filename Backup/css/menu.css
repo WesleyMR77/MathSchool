@@ -1,0 +1,133 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.header-menu{
+    background-color: #00396B;
+    color: #C6DFCB;
+    width: 100vw;
+    height: 12.5vh;
+    text-align: center;
+    display: flex;
+    position: fixed;
+    top: 0;
+}
+.title-menu{ 
+    padding: 0;
+    flex: 10;
+}
+
+.pi-menu{
+    margin-top: 1.75vh;
+    margin-left: 2.5vh;
+    max-height:  65%;
+    max-width: 65%;
+}
+
+.word-menu{
+    margin-left: 2vw;
+    margin-top: 3.75vh;
+    font-size: 1.6em;
+}
+
+.nav-menu{
+    background-color: #00396B;
+    margin-top: 12.5vh;
+    width: 20vw;
+    height: 100vh;
+    position: fixed;  
+    top: 0;
+}
+
+.search-img-menu{
+    margin-top: 7vh;
+    margin-left: 2.5vh;
+    max-height:  5vh;
+    max-width: 2.5vw;
+    margin-left: -2.5vw;
+}
+
+.search-input-menu{
+    width: 17vw;
+    border: none;
+    border-bottom: 3px solid white; 
+    text-align: justify;
+    font-size: 1.3em;
+    background-color: #00396B; 
+    color: white;
+    margin-left: 1.5vw;
+}
+
+::-webkit-input-placeholder {
+    color: white;
+    margin-left: 1.5vw;
+ }
+
+.button-register{
+    display: block;
+    text-align: center;
+    color: #00396B;
+    background-color: white;
+    margin-top: 1.5vw;
+    margin-left: 3vw;
+    margin-right: 3vw; 
+    border-radius: 10px;
+    text-decoration: none;
+    line-height: 2.25vw;
+    font-weight: bold;
+}
+
+.list-menu{
+    color: white;
+    list-style: none;
+    text-align: justify;
+}
+
+.div-menu-flex{
+    display: flex;
+    text-align: center;
+    line-height: 35px;
+    margin: 0.5vw;
+    text-decoration: none;
+    color: white;
+}
+.img-menu-lateral{
+    max-width: 20px;
+    max-height: 20px;
+    margin-top: 1vh;
+}
+.li-space-menu{
+    margin-left: 1.5vw;
+}
+
+.img-student{
+    width: 4vw;
+    margin-left: 2vw; 
+    margin-top: 22.5px;
+    max-height: 60px;
+}
+
+.element-line{
+    display: flex;
+    max-width: 0.5vw;
+}
+.email-user{
+    color: white;
+    font-size: 0.6em;
+}
+
+.name-user{
+    color: white;
+    font-size: 0.8em;
+}
+.img-logout{
+    max-width: 2vw;
+    max-height: 30px;
+    margin-top: 37.5px;
+}
+.name-and-email{
+    margin-top: 35px;
+    margin-left: 10px;
+}
