@@ -9,38 +9,48 @@ var info = {
 
 //Prototipo: Questions - Teacher
 const questionPage = async (req, res) => {
+    info.user = store.get('user');
     const questions = await api.list('questions');
     var myQuestions = []
     questions.forEach(element => {
-        if(element.author == user.name){
+        if(element.author == info.user.name){
             myQuestions.push(element);
         }
     });
-    info.user = store.get('user');
     res.render('teacher/teacherQuestion', { questions, myQuestions, info });
 };
 
 //Listar questao
 const getQuestion = async (req, res) => {
+    info.user = store.get('user');
     const search = req.body.search;
     const AllQuestions = await api.list('questions');
     var questions = []; 
     var myQuestions = [];
-    AllQuestions.forEach(element => {
-        if(element.name == search || element.author == search){
+    if(search != ""){
+        AllQuestions.forEach(element => {
+            if(element.name == search || element.author == search){
+                questions.push(element);
+            }
+            if(element.author == info.user.name && (element.name == search || element.author == search)){
+                myQuestions.push(element);
+            }
+        });
+    }else{
+        AllQuestions.forEach(element => {
             questions.push(element);
-        }
-        if(element.author == user.name){
-            myQuestions.push(element);
-        }
-    });
-    info.user = store.get('user');
+
+            if(element.author == info.user.name){
+                myQuestions.push(element);
+            }
+        });
+    };
     res.render('teacher/teacherQuestion', { questions, myQuestions, info });
 };
 
 //Visualizar a questao
 const viewQuestion = async (req, res) => {
-    const question = await api.get('questions' + req.params.id);
+    const question = await api.get('questions', req.params.id);
     info.user = store.get('user');
     res.render('teacher/teacherQuestionID', { question, info });
 };
@@ -53,19 +63,21 @@ const createQuestionPage = (req, res) => {
 
 //Criar Questao
 const createQuestion = async (req, res) => {
-    await api.createPost('questions', {
+    info.user = store.get('user');
+    const question = {
         name: req.body.name,
         subject: req.body.subject,
         text: req.body.text,
-        optA: document.querySelector('#optionA').text,
-        optB: document.querySelector('#optionB').text,
-        optC: document.querySelector('#optionC').text,
-        optD: document.querySelector('#optionD').text,
-        optE: document.querySelector('#optionE').text,
-        answer: req.body.options.checked,
-        author: user.name
-    });
-    res.redirect('/teacher/teacherQuestion');
+        A: req.body.optionA,
+        B: req.body.optionB,
+        C: req.body.optionC,
+        D: req.body.optionD,
+        E: req.body.optionE,
+        answer: req.body.options,
+        author: info.user.name
+    };
+    await api.createPost('questions', question);
+    res.redirect('/teacher/question');
 };
 
 //Deletar questao
