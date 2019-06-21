@@ -4,62 +4,68 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Conteúdo Guia de Estudo</title>
+    <title><%= info.title %></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../../css/student/studentStudyGuideID.css">
+    <link rel="stylesheet" href="../../css/teacher/studyGuideID.css">
 </head>
 
 <body>
     <% include header %>
 
+    <%
+    //Verificar o tipo de imagem
+    function getImage(subject, type) {
+      if(type == "contents"){
+        switch (subject) {
+          case "Operações Básicas":
+              return "img-conteudo/more";
+          case "Fração":
+              return "img-conteudo/fraction";
+          case "Álgebra":
+              return "img-conteudo/algebra"
+          case "Análise Combinatória":
+              return "img-conteudo/division";
+          case "Geometria":
+              return "img-conteudo/area";
+          case "Porcentagem":
+              return "img-conteudo/percent";
+          default:
+              return "img-conteudo/other";
+      }
+      }else{
+        return "img-guia-estudo/questionnaire"
+      }
+    }
+    %>
+
     <section class="mostrar-guia">
+
+        <% var image; %>
 
         <div class="menu-mostrar">
 
-            <div class="img-configuration">
-                <a href="./cadastrarGuiaEstudo"> <img class="img-size" src="../../img/img-guia-estudo/more.png"
-                        alt=""> </a>
-                <h3>Fração</h3>
-                <span class="span-nome">Maycon</span>
-            </div>
-            <div class="flecha"></div>
-            <div class="img-configuration">
-                <a href="./cadastrarGuiaEstudo"> <img class="img-size" src="../../img/img-questionario/questionnaire.png"
-                    alt=""> </a>
-                <h3>Fração</h3>
-                <span class="span-nome">Maycon</span>
-            </div>
-            <div class="flecha"></div>
-            <div class="img-configuration">
-                <a href="./cadastrarGuiaEstudo"> <img class="img-size" src="../../img/img-guia-estudo/more.png"
-                        alt=""> </a>
-                <h3>Fração</h3>
-                <span class="span-nome">Maycon</span>
-            </div>
-            <div class="flecha"></div>
-            <div class="img-configuration">
-                <a href="./cadastrarGuiaEstudo"> <img class="img-size" src="../../img/img-questionario/questionnaire.png"
-                    alt=""> </a>
-                <h3>Fração</h3>
-                <span class="span-nome">Maycon</span>
-            </div>
-            <div class="flecha"></div>
-            <div class="img-configuration">
-                <a href="./cadastrarGuiaEstudo"> <img class="img-size" src="../../img/img-guia-estudo/more.png"
-                        alt=""> </a>
-                <h3>Fração</h3>
-                <span class="span-nome">Maycon</span>
-            </div>
-            <div class="flecha"></div>
-            <div class="img-configuration">
-                <a href="./cadastrarGuiaEstudo"> <img class="img-size" src="../../img/img-questionario/questionnaire.png"
-                    alt=""> </a>
-                <h3>Fração</h3>
-                <span class="span-nome">Maycon</span>
-            </div>
+            <% for( let index = 0; index < guide.trail.length; index++){ %>
+                <% image = getImage( element.subject, element.type ); %>
+                <% if(guide.trail[index].type == "contents"){ %>
+                    <div class="img-configuration">
+                        <a href="/teacher/content/view/<%= guide.trail[index].id %>"><img class="img-size" src="../../img/<%= image %>.png"
+                            alt=""> </a>
+                        <h3><%= guide.trail[index].name %></h3>
+                        <span class="span-nome"><%= guide.trail[index].author %></span>
+                    </div>
+                <% }else{ %>
+                    <div class="img-configuration">
+                        <a href="/teacher/questionnaire/view/<%= guide.trail[index].id %>"><img class="img-size" src="../../img/<%= image %>.png"
+                            alt=""> </a>
+                        <h3><%= guide.trail[index].name %></h3>
+                        <span class="span-nome"><%= guide.trail[index].author %></span>
+                    </div>
+                <% }; %>
+                <% if(index+2 != guide.trail.length){ %>
+                    <div class="flecha"></div>
+                <% }; %>
+            <% }; %>        
             
-            
-   
         </div>
 
     </section>

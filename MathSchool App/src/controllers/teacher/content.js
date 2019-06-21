@@ -32,7 +32,7 @@ const getContent = async (req, res) => {
             if(element.name == search || element.author == search){
                 contents.push(element);
             }
-            if(element.author == info.user.name && element.name == search){
+            if(element.author == info.user.name && (element.name == search || element.author == search)){
                 myContents.push(element);
             }
         });

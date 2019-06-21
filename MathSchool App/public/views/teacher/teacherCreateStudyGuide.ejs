@@ -13,33 +13,28 @@
   <% include header %>
 
   <%
-    //Verificacao se ha ou nao materiais cadastrados
-    function verifyMaterial(materials) {
-        if(materials.length == 0){
-            return false;
-        }else{
-            return true;
-        }
-    };
-
     //Verificar o tipo de imagem
-    function getImage(subject) {
+    function getImage(subject, type) {
+      if(type == "contents"){
         switch (subject) {
-            case "Operações Básicas":
-                return "more";
-            case "Fração":
-                return "fraction";
-            case "Álgebra":
-                return "algebra"
-            case "Análise Combinatória":
-                return "division";
-            case "Geometria":
-                return "area";
-            case "Porcentagem":
-                return "percent";
-            default:
-                return "other";
-        }
+          case "Operações Básicas":
+              return "img-conteudo/more";
+          case "Fração":
+              return "img-conteudo/fraction";
+          case "Álgebra":
+              return "img-conteudo/algebra"
+          case "Análise Combinatória":
+              return "img-conteudo/division";
+          case "Geometria":
+              return "img-conteudo/area";
+          case "Porcentagem":
+              return "img-conteudo/percent";
+          default:
+              return "img-conteudo/other";
+      }
+      }else{
+        return "img-guia-estudo/questionnaire"
+      }
     }
     %>
 
@@ -47,90 +42,62 @@
 
     <section class="buscar-guia">
       <h2 class="h2-size-title">Materiais</h2>
-      <input name="search" class="size-input" type="text">
-      <img class="img-search" src="../../img/img-guia-estudo/search-blue.png" alt="">
+      <form method="post">
+        <input name="search" class="size-input" type="text">
+        <button type="submit"><img class="img-search" src="../../img/img-guia-estudo/search-blue.png" alt=""></button> 
+      </form>
+      
+      <% var image; %>
 
       <div class="menu-busca">
-        <%  %>
+        <% materials.forEach( element => { %>
+        <% image = getImage( element.subject, element.type ); %>
         <div class="img-configuration">
-          <a href="./"> <img class="img-size" src="../../img/img-guia-estudo/more.png" alt=""> </a>
-          <h3>Fração</h3>
-          <span class="span-nome">Maycon</span>
+          <a href="/teacher/study-guide/create/add/<%= element.type %>/<%= element.id %>"><img class="img-size" src="../../img/<%= image %>.png" alt=""></a>
+          <h3><%= element.name %></h3>
+          <span class="span-nome"><%= element.author %></span>
         </div>
-        <%  %>
-        <div class="img-configuration">
-          <a href="./"> <img class="img-size" src="../../img/img-guia-estudo/more.png" alt=""> </a>
-          <h3>Fração</h3>
-          <span class="span-nome">Maycon</span>
-        </div>
-        <div class="img-configuration">
-          <a href="./"> <img class="img-size" src="../../img/img-guia-estudo/more.png" alt=""> </a>
-          <h3>Fração</h3>
-          <span class="span-nome">Maycon</span>
-        </div>
-        <div class="img-configuration">
-          <a href="./"> <img class="img-size" src="../../img/img-guia-estudo/more.png" alt=""> </a>
-          <h3>Fração</h3>
-          <span class="span-nome">Maycon</span>
-        </div>
+        <% });  %>
       </div>
     </section>
 
-    <div class="cadastrar-guia">
+    <form method="POST" class="cadastrar-guia">
       <section>
         <label for="nome">Nome:</label>
-        <input class="campo-selecao" type="text">
+        <input name="name" class="campo-selecao" type="text">
         <div class="configuration-line">
           <label for="">Assunto:</label>
-          <select class="campo-selecao-ajusty">
+          <select name="subject" class="campo-selecao-ajusty">
             <div class="size">
-              <option>Adição</option>
+              <option>Operações Básicas</option>
               <option>Fração</option>
-              <option>Multiplicação</option>
-              <option>Divisão</option>
+              <option>Álgebra</option>
               <option>Análise Combinatória</option>
-              <option>Números Naturais</option>
+              <option>Geometria</option>
               <option>Porcentagem</option>
-              <option>Potencialização</option>
+              <option>Outro</option>
             </div>
           </select>
 
           <div class="botao-cadastra">
-            <button>Confirmar</button>
+            <input type="submit" value="Confirmar">
           </div>
       </section>
 
       <section class="montar-guia">
         <h2 class="titulo-trilha">Guia Novo</h2>
         <div class="menu-busca">
-
+          <% trail.forEach( element => { %>
+          <% image = getImage( element.subject, element.type ); %>
           <div class="img-configuration">
-            <a href="./cadastrarGuiaEstudo"> <img class="img-size-cadastra" src="../../img/img-guia-estudo/more.png" alt="">
-            </a>
-            <h3>Fração</h3>
-            <span class="span-nome">Maycon</span>
+            <a href="/teacher/study-guide/create/remove/<%= element.id %>"><img class="img-size-cadastra" src="../../img/<%= image %>.png" alt=""></a> 
+            <h3><%= element.name %></h3>
+            <span class="span-nome"><%= element.author %></span>
           </div>
-          <div class="img-configuration">
-            <a href="./cadastrarGuiaEstudo"> <img class="img-size-cadastra" src="../../img/img-guia-estudo/more.png" alt="">
-            </a>
-            <h3>Fração</h3>
-            <span class="span-nome">Maycon</span>
-          </div>
-          <div class="img-configuration">
-            <a href="./cadastrarGuiaEstudo"> <img class="img-size-cadastra" src="../../img/img-guia-estudo/more.png" alt="">
-            </a>
-            <h3>Fração</h3>
-            <span class="span-nome">Maycon</span>
-          </div>
-          <div class="img-configuration">
-            <a href="./cadastrarGuiaEstudo"> <img class="img-size-cadastra" src="../../img/img-guia-estudo/more.png" alt="">
-            </a>
-            <h3>Fração</h3>
-            <span class="span-nome">Maycon</span>
-          </div>
+          <% }); %>
         </div>
       </section>
-    </div>
+    </form>
 
   </div>
 </body>
