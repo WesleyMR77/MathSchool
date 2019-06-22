@@ -4,35 +4,52 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Conteudo</title>
+    <title><%= info.title %></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../../css/teacher/teacherContent.css">
+    <link rel="stylesheet" href="../../css/teacher/materialList.css">
 </head>
 
 <body>
-    <% include header %>
+    <% include searchHeader %>
 
-    <main class="adicionar-guia">
+    <%
+    //Verificacao se ha ou nao materiais cadastrados
+    function verifyMaterial(materials) {
+        if(materials.length == 0){
+            return false;
+        }else{
+            return true;
+        }
+    };
+    %>
+
+    <main class="adicionar-material">
         <section class="line">
-            <a href="./cadastrarConteudo"> <img class="img-cadastrar" src="../../img/img-guia-estudo/more.png" alt="">
+            <a href="/teacher/questionnaire/create"> <img class="img-cadastrar" src="../../img/img-guia-estudo/more.png" alt="">
             </a>
         </section>
 
+        <%
+        var myQuestionnairesTitle;
+        var image;
+        if(verifyMaterial(myQuestionnaires)){
+            myQuestionnairesTitle = "Meus Questionários";
+        }else{
+            myQuestionnairesTitle = "Voce ainda nao cadastrou nenhuma questionário"
+        };
+        %>
+
         <section class="line">
-            <h2 class="center">Meus Questionários</h2>
-            <div class="guias">
+            <h2 class="center"><%= myQuestionnairesTitle %></h2>
+            <div class="lista">
+                <% myQuestionnaires.forEach( element => { %>
                 <div class="img-configuration">
-                        <a href=".">  <img class="img-delete" src="../../img/img-menu/delete.png"  alt=""> </a>
-                    <a href="./mostrarConteudo"> <img  class="img-form" src="../../img/img-questionario/questionnaire.png" alt=""> </a>
-                    <h3>Fração</h3>
-                    <span class="span-nome">Maycon</span>
+                        <a href="/teacher/questionnaire/delete/<%= element.id %>">  <img class="img-delete" src="../../img/img-menu/delete.png"  alt=""> </a>
+                    <a href="/teacher/questionnaire/view/<%= element.id %>"><img  class="img-form" src="../../img/img-questionario/questionnaire.png" alt=""> </a>
+                    <h3><%= element.name %></h3>
+                    <span class="span-nome"><%= element.author %></span>
                 </div>
-                <div class="img-configuration">
-                        <a href="."> <img class="img-delete" src="../../img/img-menu/delete.png" alt=""> </a>
-                    <a href="./mostrarConteudo"> <img class="img-form" src="../../img/img-questionario/questionnaire.png" alt=""> </a>
-                    <h3>Fração</h3>
-                    <span class="span-nome">Maycon</span>
-                </div>
+                <% }); %>
             </div>
 
 
@@ -40,37 +57,14 @@
 
         <section class="">
             <h2 class="center">Todos os Questionários</h2>
-            <div class="guias">
+            <div class="lista">
+                <% questionnaires.forEach( element => { %>
                 <div class="img-configuration">
-                    <a href="./mostrarConteudo"> <img class="img-form"  src="../../img/img-questionario/questionnaire.png" alt=""> </a>
-                    <h3>Fração</h3>
-                    <span class="span-nome">Maycon</span>
+                    <a href="/teacher/questionnaire/view/<%= element.id %>"><img  class="img-form" src="../../img/img-questionario/questionnaire.png" alt=""> </a>
+                    <h3><%= element.name %></h3>
+                    <span class="span-nome"><%= element.author %></span>
                 </div>
-                <div class="img-configuration">
-                    <a href="./mostrarConteudo"> <img class="img-form"  src="../../img/img-questionario/questionnaire.png" alt=""> </a>
-                    <h3>Fração</h3>
-                    <span class="span-nome">Maycon</span>
-                </div>
-                <div class="img-configuration">
-                    <a href="./mostrarConteudo"> <img class="img-form"  src="../../img/img-questionario/questionnaire.png" alt=""> </a>
-                    <h3>Fração</h3>
-                    <span class="span-nome">Maycon</span>
-                </div>
-                <div class="img-configuration">
-                    <a href="./mostrarConteudo"> <img class="img-form"  src="../../img/img-questionario/questionnaire.png" alt=""> </a>
-                    <h3>Fração</h3>
-                    <span class="span-nome">Maycon</span>
-                </div>
-                <div class="img-configuration">
-                    <a href="./mostrarConteudo"> <img class="img-form"  src="../../img/img-questionario/questionnaire.png" alt=""> </a>
-                    <h3>Fração</h3>
-                    <span class="span-nome">Maycon</span>
-                </div>
-                <div class="img-configuration">
-                    <a href="./mostrarConteudo"> <img class="img-form"  src="../../img/img-questionario/questionnaire.png" alt=""> </a>
-                    <h3>Fração</h3>
-                    <span class="span-nome">Maycon</span>
-                </div>
+                <% }); %>
             </div>
 
         </section>

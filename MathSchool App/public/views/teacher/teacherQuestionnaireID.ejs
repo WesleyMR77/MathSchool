@@ -4,38 +4,23 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Conteudo</title>
+    <title><%= info.title %></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../../css/teacher/teacherQuestionnaireID.css">
+    <link rel="stylesheet" href="../../../css/teacher/teacherQuestionnaireID.css">
 </head>
 
 <body>
-    <% include header %>
+    <% include headerID %>
 
     <section class="regular-area">
 
-
+        <% questionnaire.questions.forEach( element => { %>
         <div class="border">
-            <img class="img-size" src="../../img/img-question/question.png" alt="">
-            <a href=""><span>Título:</span></a>
-        </div class="border">
-        <div class="border">
-            <img class="img-size" src="../../img/img-question/question.png" alt="">
-            <a href=""> <span>Título:</span></a>
-        </div class="border">
-        <div class="border">
-            <img class="img-size" src="../../img/img-question/question.png" alt="">
-            <a href=""> <span>Título:</span></a>
-        </div class="border">
-        <div class="border">
-            <img class="img-size" src="../../img/img-question/question.png" alt="">
-            <a href=""> <span>Título:</span></a>
-        </div class="border">
-
-
-
-
-
+            <img class="img-size" src="../../../img/img-question/question.png" alt="">
+            <a href="/teacher/question/view/<%= element.id %>"><span><%= element.name %></span></a>
+        </div>
+        <% )}; %>
+        
     </section>
 </body>
 

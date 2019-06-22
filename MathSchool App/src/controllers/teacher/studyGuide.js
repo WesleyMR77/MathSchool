@@ -7,6 +7,21 @@ var info = {
     user: null
 };
 
+//Verificador para criacao de guia
+var firstTime = true;
+
+//Verificar criacao de trilha
+const createTrail = (first) => {
+    if(first){
+        const trail = [];
+        store.set('trail', trail);
+        firstTime = false;
+        return trail
+    }else{
+        return store.get('trail');
+    }
+};
+
 //Prototipo: Study Guide - Teacher
 const studyGuidesPage = async (req, res) => {
     info.user = store.get('user');
@@ -78,14 +93,13 @@ const createGuidePage = async (req, res) => {
             type: "questionnaires"
         })
     });
-    const trail = [];
-    store.set('trail', trail);
+    const trail = createTrail(firstTime);
     info.user = store.get('user');
     res.render('teacher/teacherCreateStudyGuide', { materials, info, trail });
 };
 
 //Pesquisar conteudo ou questionario no cadastro de guia
-const getMaterialToTrail = async (req, res) => {
+const getMaterial = async (req, res) => {
     const search = req.body.search;
     const AllQuestionnaires = await api.list('questionnaires');
     const AllContents = await api.list('contents');
@@ -132,7 +146,7 @@ const getMaterialToTrail = async (req, res) => {
             type: "questionnaires"
         })
     });
-    const trail = store.get('trail');
+    const trail = createTrail(firstTime);
     info.user = store.get('user');
     res.render('teacher/teacherCreateStudyGuide', { materials, info, trail });
 };
@@ -171,6 +185,7 @@ const createGuide = async (req, res) => {
         author: info.user.name
     });
     store.remove('trail');
+    firstTime = true;
     res.redirect('/teacher/study-guide');
 };
 
@@ -185,7 +200,7 @@ module.exports = {
     getStudyGuide,
     viewStudyGuide,
     createGuidePage,
-    getMaterialToTrail,
+    getMaterial,
     addTrail,
     removeTrail,
     createGuide,

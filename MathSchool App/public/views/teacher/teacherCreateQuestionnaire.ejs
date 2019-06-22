@@ -4,9 +4,9 @@
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Criar Guia</title>
+  <title><%= info.title %></title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../../css/cadastrarGuiaEstudo.css">
+  <link rel="stylesheet" href="../../css/teacher/createQuestionnaire.css">
 </head>
 
 <body>
@@ -14,91 +14,61 @@
 
   <div class="regular-area">
 
-    <section class="buscar-guia">
+    <section class="buscar-questionario">
       <h2 class="h2-size-title">Perguntas</h2>
-      <input class="size-input" type="text">
-      <img class="img-search" src="../../img/img-guia-estudo/search-blue.png" alt="">
-
+      <form method="POST">
+        <input name="search" class="size-input" type="text">
+        <img class="img-search" src="../../img/img-guia-estudo/search-blue.png" alt="">
+      </form>
+      
       <div class="menu-busca">
-
+        <% questions.forEach( element => { %>
         <div class="img-configuration">
-          <a href="./"> <img class="img-size" src="../../img/img-question/question.png" alt=""> </a>
-          <h3>Fração</h3>
-          <span class="span-nome">Maycon</span>
+          <a href="/teacher/questionnaire/create/add/<%= element.id %>"> <img class="img-size" src="../../img/img-question/question.png" alt=""> </a>
+          <h3><%= element.name %></h3>
+          <span class="span-nome"><%= element.author %></span>
         </div>
-        <div class="img-configuration">
-          <a href="./"> <img class="img-size" src="../../img/img-question/question.png" alt=""> </a>
-          <h3>Fração</h3>
-          <span class="span-nome">Maycon</span>
-        </div>
-        <div class="img-configuration">
-          <a href="./"> <img class="img-size" src="../../img/img-question/question.png" alt=""> </a>
-          <h3>Fração</h3>
-          <span class="span-nome">Maycon</span>
-        </div>
-        <div class="img-configuration">
-          <a href="./"> <img class="img-size" src="../../img/img-question/question.png" alt=""> </a>
-          <h3>Fração</h3>
-          <span class="span-nome">Maycon</span>
-        </div>
+        <% }); %>
       </div>
     </section>
 
-    <div class="cadastrar-guia">
+    <form method="POST" class="cadastrar-questionario">
       <section>
         <label for="nome">Nome:</label>
-        <input class="campo-selecao" type="text">
+        <input name="name" class="campo-selecao" type="text">
         <div class="configuration-line">
           <label for="">Assunto:</label>
-          <select class="campo-selecao-ajusty">
+          <select name="subject" class="campo-selecao-ajusty">
             <div class="size">
-              <option>Adição</option>
-              <option>Fração</option>
-              <option>Multiplicação</option>
-              <option>Divisão</option>
-              <option>Análise Combinatória</option>
-              <option>Números Naturais</option>
-              <option>Porcentagem</option>
-              <option>Potencialização</option>
+                <option>Operações Básicas</option>
+                <option>Fração</option>
+                <option>Álgebra</option>
+                <option>Análise Combinatória</option>
+                <option>Geometria</option>
+                <option>Porcentagem</option>
+                <option>Outro</option>
             </div>
           </select>
 
           <div class="botao-cadastra">
-            <button>Confirmar</button>
+            <input type="submit" value="Confirmar">
           </div>
       </section>
 
-      <section class="montar-guia">
+      <section class="montar-questionario">
         <h2 class="titulo-trilha">Novo Questionário</h2>
         <div class="menu-busca">
-
+          <% list.forEach( element => { %>
           <div class="img-configuration">
-            <a href="./cadastrarGuiaEstudo"> <img class="img-size-cadastra" src="../../img/img-question/question.png" alt="">
+            <a href="/teacher/questionnaire/create/remove/<%= element.id %>"> <img class="img-size-cadastra" src="../../img/img-question/question.png" alt="">
             </a>
-            <h3>Fração</h3>
-            <span class="span-nome">Maycon</span>
+            <h3><%= element.name %></h3>
+            <span class="span-nome"><%= element.author %></span>
           </div>
-          <div class="img-configuration">
-            <a href="./cadastrarGuiaEstudo"> <img class="img-size-cadastra" src="../../img/img-question/question.png" alt="">
-            </a>
-            <h3>Fração</h3>
-            <span class="span-nome">Maycon</span>
-          </div>
-          <div class="img-configuration">
-            <a href="./cadastrarGuiaEstudo"> <img class="img-size-cadastra" src="../../img/img-question/question.png" alt="">
-            </a>
-            <h3>Fração</h3>
-            <span class="span-nome">Maycon</span>
-          </div>
-          <div class="img-configuration">
-            <a href="./cadastrarGuiaEstudo"> <img class="img-size-cadastra" src="../../img/img-question/question.png" alt="">
-            </a>
-            <h3>Fração</h3>
-            <span class="span-nome">Maycon</span>
-          </div>
+          <% }); %>
         </div>
       </section>
-    </div>
+    </form>
 
   </div>
 </body>

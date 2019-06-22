@@ -15,7 +15,7 @@ router.get('/', teacher.studyGuidesPage);
 router.post('/', teacher.getStudyGuide);
 router.get('/view/:id', teacher.viewStudyGuide);
 router.get('/create', teacher.createGuidePage);
-router.post('/create', teacher.getMaterialToTrail);
+router.post('/create', teacher.getMaterial);
 router.get('/create/add/:type/:id', teacher.addTrail);
 router.get('/create/remove/:id', teacher.removeTrail);
 router.post('/create', teacher.createGuide);
