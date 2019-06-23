@@ -6,47 +6,49 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Conteúdo do Estudante</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../../css/student/studentStudyGuide.css">
+    <link rel="stylesheet" href="../../css/student/materialList.css">
 </head>
 
 <body>
-    <% include header %>
+    <% include searchHeader %>
 
-    <main class="adicionar-guia">
+    <%
+    //Verificar o tipo de imagem
+    function getImage(subject) {
+        switch (subject) {
+            case "Operações Básicas":
+                return "more";
+            case "Fração":
+                return "fraction";
+            case "Álgebra":
+                return "algebra"
+            case "Análise Combinatória":
+                return "division";
+            case "Geometria":
+                return "area";
+            case "Porcentagem":
+                return "percent";
+            default:
+                return "other";
+        }
+    }
+    %>
+
+    <main class="material">
 
         <section class="">
          
-            <div class="guias">
+            <% var image; %>
+
+            <div class="lista">
+                <% contents.forEach( element => { %>
+                <% image = getImage(element.subject); %>
                 <div class="img-configuration">
-                    <a href="./mostrarConteudo"> <img src="../../img/img-guia-estudo/more.png" alt=""> </a>
-                    <h3>Fração</h3>
-                    <span class="span-nome">Maycon</span>
+                    <a href="/student/content/<%= element.id %>"> <img class="img-subject" src="../../img/img-conteudo/<%= image %>.png" alt=""> </a>
+                    <h3><%= element.name %></h3>
+                    <span class="span-nome"><%= element.author %></span>
                 </div>
-                <div class="img-configuration">
-                    <a href="./mostrarConteudo"> <img src="../../img/img-guia-estudo/more.png" alt=""> </a>
-                    <h3>Fração</h3>
-                    <span class="span-nome">Maycon</span>
-                </div>
-                <div class="img-configuration">
-                    <a href="./mostrarConteudo"> <img src="../../img/img-guia-estudo/more.png" alt=""> </a>
-                    <h3>Fração</h3>
-                    <span class="span-nome">Maycon</span>
-                </div>
-                <div class="img-configuration">
-                    <a href="./mostrarConteudo"> <img src="../../img/img-guia-estudo/more.png" alt=""> </a>
-                    <h3>Fração</h3>
-                    <span class="span-nome">Maycon</span>
-                </div>
-                <div class="img-configuration">
-                    <a href="./mostrarConteudo"> <img src="../../img/img-guia-estudo/more.png" alt=""> </a>
-                    <h3>Fração</h3>
-                    <span class="span-nome">Maycon</span>
-                </div>
-                <div class="img-configuration">
-                    <a href="./mostrarConteudo"> <img src="../../img/img-guia-estudo/more.png" alt=""> </a>
-                    <h3>Fração</h3>
-                    <span class="span-nome">Maycon</span>
-                </div>
+                <% }); %>
             </div>
 
         </section>

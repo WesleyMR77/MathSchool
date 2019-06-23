@@ -16,7 +16,7 @@ input{
     margin-top: 15px;
 }
 
-.button-cadastrar{
+.button-corrigir{
     margin-right: 50px;
     width: 100px;
     height: 35px;
@@ -26,7 +26,7 @@ input{
     border:solid;
     color: white;
 }
-.button-corrigir{
+.button-avancar{
     float: right;
     width: 100px;
     height: 35px;
@@ -34,8 +34,7 @@ input{
     border-radius: 10px;
     background-color: #00396B;
     border:solid;
-    color: white;
-     
+    color: white; 
 }
 
 .button-end{
@@ -43,13 +42,16 @@ input{
     margin-top: 40px;
 }
 
-.button-corrigir-question{
-    width: 100px;
-    height: 35px;
-    margin-bottom: 50px;
-    border-radius: 10px;
-    background-color: #00396B;
-    border:solid;
-    color: white;
-     
+.correction{
+    text-align: center;
+    font-size: 2.5em;
+    margin: 250px 0;
+}
+
+.right{
+    color: green;
+}
+
+.wrong{
+    color: red;
 }

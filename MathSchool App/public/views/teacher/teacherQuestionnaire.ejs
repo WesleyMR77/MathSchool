@@ -45,7 +45,7 @@
                 <% myQuestionnaires.forEach( element => { %>
                 <div class="img-configuration">
                         <a href="/teacher/questionnaire/delete/<%= element.id %>">  <img class="img-delete" src="../../img/img-menu/delete.png"  alt=""> </a>
-                    <a href="/teacher/questionnaire/view/<%= element.id %>"><img  class="img-form" src="../../img/img-questionario/questionnaire.png" alt=""> </a>
+                    <a href="/teacher/questionnaire/view/<%= element.id %>"><img  class="img-subject" src="../../img/img-questionario/questionnaire.png" alt=""> </a>
                     <h3><%= element.name %></h3>
                     <span class="span-nome"><%= element.author %></span>
                 </div>
@@ -60,7 +60,7 @@
             <div class="lista">
                 <% questionnaires.forEach( element => { %>
                 <div class="img-configuration">
-                    <a href="/teacher/questionnaire/view/<%= element.id %>"><img  class="img-form" src="../../img/img-questionario/questionnaire.png" alt=""> </a>
+                    <a href="/teacher/questionnaire/view/<%= element.id %>"><img  class="img-subject" src="../../img/img-questionario/questionnaire.png" alt=""> </a>
                     <h3><%= element.name %></h3>
                     <span class="span-nome"><%= element.author %></span>
                 </div>

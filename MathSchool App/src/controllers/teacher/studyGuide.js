@@ -77,7 +77,7 @@ const createGuidePage = async (req, res) => {
     var materials = [];
     contents.forEach(element => {
         materials.push({
-            identificator: element.id,
+            id: element.id,
             name: element.name,
             subject: element.subject,
             author: element.author,
@@ -86,7 +86,7 @@ const createGuidePage = async (req, res) => {
     });
     questionnaires.forEach(element => {
         materials.push({
-            identificator: element.id,
+            id: element.id,
             name: element.name,
             subject: element.subject,
             author: element.author,
@@ -153,12 +153,13 @@ const getMaterial = async (req, res) => {
 
 //Adicao de material na trilha
 const addTrail = async (req, res) => {
-    const material = api.get(req.params.type, req.params.id);
+    var material = await api.get(req.params.type, req.params.id);
+    material.type = req.params.type;
     var trail = store.get('trail');
     trail.push(material);
     store.remove('trail');
     store.set('trail', trail);
-    res.redirect('teacher/study-guide/create');
+    res.redirect('/teacher/study-guide/create');
 };
 
 //Remocao de material da trilha
@@ -172,7 +173,7 @@ const removeTrail = async (req, res) => {
     }
     store.remove('trail');
     store.set('trail', trail);
-    res.redirect('teacher/study-guide/create');
+    res.redirect('/teacher/study-guide/create');
 };
 
 //Criar Guia de Estudo

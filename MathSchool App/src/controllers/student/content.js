@@ -30,7 +30,7 @@ const getContent = async (req, res) => {
 
 //Prototipo: Content - Student - Content ID
 const viewContent = async (req, res) => {
-    const content = await api.get('contents' + req.params.id);
+    const content = await api.get('contents', req.params.id);
     info.user = store.get('user');
     res.render('student/studentContentID', { content, info });
 };

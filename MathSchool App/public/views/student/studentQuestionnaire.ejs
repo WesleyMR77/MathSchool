@@ -4,49 +4,26 @@
 <head>
        <meta charset="utf-8" />
        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-       <title>Questionários</title>
+       <title><%= info.title %></title>
        <meta name="viewport" content="width=device-width, initial-scale=1">
-       <link rel="stylesheet" href="../../css/student/studentStudyGuide.css">
+       <link rel="stylesheet" href="../../css/student/materialList.css">
 </head>
 
 <body>
-       <% include header %>
+       <% include searchHeader %>
 
-       <main class="adicionar-guia">
+       <main class="material">
 
               <section class="">
 
-                     <div class="guias">
+                     <div class="lista">
+                            <% questionnaires.forEach( element => { %>
                             <div class="img-configuration">
-                                   <a href="mostrarConteudo"> <img class="img-form" src="../../img/img-questionario/questionnaire.png" alt=""> </a>
-                                   <h3>Fração</h3>
-                                   <span class="span-nome">Maycon</span>
+                                   <a href="/student/questionnaire/<%= element.id %>/0"><img class="img-subject" src="../../img/img-questionario/questionnaire.png" alt=""> </a>
+                                   <h3><%= element.name %></h3>
+                                   <span class="span-nome"><%= element.author %></span>
                             </div>
-                            <div class="img-configuration">
-                                   <a href="mostrarConteudo"> <img class="img-form" src="../../img/img-questionario/questionnaire.png" alt=""> </a>
-                                   <h3>Fração</h3>
-                                   <span class="span-nome">Maycon</span>
-                            </div>
-                            <div class="img-configuration">
-                                   <a href="mostrarConteudo"> <img class="img-form" src="../../img/img-questionario/questionnaire.png" alt=""> </a>
-                                   <h3>Fração</h3>
-                                   <span class="span-nome">Maycon</span>
-                            </div>
-                            <div class="img-configuration">
-                                   <a href="mostrarConteudo"> <img class="img-form" src="../../img/img-questionario/questionnaire.png" alt=""> </a>
-                                   <h3>Fração</h3>
-                                   <span class="span-nome">Maycon</span>
-                            </div>
-                            <div class="img-configuration">
-                                   <a href="mostrarConteudo"> <img class="img-form" src="../../img/img-questionario/questionnaire.png" alt=""> </a>
-                                   <h3>Fração</h3>
-                                   <span class="span-nome">Maycon</span>
-                            </div>
-                            <div class="img-configuration">
-                                   <a href="mostrarConteudo"> <img class="img-form" src="../../img/img-questionario/questionnaire.png" alt=""> </a>
-                                   <h3>Fração</h3>
-                                   <span class="span-nome">Maycon</span>
-                            </div>
+                            <% }); %>
                      </div>
 
               </section>

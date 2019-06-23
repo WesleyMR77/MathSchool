@@ -14,5 +14,6 @@ router.use(security.verifyAuth, security.isStudent);
 router.get('/', student.questionnairePage);
 router.post('/', student.getQuestionnaire);
 router.get('/:id/:number', student.viewQuestion);
+router.post('/:id/:number', student.correctQuestion);
 
 module.exports = router;

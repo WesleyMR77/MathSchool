@@ -14,14 +14,6 @@ const questionnairePage = async (req, res) => {
     res.render('student/studentQuestionnaire', { questionnaires, info });
 };
 
-//Prototipo: Questionnaire - Student - Question ID
-const viewQuestion = async (req, res) => {
-    const questionnaire = await api.get('questionnaires', req.params.id);
-    const question = await api.get('questions', questionnaire.questions[req.params.number]);
-    info.user = store.get('user');
-    res.render('student/studentQuestionID', { questionnaire, question, info });
-};
-
 //Listar questionario
 const getQuestionnaire = async (req, res) => {
     const search = req.body.search;
@@ -36,8 +28,32 @@ const getQuestionnaire = async (req, res) => {
     res.render('student/studentStudyGuide', { questionnaires, info });
 };
 
+//Prototipo: Questionnaire - Student - Question ID
+const viewQuestion = async (req, res) => {
+    const questionnaire = await api.get('questionnaires', req.params.id);
+    const question = await api.get('questions', questionnaire.questions[req.params.number].id);
+    info.user = store.get('user');
+    res.render('student/studentQuestionID', { questionnaire, question, info });
+};
+
+//Corrigir questao
+const correctQuestion = async (req, res) => {
+    const answer = req.body.options;
+    const questionnaire = await api.get('questionnaires', req.params.id);
+    const question = await api.get('questions', questionnaire.questions[req.params.number].id);
+    var correction;
+    if(answer == question.answer){
+        correction = true;
+    }else{
+        correction = false;
+    }
+    info.user = store.get('user');
+    res.render('student/studentCorrectQuestion', { questionnaire, question, correction, info });
+};
+
 module.exports = {
     questionnairePage,
     getQuestionnaire,
-    viewQuestion
+    viewQuestion,
+    correctQuestion
 }

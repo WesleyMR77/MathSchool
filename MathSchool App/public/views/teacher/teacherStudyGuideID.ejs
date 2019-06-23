@@ -6,11 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title><%= info.title %></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../../css/teacher/studyGuideID.css">
+    <link rel="stylesheet" href="../../../css/teacher/studyGuideID.css">
 </head>
 
 <body>
-    <% include header %>
+    <% include headerID %>
 
     <%
     //Verificar o tipo de imagem
@@ -45,23 +45,23 @@
         <div class="menu-mostrar">
 
             <% for( let index = 0; index < guide.trail.length; index++){ %>
-                <% image = getImage( element.subject, element.type ); %>
+                <% image = getImage( guide.trail[index].subject, guide.trail[index].type ); %>
                 <% if(guide.trail[index].type == "contents"){ %>
                     <div class="img-configuration">
-                        <a href="/teacher/content/view/<%= guide.trail[index].id %>"><img class="img-size" src="../../img/<%= image %>.png"
+                        <a href="/teacher/content/view/<%= guide.trail[index].id %>"><img class="img-size" src="../../../img/<%= image %>.png"
                             alt=""> </a>
                         <h3><%= guide.trail[index].name %></h3>
                         <span class="span-nome"><%= guide.trail[index].author %></span>
                     </div>
                 <% }else{ %>
                     <div class="img-configuration">
-                        <a href="/teacher/questionnaire/view/<%= guide.trail[index].id %>"><img class="img-size" src="../../img/<%= image %>.png"
+                        <a href="/teacher/questionnaire/view/<%= guide.trail[index].id %>"><img class="img-size" src="../../../img/<%= image %>.png"
                             alt=""> </a>
                         <h3><%= guide.trail[index].name %></h3>
                         <span class="span-nome"><%= guide.trail[index].author %></span>
                     </div>
                 <% }; %>
-                <% if(index+2 != guide.trail.length){ %>
+                <% if(index+1 != guide.trail.length){ %>
                     <div class="flecha"></div>
                 <% }; %>
             <% }; %>        

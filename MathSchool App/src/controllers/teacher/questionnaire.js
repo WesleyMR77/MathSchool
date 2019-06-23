@@ -101,12 +101,12 @@ const getQuestion = async (req, res) => {
 
 //Adicionar pergunta
 const addQuestion = async (req, res) => {
-    const question = api.get('questions', req.params.id);
+    const question = await api.get('questions', req.params.id);
     var list = store.get('list');
     list.push(question);
     store.remove('list');
     store.set('list', list);
-    res.redirect('teacher/questionnaire/create');
+    res.redirect('/teacher/questionnaire/create');
 };
 
 //Remover questao
@@ -120,7 +120,7 @@ const removeQuestion = async (req, res) => {
     }
     store.remove('list');
     store.set('list', list);
-    res.redirect('teacher/questionnaire/create');
+    res.redirect('/teacher/questionnaire/create');
 };
 
 //Criar questionario
@@ -129,17 +129,17 @@ const createQuestionnaire = async (req, res) => {
         name: req.body.name,
         subject: req.body.subject,
         questions: store.get('list'),
-        author: user.name
+        author: info.user.name
     });
     store.remove('list');
     firstTime = true;
-    res.redirect('teacher/questionnaire')
+    res.redirect('/teacher/questionnaire')
 };
 
 //Apagar questionario
 const deleteQuestionnaire = async (req, res) => {
     await api.deleteItem('questionnaires', req.params.id);
-    res.redirect('teacher/questionnaire');
+    res.redirect('/teacher/questionnaire');
 }; 
 
 module.exports = {

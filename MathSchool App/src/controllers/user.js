@@ -56,10 +56,12 @@ const signIn = async (req, res) => {
         const errorMessage = error.message;
         if(errorCode == 'auth/wrong-password'){
             console.log("Senha incorreta.");
+            res.redirect('/user/login');
         }else{
             console.log(errorMessage);
         };
         console.log("Seguinte Erro: " + error); 
+        res.redirect('/user/login');
     });    
 
     const id = firebase.auth().currentUser.uid;
