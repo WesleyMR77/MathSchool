@@ -9,6 +9,7 @@ var info = {
 
 //Prototipo: Study Guide - Student
 const studyGuidesPage = async (req, res) => {
+    info.user = store.get('user');
     const guides = await api.list('studyGuides');
     res.render('student/studentStudyGuide', { guides, info });
 };
@@ -37,7 +38,13 @@ const viewStudyGuide = async (req, res) => {
 //Visualizar conteudo do guia
 const viewContent = async (req, res) => {
     const guide = await api.get('studyGuides', req.params.guideID);
-    const content = await api.get('contents' + req.params.id);
+    var content;
+    guide.trail.forEach(element => {
+        if(element.id == req.params.id){
+            content = element;
+            break;
+        }
+    });
     info.user = store.get('user');
     res.render('student/studentStudyGuideContent', { guide, content, info });
 };
@@ -45,10 +52,38 @@ const viewContent = async (req, res) => {
 //Visualizar questionario do guia
 const viewQuestionnaire = async (req, res) => {
     const guide = await api.get('studyGuides', req.params.guideID);
-    const questionnaire = await api.get('questionnaires', req.params.id);
-    const question = await api.get('questions', questionnaire.questions[req.params.number]);
+    var questionnaire;
+    guide.trail.forEach(element => {
+        if(element.id == req.params.id){
+            questionnaire = element;
+            break;
+        }
+    });    
+    const question = questionnaire.questions[req.params.number];
     info.user = store.get('user');
-    res.render('student/studentQuestionID', { guide, questionnaire, question, info });
+    res.render('student/studentStudyGuideQuestion', { guide, questionnaire, question, info });
+};
+
+//Corrigir questao
+const correctQuestion = async (req, res) => {
+    const guide = await api.get('studyGuides', req.params.guideID);
+    const answer = req.body.options;
+    var questionnaire;
+    guide.trail.forEach(element => {
+        if(element.id == req.params.id){
+            questionnaire = element;
+            break;
+        }
+    });    
+    const question = questionnaire.questions[req.params.number];
+    var correction;
+    if(answer == question.answer){
+        correction = true;
+    }else{
+        correction = false;
+    }
+    info.user = store.get('user');
+    res.render('student/studentStudyGuideCorrectQuestion', { guide, questionnaire, question, correction, info });
 };
 
 module.exports = {
@@ -56,5 +91,6 @@ module.exports = {
     viewStudyGuide,
     getStudyGuide,
     viewContent,
-    viewQuestionnaire
+    viewQuestionnaire,
+    correctQuestion
 }

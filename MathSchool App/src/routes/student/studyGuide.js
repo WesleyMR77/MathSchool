@@ -14,8 +14,8 @@ router.use(security.verifyAuth, security.isStudent);
 router.get('/', student.studyGuidesPage);
 router.post('/', student.getStudyGuide);
 router.get('/:id', student.viewStudyGuide);
-router.get('/:guideID/:id', student.viewContent);
-router.get('/:guideID/:id/:number', student.viewQuestionnaire);
-
+router.get('/:guideID/content/:id', student.viewContent);
+router.get('/:guideID/questionnaire/:id/:number', student.viewQuestionnaire);
+router.post('/:guideID/questionnaire/:id/:number', student.correctQuestion);
 
 module.exports = router;

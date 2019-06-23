@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title><%= info.title %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../css/student/studentQuestionID.css">
+</head>
+
+<body>
+    <% include headerID %>
+
+    <section class="regular-area">
+        <%
+            var text;
+            var textColor;
+            if(correction){
+                text = "Resposta correta!";
+                textColor = "right";
+            }else{
+                text = "Resposta errada!";
+                textColor = "wrong";
+            }
+        %>
+        <h1 class="correction <%= textColor %>"><%= text %></h1>
+
+        <div class="button-end">
+            <% 
+                var index;
+                for(let i = 0; i < questionnaire.questions.length; i++){
+                    if(questionnaire.questions[i].id == question.id ){
+                        index = i;
+                        break;
+                    }
+                };
+
+                var j;
+                for(let i = 0; i < guide.trail.length; i++){
+                    if(guide.trail[i].id == questionnaire.id ){
+                        j = i;
+                        break;
+                    }
+                };
+            %>
+            <div>   
+                <% if((index + 1) != questionnaire.questions.length){ %>
+                    <% index = index + 1; %>
+                    <a href="/student/study-guide/<%= guide.id %>/questionnaire/<%= questionnaire.id %>/<%= index %>" class="button-avancar">Avançar</a>
+                <% } else {%>
+                    <% if((j+1) != guide.trail.length){ %>
+                        <% j = j+1; %>
+                        <% if(guide.trail[j].type == "contents"){ %>
+                            <a href="/student/study-guide/<%= guide.id %>/content/<%= guide.trail[j].id %>" class="button-avancar">Avançar</a>
+                        <% } else { %>
+                            <a href="/student/study-guide/<%= guide.id %>/questionnaire/<%= guide.trail[j].id %>/0" class="button-avancar">Avançar</a>
+                        <% }; %>
+                    <% } else { %>
+                        <a href="/student/study-guide/<%= guide.id %>" class="button-avancar">Finalizar</a>
+                    <% }; %>
+                <% }; %>
+            </div>
+            <div>
+                <% if(correction){ %>
+                <% } else { %>
+                <% index = index - 1;%>
+                    <a href="/student/study-guide/<%= guide.id %>/questionnaire/<%= questionnaire.id %>/<%= index %>" class="button-corrigir">Tentar denovo</a>
+                <% }; %>    
+            </div>
+        </div>
+
+    </section>
+</body>
+
+</html>

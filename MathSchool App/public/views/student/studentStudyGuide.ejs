@@ -2,56 +2,57 @@
 <html>
 
 <head>
-       <meta charset="utf-8" />
-       <meta http-equiv="X-UA-Compatible" content="IE=edge">
-       <title>Guia de Estudo</title>
-       <meta name="viewport" content="width=device-width, initial-scale=1">
-       <link rel="stylesheet" href="../../css/student/studentStudyGuide.css">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title><%= info.title %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../css/student/materialList.css">
 </head>
 
 <body>
-       <% include header %>
+    <% include searchHeader %>
 
-       <main class="adicionar-guia">
+    <%
+    //Verificar o tipo de imagem
+    function getImage(subject) {
+        switch (subject) {
+            case "Operações Básicas":
+                return "more";
+            case "Fração":
+                return "fraction";
+            case "Álgebra":
+                return "algebra"
+            case "Análise Combinatória":
+                return "division";
+            case "Geometria":
+                return "area";
+            case "Porcentagem":
+                return "percent";
+            default:
+                return "other";
+        }
+    }
+    %>
 
-            <section class="">
+    <main class="material">
+
+        <section class="">
              
-                <div class="guias">
-                    <div class="img-configuration">
-                        <a href="./mostrarConteudo"> <img src="../../img/img-guia-estudo/more.png" alt=""> </a>
-                        <h3>Fração</h3>
-                        <span class="span-nome">Maycon</span>
-                    </div>
-                    <div class="img-configuration">
-                        <a href="./mostrarConteudo"> <img class="img-form" src="../../img/img-guia-estudo/questionnaire.png" alt=""> </a>
-                        <h3>Fração</h3>
-                        <span class="span-nome">Maycon</span>
-                    </div>
-                    <div class="img-configuration">
-                        <a href="./mostrarConteudo"> <img src="../../img/img-guia-estudo/more.png" alt=""> </a>
-                        <h3>Fração</h3>
-                        <span class="span-nome">Maycon</span>
-                    </div>
-                    <div class="img-configuration">
-                        <a href="./mostrarConteudo"> <img src="../../img/img-guia-estudo/more.png" alt=""> </a>
-                        <h3>Fração</h3>
-                        <span class="span-nome">Maycon</span>
-                    </div>
-                    <div class="img-configuration">
-                        <a  href="./mostrarConteudo"> <img class="img-form" src="../../img/img-guia-estudo/questionnaire.png" alt=""> </a>
-                        <h3>Fração</h3>
-                        <span class="span-nome">Maycon</span>
-                    </div>
-                    <div class="img-configuration">
-                        <a href="./mostrarConteudo"> <img src="../../img/img-guia-estudo/more.png" alt=""> </a>
-                        <h3>Fração</h3>
-                        <span class="span-nome">Maycon</span>
-                    </div>
+            <% var image; %>
+
+            <div class="lista">
+                <% guides.forEach( element => { %>
+                <% image = getImage(element.subject); %>
+                <div class="img-configuration">
+                    <a href="/student/study-guide/<%= element.id %>"><img src="../../img/img-guia-estudo/<%= image %>.png" alt=""> </a>
+                    <h3><%= element.name %></h3>
+                    <span class="span-nome"><%= element.author %></span>
                 </div>
+                <% }); %>
+            </div>
     
-            </section>
-        </main>
-    </body>
+        </section>
+    </main>
 </body>
 
 </html>

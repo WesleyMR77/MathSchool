@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title><%= info.title %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../css/student/studentContentID.css">
+</head>
+
+<body>
+    <% include headerID %>
+
+    <section class="menu-texto">
+        <div class="center">
+            <h2><%= content.name %></h2>
+        </div>
+
+        <span>Autor: <%= content.author %></span>
+        <p><%= content.text %></p>
+        
+        <% 
+            var index;
+            for(let i = 0; i < guide.trail.length; i++){
+                if(guide.trail[i].id == content.id ){
+                    index = i;
+                    break;
+                }
+            };
+        %>
+        <% if((index + 1) != guide.trail.length){ %>
+            <% index = index + 1; %>
+            <% if(guide.trail[index].type == "contents"){ %>
+                <a href="/student/study-guide/<%= guide.id %>/content/<%= guide.trail[index].id %>" class="button-avancar">Avançar</a>
+            <% } else { %>
+                <a href="/student/study-guide/<%= guide.id %>/questionnaire/<%= guide.trail[index].id %>/0" class="button-avancar">Avançar</a>
+            <% }; %>
+        <% } else {%>
+            <a href="/student/study-guide/<%= guide.id %>" class="button-avancar">Finalizar</a>
+        <% }; %>
+    </section>
+
+</body>
+
+</html>

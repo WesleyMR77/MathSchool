@@ -15,26 +15,26 @@
     <%
     //Verificar o tipo de imagem
     function getImage(subject, type) {
-      if(type == "contents"){
-        switch (subject) {
-          case "Operações Básicas":
-              return "img-conteudo/more";
-          case "Fração":
-              return "img-conteudo/fraction";
-          case "Álgebra":
-              return "img-conteudo/algebra"
-          case "Análise Combinatória":
-              return "img-conteudo/division";
-          case "Geometria":
-              return "img-conteudo/area";
-          case "Porcentagem":
-              return "img-conteudo/percent";
-          default:
-              return "img-conteudo/other";
-      }
-      }else{
-        return "img-guia-estudo/questionnaire"
-      }
+        if(type == "contents"){
+            switch (subject) {
+                case "Operações Básicas":
+                    return "img-conteudo/more";
+                case "Fração":
+                    return "img-conteudo/fraction";
+                case "Álgebra":
+                    return "img-conteudo/algebra"
+                case "Análise Combinatória":
+                    return "img-conteudo/division";
+                case "Geometria":
+                    return "img-conteudo/area";
+                case "Porcentagem":
+                    return "img-conteudo/percent";
+                default:
+                    return "img-conteudo/other";
+            }
+        }else{
+            return "img-guia-estudo/questionnaire"
+        }
     }
     %>
 
