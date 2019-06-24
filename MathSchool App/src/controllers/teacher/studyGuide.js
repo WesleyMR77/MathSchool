@@ -72,6 +72,7 @@ const viewStudyGuide = async (req, res) => {
 
 //Prototipo: Study Guide - Teacher - Create Guide
 const createGuidePage = async (req, res) => {
+    const trail = createTrail(firstTime);
     const questionnaires = await api.list('questionnaires');
     const contents = await api.list('contents');
     var materials = [];
@@ -93,7 +94,13 @@ const createGuidePage = async (req, res) => {
             type: "questionnaires"
         })
     });
-    const trail = createTrail(firstTime);
+    for (let i = 0; i < materials.length; i++) {
+        for (let j = 0; j < trail.length; j++) {
+            if(materials[i].id == trail[j].id){
+                materials.splice(i, 1);
+            }
+        }
+    }
     info.user = store.get('user');
     res.render('teacher/teacherCreateStudyGuide', { materials, info, trail });
 };
@@ -147,6 +154,13 @@ const getMaterial = async (req, res) => {
         })
     });
     const trail = createTrail(firstTime);
+    for (let i = 0; i < materials.length; i++) {
+        for (let j = 0; j < trail.length; j++) {
+            if(materials[i].id == trail[j].id){
+                materials.splice(i, 1);
+            }
+        }
+    }
     info.user = store.get('user');
     res.render('teacher/teacherCreateStudyGuide', { materials, info, trail });
 };

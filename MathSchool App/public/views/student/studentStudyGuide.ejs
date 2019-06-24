@@ -44,7 +44,7 @@
                 <% guides.forEach( element => { %>
                 <% image = getImage(element.subject); %>
                 <div class="img-configuration">
-                    <a href="/student/study-guide/<%= element.id %>"><img src="../../img/img-guia-estudo/<%= image %>.png" alt=""> </a>
+                    <a href="/student/study-guide/<%= element.id %>"><img class="img-subject" src="../../img/img-conteudo/<%= image %>.png" alt=""> </a>
                     <h3><%= element.name %></h3>
                     <span class="span-nome"><%= element.author %></span>
                 </div>

@@ -74,6 +74,13 @@ const getQuestionnaire = async (req, res) => {
 const createQuestionnairePage = async (req, res) => {
     const questions = await api.list('questions');
     const list = createList(firstTime);
+    for (let i = 0; i < questions.length; i++) {
+        for (let j = 0; j < list.length; j++) {
+            if(questions[i].id == list[j].id){
+                questions.splice(i, 1);
+            }
+        }
+    }
     info.user = store.get('user');
     res.render('teacher/teacherCreateQuestionnaire', { questions, list, info });
 };
@@ -84,6 +91,7 @@ const getQuestion = async (req, res) => {
     const search = req.body.search;
     const AllQuestions = await api.list('questions');
     var questions = []; 
+    const list = createList(firstTime);
     if(search != ""){
         AllQuestions.forEach(element => {
             if(element.name == search || element.author == search){
@@ -95,7 +103,13 @@ const getQuestion = async (req, res) => {
             questions.push(element);
         });
     };
-    const list = createList(firstTime);
+    for (let i = 0; i < questions.length; i++) {
+        for (let j = 0; j < list.length; j++) {
+            if(questions[i].id == list[j].id){
+                questions.splice(i, 1);
+            }
+        }
+    }
     res.render('teacher/teacherCreateQuestionnaire', { questions, list, info });
 };
 

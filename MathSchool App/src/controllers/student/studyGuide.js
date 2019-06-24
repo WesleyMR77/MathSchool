@@ -42,7 +42,6 @@ const viewContent = async (req, res) => {
     guide.trail.forEach(element => {
         if(element.id == req.params.id){
             content = element;
-            break;
         }
     });
     info.user = store.get('user');
@@ -56,7 +55,6 @@ const viewQuestionnaire = async (req, res) => {
     guide.trail.forEach(element => {
         if(element.id == req.params.id){
             questionnaire = element;
-            break;
         }
     });    
     const question = questionnaire.questions[req.params.number];
@@ -72,7 +70,6 @@ const correctQuestion = async (req, res) => {
     guide.trail.forEach(element => {
         if(element.id == req.params.id){
             questionnaire = element;
-            break;
         }
     });    
     const question = questionnaire.questions[req.params.number];
