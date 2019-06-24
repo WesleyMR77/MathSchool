@@ -37,8 +37,8 @@
                 };
             %>
             <div>   
-                <% if((index + 1) != questionnaire.questions.length){ %>
-                    <% index = index + 1; %>
+                <% index = index + 1; %>
+                <% if(index != questionnaire.questions.length){ %>
                     <a href="/student/questionnaire/<%= questionnaire.id %>/<%= index %>" class="button-avancar">Avançar</a>
                 <% } else {%>
                     <a href="/student/questionnaire" class="button-avancar">Finalizar</a>
