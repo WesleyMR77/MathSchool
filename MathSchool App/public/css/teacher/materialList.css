@@ -29,8 +29,8 @@
 }
 
 .img-subject{
-    max-width: 65%;
-    max-height: 65%;
+    max-width: 127px;
+    max-height: 127px;
     box-sizing: border-box;
     margin-bottom: 10px;
 }

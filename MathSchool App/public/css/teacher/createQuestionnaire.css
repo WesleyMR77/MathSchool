@@ -8,7 +8,8 @@ body{
     margin-left: 20vw;
     margin-top: 20vh;
     margin-top: 150px;
-    display: flex
+    display: flex;
+    font-size: 12px;
 }
 .buscar-questionario{
     text-align: center;
@@ -21,9 +22,6 @@ body{
     overflow: scroll;
 }
 
-.h2-font{
-    font-size: 0.8em;
-}
 .cadastrar-questionario{
     margin-left: 4vw;
     width: 30vw;
@@ -57,8 +55,17 @@ body{
 }
 
 .img-configuration{
-    margin-top: 50px;
+    max-width: 95px;
+    max-height: 90px;
+    margin-top: 90px;
     margin-left: 40px;
+}
+
+.img-configuration-new{
+    max-width: 95px;
+    max-height: 90px;
+    margin-top: 60px;
+    margin-left: 25px;
 }
 
 .menu-busca{
@@ -68,16 +75,10 @@ body{
 }
 
 .img-size{
-    width: 100px;
+    width: 90px;
+    height: 90px
 }
 
-/* #campo-selecao{
-    background-color: #00396B;
-    color: white;
-    width: 24.25vw;
-    height: 4.5vh;;
-    font-size: 1em;
-} */
 
 .campo-selecao{
     color: #00396B;
@@ -103,24 +104,33 @@ body{
 }
 
 .img-size-cadastra{
-    width: 5vw;
+    width: 55px;
 }
 
 h3{
-    font-size:  0.9em;
+    font-size:  1.2em;
     margin: 0
 }
-span{
+
+.h3-newQuestionnaire{
     font-size:  0.7em;
+    margin-bottom: -5px;
+}
+span{
+    font-size:  0.8em;
+}
+
+.span-nome{
+    font-size: 0.5em;
 }
 
 .titulo-trilha{
     margin-bottom: 0px;
-    font-size: 1.1em;
+    font-size: 1.5em;
 }
 
 .h2-size-title{
-    font-size: 1.8em;
+    font-size: 3em;
 }
 
 .campo-selecao-ajusty{

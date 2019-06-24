@@ -7,13 +7,13 @@
     width: 50px;
 }
 
-span{
+.title-name{
     font-size: 1.8em;   
     vertical-align: 15px;
 }
 a{
     text-decoration: none;
 }
-div{
+.border{
     margin-bottom: 40px;
 }

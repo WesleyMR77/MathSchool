@@ -26,7 +26,7 @@
         <div class="img-configuration">
           <a href="/teacher/questionnaire/create/add/<%= element.id %>"> <img class="img-size" src="../../img/img-question/question.png" alt=""> </a>
           <h3><%= element.name %></h3>
-          <span class="span-nome"><%= element.author %></span>
+          <span ><%= element.author %></span>
         </div>
         <% }); %>
       </div>
@@ -59,10 +59,10 @@
         <h2 class="titulo-trilha">Novo Questionário</h2>
         <div class="menu-busca">
           <% list.forEach( element => { %>
-          <div class="img-configuration">
+          <div class="img-configuration-new">
             <a href="/teacher/questionnaire/create/remove/<%= element.id %>"> <img class="img-size-cadastra" src="../../img/img-question/question.png" alt="">
             </a>
-            <h3><%= element.name %></h3>
+            <h3 class="h3-newQuestionnaire"><%= element.name %></h3>
             <span class="span-nome"><%= element.author %></span>
           </div>
           <% }); %>

@@ -8,7 +8,8 @@ body{
     margin-left: 20vw;
     margin-top: 20vh;
     margin-top: 150px;
-    display: flex
+    display: flex;
+    font-size: 12px;
 }
 .buscar-guia{
     text-align: center;
@@ -71,13 +72,6 @@ body{
     width: 100px;
 }
 
-/* #campo-selecao{
-    background-color: #00396B;
-    color: white;
-    width: 24.25vw;
-    height: 4.5vh;;
-    font-size: 1em;
-} */
 
 .campo-selecao{
     color: #00396B;
@@ -110,8 +104,17 @@ h3{
     font-size:  0.9em;
     margin: 0
 }
-span{
+
+.h3-newQuestionnaire{
     font-size:  0.7em;
+    margin-bottom: -5px;
+}
+
+.span-nome{
+    font-size: 0.5em;
+}
+span{
+    font-size:  0.8em;
 }
 
 .titulo-trilha{
