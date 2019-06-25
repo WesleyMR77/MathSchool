@@ -13,14 +13,14 @@ h2{
     margin-bottom: 40px;
 }
 
-input{
+.input-space-top{
     margin-top: 15px;
 }
 
 .button-corrigir{
     margin-right: 50px;
     width: 100px;
-    height: 35px;
+    height: 30px;
     margin-bottom: 50px;
     border-radius: 10px;
     background-color: #00396B;
@@ -30,12 +30,15 @@ input{
 .button-avancar{
     float: right;
     width: 100px;
-    height: 35px;
+    height: 30px;
     margin-bottom: 50px;
     border-radius: 10px;
     background-color: #00396B;
     border:solid;
     color: white; 
+    text-decoration: none;
+    text-align: center;
+    font-size: 0.85em;
 }
 
 .button-end{

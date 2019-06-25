@@ -62,6 +62,13 @@ body{
     margin-left: 40px;
 }
 
+.img-configuration-new{
+    max-width: 95px;
+    max-height: 90px;
+    margin-top: 60px;
+    margin-left: 25px;
+}
+
 .menu-busca{
     display: flex;
     flex-wrap: wrap;
@@ -101,11 +108,11 @@ body{
 }
 
 h3{
-    font-size:  0.9em;
+    font-size:  1.2em;
     margin: 0
 }
 
-.h3-newQuestionnaire{
+.h3-newGuia{
     font-size:  0.7em;
     margin-bottom: -5px;
 }
@@ -119,11 +126,11 @@ span{
 
 .titulo-trilha{
     margin-bottom: 0px;
-    font-size: 1.1em;
+    font-size: 1.5em;
 }
 
 .h2-size-title{
-    font-size: 1.8em;
+    font-size: 3em;
 }
 
 .campo-selecao-ajusty{

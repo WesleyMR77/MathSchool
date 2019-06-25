@@ -55,7 +55,7 @@
         <div class="img-configuration">
           <a href="/teacher/study-guide/create/add/<%= element.type %>/<%= element.id %>"><img class="img-size" src="../../img/<%= image %>.png" alt=""></a>
           <h3><%= element.name %></h3>
-          <span class="span-nome"><%= element.author %></span>
+          <span><%= element.author %></span>
         </div>
         <% });  %>
       </div>
@@ -89,9 +89,9 @@
         <div class="menu-busca">
           <% trail.forEach( element => { %>
           <% image = getImage( element.subject, element.type ); %>
-          <div class="img-configuration">
+          <div class="img-configuration-new">
             <a href="/teacher/study-guide/create/remove/<%= element.id %>"><img class="img-size-cadastra" src="../../img/<%= image %>.png" alt=""></a> 
-            <h3 class="h3-newQuestionnaire" ><%= element.name %></h3>
+            <h3 class="h3-newGuia" ><%= element.name %></h3>
             <span class="span-nome"><%= element.author %></span>
           </div>
           <% }); %>
