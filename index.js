@@ -37,7 +37,7 @@ app.use('/teacher/questionnaire', teacherQuestionnaire);
 app.use('/teacher/question', teacherQuestion);
 
 //Determinando a porta automaticamente
-const port = process.env.PORT || 8080
+const port = process.env.PORT || 3000
 
 //Configurando pagina inicial
 app.get('/', async (request, response) => { 
