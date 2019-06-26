@@ -12,8 +12,14 @@ body{
 }
 
 .center{
-    text-align: center
+    text-align: center;
 }
 p{
     line-height: 20px;
+}
+
+#bb{
+
+    text-decoration: none;
+
 }
