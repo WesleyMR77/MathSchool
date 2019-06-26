@@ -13,15 +13,6 @@
     <% include searchHeader %>
 
     <%
-    //Verificacao se ha ou nao materiais cadastrados
-    function verifyMaterial(materials) {
-        if(materials.length == 0){
-            return false;
-        }else{
-            return true;
-        }
-    };
-
     //Verificar o tipo de imagem
     function getImage(subject) {
         switch (subject) {
@@ -50,16 +41,10 @@
         </section>
 
         <section class="line">
-            <%
-            var myGuidesTitle;
-            var image;
-            if(verifyMaterial(myGuides)){
-                myGuidesTitle = "Meus Guias";
-            }else{
-                myGuidesTitle = "Voce ainda nao cadastrou nenhum guia"
-            };
-            %>
-            <h2 class="center"><%= myGuidesTitle %></h2>
+            <h2 class="center">Meus Guias</h2>
+            <% if(myGuides.length == 0){ %>
+                <p>Nenhum guia cadastrado ou encontrado.</p>
+            <% } %>
             <div class="lista">
                 <% myGuides.forEach( element => { %>
                     <div class="img-configuration">
@@ -67,7 +52,7 @@
                         image = getImage(element.subject);
                         %>
                             <a href="/teacher/study-guide/delete/<%= element.id %>"><img class="img-delete" src="../../img/img-menu/delete.png"  alt=""> </a>
-                        <a href="/teacher/study-guide/view/<%= element.id %>"> <img class="img-subject" src="../../img/img-conteudo/<%= image %>.png" alt=""> </a>
+                        <a href="/teacher/study-guide/update/<%= element.id %>"> <img class="img-subject" src="../../img/img-conteudo/<%= image %>.png" alt=""> </a>
                         <h3><%= element.name %></h3>
                         <span class="span-nome"><%= element.author %></span>
                     </div>
@@ -78,6 +63,9 @@
 
         <section class="">
             <h2 class="center">Todos os Guias</h2>
+            <% if(guides.length == 0){ %>
+                <p>Nenhum guia cadastrado ou encontrado.</p>
+            <% } %>
             <div class="lista">
                 <% guides.forEach( element => { %>
                     <div class="img-configuration">

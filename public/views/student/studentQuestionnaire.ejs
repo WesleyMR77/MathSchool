@@ -17,6 +17,9 @@
               <section class="">
 
                      <div class="lista">
+                            <% if(questionnaires.length == 0){ %>
+                                   <p>Nenhum questionário cadastrado ou encontrado.</p>
+                            <% } %>
                             <% questionnaires.forEach( element => { %>
                             <div class="img-configuration">
                                    <a href="/student/questionnaire/<%= element.id %>/0"><img class="img-subject" src="../../img/img-questionario/questionnaire.png" alt=""> </a>

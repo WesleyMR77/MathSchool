@@ -13,14 +13,6 @@
     <% include searchHeader %>
 
     <%
-    //Verificacao se ha ou nao materiais cadastrados
-    function verifyMaterial(materials) {
-        if(materials.length == 0){
-            return false;
-        }else{
-            return true;
-        }
-    };
 
     //Verificar o tipo de imagem
     function getImage(subject) {
@@ -49,16 +41,10 @@
             </a>
         </section>
         <section class="line">
-            <%
-            var myContentsTitle;
-            var image;
-            if(verifyMaterial(myContents)){
-                myContentsTitle = "Meus Conteúdos";
-            }else{
-                myContentsTitle = "Voce ainda nao cadastrou nenhum conteúdo"
-            };
-            %>
-            <h2 class="center"><%= myContentsTitle %></h2>
+            <h2 class="center">Meus Conteúdos</h2>
+            <% if(myContents.length == 0){ %>
+                <p>Nenhum conteúdo cadastrado ou encontrado.</p>
+            <% } %>
             <div class="lista">
                 <% myContents.forEach( element => { %>
                 <div class="img-configuration">
@@ -77,6 +63,9 @@
 
         <section>
             <h2 class="center">Todos os Conteúdos</h2>
+            <% if(contents.length == 0){ %>
+                <p>Nenhum conteúdo cadastrado ou encontrado.</p>
+            <% } %>
             <div class="lista">
                 <% contents.forEach( element => { %>
                 <div class="img-configuration">

@@ -39,8 +39,11 @@
         <section class="">
          
             <% var image; %>
-
+            
             <div class="lista">
+                <% if(contents.length == 0){ %>
+                    <p>Nenhum conteúdo cadastrado ou encontrado.</p>
+                <% } %>
                 <% contents.forEach( element => { %>
                 <% image = getImage(element.subject); %>
                 <div class="img-configuration">

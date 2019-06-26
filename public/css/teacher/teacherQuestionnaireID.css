@@ -3,6 +3,11 @@
     margin-top: 23vh;
 }
 
+.regular-area h1{
+    text-align: center;
+    font-size: 2em;
+}
+
 .img-size{
     width: 50px;
 }

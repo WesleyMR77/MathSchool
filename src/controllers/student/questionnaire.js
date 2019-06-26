@@ -19,11 +19,17 @@ const getQuestionnaire = async (req, res) => {
     const search = req.body.search;
     const AllQuestionnaires = await api.list('questionnaires');
     var questionnaires = []; 
-    AllQuestionnaires.forEach(element => {
-        if(element.name == search || element.author == search){
+    if(search != ""){
+        AllQuestionnaires.forEach(element => {
+            if(element.name == search || element.author == search){
+                questionnaires.push(element);
+            }
+        });
+    }else{
+        AllQuestionnaires.forEach(element => {
             questionnaires.push(element);
-        }
-    });
+        });
+    }
     info.user = store.get('user');
     res.render('student/studentStudyGuide', { questionnaires, info });
 };

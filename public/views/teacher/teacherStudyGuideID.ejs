@@ -41,9 +41,9 @@
     <section class="mostrar-guia">
 
         <% var image; %>
+        <h1><%= guide.name %></h1>
 
         <div class="menu-mostrar">
-
             <% for( let index = 0; index < guide.trail.length; index++){ %>
                 <% image = getImage( guide.trail[index].subject, guide.trail[index].type ); %>
                 <% if(guide.trail[index].type == "contents"){ %>

@@ -14,10 +14,14 @@ router.use(security.verifyAuth, security.isTeacher);
 router.get('/', teacher.studyGuidesPage);
 router.post('/', teacher.getStudyGuide);
 router.get('/view/:id', teacher.viewStudyGuide);
+router.get('/update/:id', teacher.updateGuidePage);
+router.post('/update/:id', teacher.updateGuide);
+router.get('/update/:id/add/:type/:materialId', teacher.addUpdateTrail);
+router.get('/update/:id/remove/:materialId', teacher.removeUpdateTrail);
 router.get('/create', teacher.createGuidePage);
 //router.post('/create', teacher.getMaterial);
-router.get('/create/add/:type/:id', teacher.addTrail);
-router.get('/create/remove/:id', teacher.removeTrail);
+router.get('/create/add/:type/:id', teacher.addCreationTrail);
+router.get('/create/remove/:id', teacher.removeCreationTrail);
 router.post('/create', teacher.createGuide);
 router.get('/delete/:id', teacher.deleteGuide);
 

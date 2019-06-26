@@ -13,6 +13,7 @@ var firstTime = true;
 //Verificar criacao de trilha
 const createList = (first) => {
     if(first){
+        store.remove('list');
         const list = [];
         store.set('list', list);
         firstTime = false;
@@ -24,6 +25,7 @@ const createList = (first) => {
 
 //Prototipo: Questionnaire - Teacher
 const questionnairePage = async (req, res) => {
+    firstTime = true;
     info.user = store.get('user');
     const questionnaires = await api.list('questionnaires');
     var myQuestionnaires = [];

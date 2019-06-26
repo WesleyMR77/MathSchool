@@ -12,35 +12,17 @@
 <body>
     <% include searchHeader %>
 
-    <%
-    //Verificacao se ha ou nao materiais cadastrados
-    function verifyMaterial(materials) {
-        if(materials.length == 0){
-            return false;
-        }else{
-            return true;
-        }
-    };
-    %>
-
     <main class="adicionar-material">
         <section class="line">
             <a href="/teacher/questionnaire/create"> <img class="img-cadastrar" src="../../img/img-guia-estudo/more.png" alt="">
             </a>
         </section>
 
-        <%
-        var myQuestionnairesTitle;
-        var image;
-        if(verifyMaterial(myQuestionnaires)){
-            myQuestionnairesTitle = "Meus Questionários";
-        }else{
-            myQuestionnairesTitle = "Voce ainda nao cadastrou nenhuma questionário"
-        };
-        %>
-
         <section class="line">
-            <h2 class="center"><%= myQuestionnairesTitle %></h2>
+            <h2 class="center">Meus Questionários</h2>
+            <% if(myQuestionnaires.length == 0){ %>
+                <p>Nenhum questionário cadastrado ou encontrado.</p>
+            <% } %>
             <div class="lista">
                 <% myQuestionnaires.forEach( element => { %>
                 <div class="img-configuration">
@@ -57,6 +39,9 @@
 
         <section class="">
             <h2 class="center">Todos os Questionários</h2>
+            <% if(questionnaires.length == 0){ %>
+                <p>Nenhum questionário cadastrado ou encontrado.</p>
+            <% } %>
             <div class="lista">
                 <% questionnaires.forEach( element => { %>
                 <div class="img-configuration">

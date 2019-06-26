@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title><%= info.title %></title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../../css/teacher/createStudyGuide.css">
+  <link rel="stylesheet" href="../../../css/teacher/createStudyGuide.css">
 </head>
 
 <body>
-  <% include header %>
+  <% include headerID %>
 
   <%
     //Verificar o tipo de imagem
@@ -44,7 +44,7 @@
       <h2 class="h2-size-title">Materiais</h2>
       <form method="">
         <input name="search" class="size-input" type="text">
-        <img class="img-search" src="../../img/img-guia-estudo/search-blue.png" alt="">
+        <img class="img-search" src="../../../img/img-guia-estudo/search-blue.png" alt="">
       </form>
       
       <% var image; %>
@@ -53,7 +53,7 @@
         <% materials.forEach( element => { %>
         <% image = getImage( element.subject, element.type ); %>
         <div class="img-configuration">
-          <a href="/teacher/study-guide/create/add/<%= element.type %>/<%= element.id %>"><img class="img-size" src="../../img/<%= image %>.png" alt=""></a>
+          <a href="/teacher/study-guide/update/<%= guide.id %>/add/<%= element.type %>/<%= element.id %>"><img class="img-size" src="../../../img/<%= image %>.png" alt=""></a>
           <h3><%= element.name %></h3>
           <span><%= element.author %></span>
         </div>
@@ -63,41 +63,26 @@
 
     <form method="POST" class="cadastrar-guia">
       <section>
-        <label for="nome">Nome:</label>
-        <input name="name" class="campo-selecao" type="text">
-        <div class="configuration-line">
-          <label for="">Assunto:</label>
-          <select name="subject" class="campo-selecao-ajusty">
-            <div class="size">
-              <option>Operações Básicas</option>
-              <option>Fração</option>
-              <option>Álgebra</option>
-              <option>Análise Combinatória</option>
-              <option>Geometria</option>
-              <option>Porcentagem</option>
-              <option>Outro</option>
-            </div>
-          </select>
-
+        <p>Nome: <%= guide.name %></p>
+        <p>Autor: <%= guide.author %></p>
           <div class="botao-cadastra">
-            <input type="submit" value="Confirmar">
+            <input type="submit" value="Atualizar">
           </div>
       </section>
 
       <section class="montar-guia">
-        <h2 class="titulo-trilha">Guia Novo</h2>
+        <h2 class="titulo-trilha">Guia:</h2>
         <div class="menu-busca">
           <% trail.forEach( element => { %>
           <% image = getImage( element.subject, element.type ); %>
           <div class="img-configuration-new">
-            <a href="/teacher/study-guide/create/remove/<%= element.id %>"><img class="img-size-cadastra" src="../../img/<%= image %>.png" alt=""></a> 
+            <a href="/teacher/study-guide/update/<%= guide.id %>/remove/<%= element.id %>"><img class="img-size-cadastra" src="../../../img/<%= image %>.png" alt=""></a> 
             <h3 class="h3-newGuia" ><%= element.name %></h3>
             <span class="span-nome"><%= element.author %></span>
           </div>
           <% }); %>
         </div>
       </section>
-      <p>Clique no item para removê-lo do seu guia.</p>
     </form>
 
   </div>

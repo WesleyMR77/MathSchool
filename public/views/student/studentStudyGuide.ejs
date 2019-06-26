@@ -41,6 +41,9 @@
             <% var image; %>
 
             <div class="lista">
+                <% if(guides.length == 0){ %>
+                    <p>Nenhum guia cadastrado ou encontrado.</p>
+                <% } %>
                 <% guides.forEach( element => { %>
                 <% image = getImage(element.subject); %>
                 <div class="img-configuration">

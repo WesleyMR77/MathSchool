@@ -4,11 +4,18 @@ body{
 }
 .mostrar-guia{
     margin-left: 20vw;
+    padding-top: 110px;
+    text-align: center;
+}
+
+.mostrar-guia h1{
+    font-size: 2em;
+    font-weight: bold;
 }
 
 .menu-mostrar{
     width: 57.5vw;
-    margin-top: 170px;
+    margin-top: 40px;
     margin-left: 7.5vw;
     background-color: white;
     padding-left: 7.5vw;

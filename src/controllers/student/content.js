@@ -19,11 +19,17 @@ const getContent = async (req, res) => {
     const search = req.body.search;
     const AllContents = await api.list('contents');
     var contents = [];
-    AllContents.forEach(element => {
-        if (element.name == search || element.author == search) {
+    if(search != ""){
+        AllContents.forEach(element => {
+            if (element.name == search || element.author == search) {
+                contents.push(element);
+            }
+        });
+    }else{
+        AllContents.forEach(element => {
             contents.push(element);
-        }
-    });
+        });
+    }
     info.user = store.get('user');
     res.render('student/studentContent', { contents, info });
 };

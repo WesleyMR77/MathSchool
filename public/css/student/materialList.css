@@ -11,6 +11,10 @@
     margin: 0 135px;
 }
 
+.lista p{
+    margin: 30px auto;
+}
+
 .img-configuration{
     flex:1;
     margin: 50px 20px 30px 20px;

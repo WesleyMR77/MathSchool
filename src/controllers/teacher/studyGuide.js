@@ -13,6 +13,7 @@ var firstTime = true;
 //Verificar criacao de trilha
 const createTrail = (first) => {
     if(first){
+        store.remove('trail');
         const trail = [];
         store.set('trail', trail);
         firstTime = false;
@@ -24,6 +25,7 @@ const createTrail = (first) => {
 
 //Prototipo: Study Guide - Teacher
 const studyGuidesPage = async (req, res) => {
+    firstTime = true;
     info.user = store.get('user');
     const guides = await api.list('studyGuides');
     var myGuides = [];
@@ -68,6 +70,88 @@ const viewStudyGuide = async (req, res) => {
     const guide = await api.get('studyGuides', req.params.id);
     info.user = store.get('user');
     res.render('teacher/teacherStudyGuideID', { guide, info });
+};
+
+//Prototipo: Study Guide - Teacher - Create Guide
+const updateGuidePage = async (req, res) => {
+    const guide = await api.get('studyGuides', req.params.id);
+    var trail;
+    if(firstTime){
+        trail = guide.trail;
+        firstTime = false;
+        store.set('trail', trail);
+    }else{
+        trail = createTrail(firstTime);
+    }
+    const questionnaires = await api.list('questionnaires');
+    const contents = await api.list('contents');
+    var materials = [];
+    contents.forEach(element => {
+        materials.push({
+            id: element.id,
+            name: element.name,
+            subject: element.subject,
+            author: element.author,
+            type: "contents"
+        })
+    });
+    questionnaires.forEach(element => {
+        materials.push({
+            id: element.id,
+            name: element.name,
+            subject: element.subject,
+            author: element.author,
+            type: "questionnaires"
+        })
+    });
+    for (let i = 0; i < materials.length; i++) {
+        for (let j = 0; j < trail.length; j++) {
+            if(materials[i].id == trail[j].id){
+                materials.splice(i, 1);
+            }
+        }
+    }
+    info.user = store.get('user');
+    res.render('teacher/teacherUpdateStudyGuide', { guide, materials, info, trail });
+};
+
+const updateGuide = async (req, res) => {
+    info.user = store.get('user');
+    const guide = await api.get('studyGuides', req.params.id);
+    await api.update('studyGuides', req.params.id, {
+        name: guide.name,
+        author: guide.author,
+        subject: guide.subject,
+        trail: store.get('trail')
+    });
+    store.remove('trail');
+    firstTime = true;
+    res.redirect('/teacher/study-guide');
+};
+
+//Adicao de material na trilha para edicao
+const addUpdateTrail = async (req, res) => {
+    var material = await api.get(req.params.type, req.params.materialId);
+    material.type = req.params.type;
+    var trail = store.get('trail');
+    trail.push(material);
+    store.remove('trail');
+    store.set('trail', trail);
+    res.redirect('/teacher/study-guide/update/' + req.params.id);
+};
+
+//Remocao de material da trilha para edicao
+const removeUpdateTrail = async (req, res) => {
+    var trail = store.get('trail');
+    for (let index = 0; index < trail.length; index++) {
+        if(trail[index].id == req.params.materialId){
+            trail.splice(index, 1);
+            break;
+        }
+    }
+    store.remove('trail');
+    store.set('trail', trail);
+    res.redirect('/teacher/study-guide/update/' + req.params.id);
 };
 
 //Prototipo: Study Guide - Teacher - Create Guide
@@ -165,8 +249,8 @@ const getMaterial = async (req, res) => {
     res.render('teacher/teacherCreateStudyGuide', { materials, info, trail });
 };
 
-//Adicao de material na trilha
-const addTrail = async (req, res) => {
+//Adicao de material na trilha para criacao
+const addCreationTrail = async (req, res) => {
     var material = await api.get(req.params.type, req.params.id);
     material.type = req.params.type;
     var trail = store.get('trail');
@@ -176,8 +260,8 @@ const addTrail = async (req, res) => {
     res.redirect('/teacher/study-guide/create');
 };
 
-//Remocao de material da trilha
-const removeTrail = async (req, res) => {
+//Remocao de material da trilha para criacao
+const removeCreationTrail = async (req, res) => {
     var trail = store.get('trail');
     for (let index = 0; index < trail.length; index++) {
         if(trail[index].id == req.params.id){
@@ -214,10 +298,14 @@ module.exports = {
     studyGuidesPage,
     getStudyGuide,
     viewStudyGuide,
+    updateGuidePage,
+    updateGuide,
+    addUpdateTrail,
+    removeUpdateTrail,
     createGuidePage,
     getMaterial,
-    addTrail,
-    removeTrail,
+    addCreationTrail,
+    removeCreationTrail,
     createGuide,
     deleteGuide
 }

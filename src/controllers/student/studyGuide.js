@@ -19,11 +19,17 @@ const getStudyGuide = async (req, res) => {
     const search = req.body.search;
     const AllGuides = await api.list('studyGuides');
     var guides = []; 
-    AllGuides.forEach(element => {
-        if(element.name == search || element.author == search){
+    if(search!=""){
+        AllGuides.forEach(element => {
+            if(element.name == search || element.author == search){
+                guides.push(element);
+            }
+        });
+    }else{
+        AllGuides.forEach(element => {
             guides.push(element);
-        }
-    });
+        });
+    }
     info.user = store.get('user');
     res.render('student/studentStudyGuide', { guides, info });
 };
@@ -39,27 +45,33 @@ const viewStudyGuide = async (req, res) => {
 const viewContent = async (req, res) => {
     const guide = await api.get('studyGuides', req.params.guideID);
     var content;
-    guide.trail.forEach(element => {
-        if(element.id == req.params.id){
-            content = element;
+    var number;
+    for (let index = 0; index < guide.trail.length; index++) {
+        if(guide.trail[index].id == req.params.id){
+            content = guide.trail[index];
+            number = index+1;
+            break;
         }
-    });
+    }
     info.user = store.get('user');
-    res.render('student/studentStudyGuideContent', { guide, content, info });
+    res.render('student/studentStudyGuideContent', { guide, number, content, info });
 };
 
 //Visualizar questionario do guia
 const viewQuestionnaire = async (req, res) => {
     const guide = await api.get('studyGuides', req.params.guideID);
     var questionnaire;
-    guide.trail.forEach(element => {
-        if(element.id == req.params.id){
-            questionnaire = element;
+    var number;
+    for (let index = 0; index < guide.trail.length; index++) {
+        if(guide.trail[index].id == req.params.id){
+            questionnaire = guide.trail[index];
+            number = index+1;
+            break;
         }
-    });    
+    }   
     const question = questionnaire.questions[req.params.number];
     info.user = store.get('user');
-    res.render('student/studentStudyGuideQuestion', { guide, questionnaire, question, info });
+    res.render('student/studentStudyGuideQuestion', { guide, number, questionnaire, question, info });
 };
 
 //Corrigir questao
