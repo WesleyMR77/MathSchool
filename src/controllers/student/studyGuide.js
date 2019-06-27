@@ -78,12 +78,15 @@ const viewQuestionnaire = async (req, res) => {
 const correctQuestion = async (req, res) => {
     const guide = await api.get('studyGuides', req.params.guideID);
     const answer = req.body.options;
+    var number;
     var questionnaire;
-    guide.trail.forEach(element => {
-        if(element.id == req.params.id){
-            questionnaire = element;
+    for (let index = 0; index < guide.trail.length; index++) {
+        if(guide.trail[index].id == req.params.id){
+            questionnaire = guide.trail[index];
+            number = index+1;
+            break;
         }
-    });    
+    }      
     const question = questionnaire.questions[req.params.number];
     var correction;
     if(answer == question.answer){
@@ -92,7 +95,7 @@ const correctQuestion = async (req, res) => {
         correction = false;
     }
     info.user = store.get('user');
-    res.render('student/studentStudyGuideCorrectQuestion', { guide, questionnaire, question, correction, info });
+    res.render('student/studentStudyGuideCorrectQuestion', { guide, number, questionnaire, question, correction, info });
 };
 
 module.exports = {

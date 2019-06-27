@@ -44,7 +44,7 @@ input{
 
 .button-tentar-novamente{
     float: right;
-    width: 100px;
+    min-width: 175px;
     max-height: 27.5px;
     margin-bottom: 50px;
     border-radius: 10px;

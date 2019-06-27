@@ -65,9 +65,11 @@
       <section>
         <p>Nome: <%= guide.name %></p>
         <p>Autor: <%= guide.author %></p>
+        <% if(!enable){ %>
           <div class="botao-cadastra">
             <input type="submit" value="Atualizar">
           </div>
+        <% } %>
       </section>
 
       <section class="montar-guia">

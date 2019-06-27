@@ -76,11 +76,14 @@ const viewStudyGuide = async (req, res) => {
 const updateGuidePage = async (req, res) => {
     const guide = await api.get('studyGuides', req.params.id);
     var trail;
+    var enable;
     if(firstTime){
+        enable = true;
         trail = guide.trail;
         firstTime = false;
         store.set('trail', trail);
     }else{
+        enable = false;
         trail = createTrail(firstTime);
     }
     const questionnaires = await api.list('questionnaires');
@@ -112,7 +115,7 @@ const updateGuidePage = async (req, res) => {
         }
     }
     info.user = store.get('user');
-    res.render('teacher/teacherUpdateStudyGuide', { guide, materials, info, trail });
+    res.render('teacher/teacherUpdateStudyGuide', { guide, enable, materials, info, trail });
 };
 
 const updateGuide = async (req, res) => {
