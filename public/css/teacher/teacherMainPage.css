@@ -12,3 +12,12 @@ body{
 .center{
     text-align: center;
 }
+
+
+.justify{
+    text-align: justify;
+}
+.img-end{
+    text-align: end;
+    margin-bottom: 30px;
+}

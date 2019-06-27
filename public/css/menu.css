@@ -16,6 +16,7 @@ body{
 }
 .title-menu{ 
     padding: 0;
+    margin-left: 2.5vw;
     flex: 10;
 }
 
